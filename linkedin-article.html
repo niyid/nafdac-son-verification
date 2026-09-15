@@ -8,7 +8,7 @@
 <!-- SEO -->
 <meta name="description" content="A working Odoo integration checks NAFDAC and SON registration at the moment of checkout. NAFDAC's own consumer app couldn't confirm a real product at the point of purchase. An open invitation to NAFDAC and SON to explain the gap.">
 <meta name="author" content="niyid">
-<meta name="keywords" content="NAFDAC, SON, Odoo, counterfeit products, Nigeria, product verification, Scan2Verify, SONCAP, e-commerce, open source">
+<meta name="keywords" content="NAFDAC, SON, Odoo, counterfeit products, Nigeria, product verification, Scan2Verify, SONCAP, e-commerce, open source, retail, wholesale, pharmacy compliance, distribution, Odoo implementation, Odoo installation support">
 
 <!-- Open Graph (Substack, Facebook, LinkedIn link previews) -->
 <meta property="og:type" content="article">
@@ -169,6 +169,7 @@
     border: 1px solid var(--border);
     overflow: hidden;
     box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+    margin-bottom: 36px;
   }
 
   .hero-image img { display: block; width: 100%; height: auto; }
@@ -656,6 +657,59 @@
 
   .download-btn:hover { background: rgba(16,185,129,0.22); }
 
+  /* ─── CLOSING PROVERB ────────────────────────────────────────── */
+  .proverb-block {
+    text-align: center;
+    padding: 44px 20px 8px;
+    border-top: 1px solid var(--border);
+    margin-top: 8px;
+  }
+
+  .proverb-block .diagram-title {
+    justify-content: center;
+    display: flex;
+  }
+
+  .proverb-yoruba {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(20px, 3vw, 26px);
+    color: var(--emerald);
+    line-height: 1.5;
+    max-width: 560px;
+    margin: 18px auto 14px;
+  }
+
+  .proverb-translation {
+    font-size: 14.5px;
+    color: var(--muted-hi);
+    max-width: 480px;
+    margin: 0 auto 10px;
+  }
+
+  .proverb-gloss {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .proverb-address {
+    font-size: 15px;
+    color: var(--text);
+    max-width: 560px;
+    margin: 0 auto 30px;
+    line-height: 1.7;
+  }
+
+  .proverb-address strong { color: var(--red); }
+
+  .proverb-pair { margin-bottom: 30px; }
+  .proverb-pair:last-of-type { margin-bottom: 14px; }
+
   /* ─── OPEN LETTER BOX ────────────────────────────────────────── */
   .open-letter {
     background: linear-gradient(180deg, rgba(167,139,250,0.09), rgba(167,139,250,0.02));
@@ -738,6 +792,10 @@
 
   <!-- ═══ HERO ═══ -->
   <header class="hero">
+    <div class="hero-image">
+      <img src="assets/header.jpg" alt="NAFDAC and SON validation integrated into Odoo checkout, showing a verified product badge on a mobile checkout screen" loading="lazy">
+    </div>
+
     <div class="hero-eyebrow">Regulatory Technology · Nigerian E-Commerce · Odoo Engineering</div>
 
     <h1>
@@ -766,10 +824,6 @@
       Scan2Verify app. It could not tell me whether the product was genuine. This article is about
       what I built, what I found, and a question I'd genuinely like NAFDAC and SON to answer.
     </p>
-
-    <div class="hero-image">
-      <img src="assets/header.jpg" alt="NAFDAC and SON validation integrated into Odoo checkout, showing a verified product badge on a mobile checkout screen" loading="lazy">
-    </div>
   </header>
 
   <!-- ═══ SECTION 1: THE MOMENT OF DOUBT ═══ -->
@@ -986,6 +1040,18 @@
       <strong>Update Apps List</strong>, and install "NAFDAC / SON Product Verification" from the
       Apps menu (remove the "Apps" filter; it's a normal module, not a featured app).
     </p>
+
+    <div class="callout callout-info">
+      <div class="callout-icon">🛠️</div>
+      <div class="callout-body">
+        <strong>Retailers and wholesalers: if you'd rather not do the install yourself, I can help</strong>
+        <p>If you run a pharmacy, supermarket, distribution warehouse, or any other outlet selling
+        regulated products and want this set up and configured on your own Odoo instance —
+        onsite or remote — send me a direct message. That covers installation, mapping your
+        existing product catalogue to NAFDAC/SON fields, and setting your blocking policy so it
+        fits how your store actually operates.</p>
+      </div>
+    </div>
   </section>
 
   <!-- ═══ SECTION 5: HOW IT WORKS END TO END ═══ -->
@@ -1072,14 +1138,19 @@
       limitation, not a solved problem.
     </p>
 
-    <div class="callout callout-warn">
-      <div class="callout-icon">🔌</div>
+    <div class="callout callout-bad">
+      <div class="callout-icon">⚠️</div>
       <div class="callout-body">
-        <strong>This is exactly the gap Scan2Verify should be filling</strong>
-        <p>A public, real-time, GS1-standard verification API is precisely what would let a module
-        like this — or NAFDAC's own consumer app — actually confirm authenticity rather than just
-        format. Right now, neither Nigerian shoppers nor businesses trying to build compliance into
-        their own systems have that option.</p>
+        <strong>Neither agency currently offers a public verification API — and this is not a minor omission</strong>
+        <p>I looked. NAFDAC publishes no documented, supported developer API for real-time product
+        lookups: what exists are undocumented internal endpoints that third parties have
+        reverse-engineered from its Greenbook app, and paid scraping services built specifically
+        because no official one exists. SON's SONCAP system has no consumer-facing verification
+        tool at all — it is a pre-shipment, import-clearance workflow run through Independent
+        Accredited Firms, closed to the public entirely. For products where a wrong guess can kill
+        — medicine chief among them — a shopper having no fast, reliable way to check what
+        they're about to take isn't a UX gap. It's a life-and-death one, and it deserves to be
+        treated with that urgency.</p>
       </div>
     </div>
   </section>
@@ -1143,6 +1214,33 @@
       addons — for anyone running Odoo who wants to adopt, audit, or extend them.
     </p>
   </section>
+
+  <!-- ═══ CLOSING PROVERB ═══ -->
+  <div class="proverb-block">
+    <div class="diagram-title">And to the Saboteurs</div>
+
+    <p class="proverb-address">
+      To the counterfeiters, the diverters of genuine stock, and everyone profiting from a
+      Nigerian's inability to tell real medicine from fake: <strong>you are not outsmarting a
+      system, you are hollowing out the ground you stand on too.</strong>
+    </p>
+
+    <div class="proverb-pair">
+      <p class="proverb-yoruba">"T'ẹní bẹ́gi lójù, igi á rúwé."</p>
+      <p class="proverb-translation">The shame is on the one who cuts the tree — it will sprout leaves again.</p>
+      <p class="proverb-gloss">This society regrows what you cut. Your sabotage doesn't stop it — it only
+      marks you.</p>
+    </div>
+
+    <div class="proverb-pair">
+      <p class="proverb-yoruba">"Ọ̀bẹ́ ńwólé, ara ẹ̀ ó ní òún ḿba àkọ̀ jẹ́."</p>
+      <p class="proverb-translation">The knife destroys its own home, yet claims it is only ruining the sheath.</p>
+      <p class="proverb-gloss">Said of those whose actions injure themselves more than anyone else — the
+      knife lives inside the sheath it's tearing apart. Sabotage your own society while telling
+      yourself you're only hurting a system, and the sheath you needed all along is the first
+      thing you lose. It was never someone else's suicide — only your own, drawn out slowly.</p>
+    </div>
+  </div>
 
   <!-- ═══ FOOTER ═══ -->
   <footer class="article-footer">
