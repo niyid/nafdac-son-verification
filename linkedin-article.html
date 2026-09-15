@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Verification Gap: I Built NAFDAC/SON Checks Into Odoo Checkout, Then Tried NAFDAC's Own App — It Couldn't Verify a Real Product</title>
+
+<!-- SEO -->
+<meta name="description" content="A working Odoo integration checks NAFDAC and SON registration at the moment of checkout. NAFDAC's own consumer app couldn't confirm a real product at the point of purchase. An open invitation to NAFDAC and SON to explain the gap.">
+<meta name="author" content="niyid">
+<meta name="keywords" content="NAFDAC, SON, Odoo, counterfeit products, Nigeria, product verification, Scan2Verify, SONCAP, e-commerce, open source">
+
+<!-- Open Graph (Substack, Facebook, LinkedIn link previews) -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Verification Gap: I Built NAFDAC/SON Checks Into Odoo Checkout, Then Tried NAFDAC's Own App">
+<meta property="og:description" content="An Odoo module blocks checkout on a failed NAFDAC/SON check in milliseconds. NAFDAC's own Scan2Verify app couldn't confirm a real medicine box at all. Here's the build — and an open question for the regulators.">
+<meta property="og:image" content="https://niyid.github.io/nafdac-son-verification/assets/header.jpg">
+<meta property="og:url" content="https://niyid.github.io/nafdac-son-verification/linkedin-article.html">
+<meta property="og:site_name" content="NAFDAC/SON Verification for Odoo">
+<meta property="article:author" content="https://github.com/niyid">
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Verification Gap: Checkout-Level NAFDAC/SON Checks, and an Open Question for the Regulators">
+<meta name="twitter:description" content="A drop-in Odoo module blocks checkout on failed regulatory checks. NAFDAC's own app couldn't verify a real product. An invitation to NAFDAC and SON to explain why.">
+<meta name="twitter:image" content="https://niyid.github.io/nafdac-son-verification/assets/header.jpg">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://niyid.github.io/nafdac-son-verification/linkedin-article.html">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg:           #06080d;
+    --surface:      #0c1018;
+    --panel:        #101520;
+    --border:       #1c2433;
+    --border-hi:    #2a3a52;
+    --emerald:      #10b981;
+    --emerald-dim:  rgba(16,185,129,0.15);
+    --amber:        #f59e0b;
+    --amber-dim:    rgba(245,158,11,0.12);
+    --red:          #ef4444;
+    --red-dim:      rgba(239,68,68,0.12);
+    --blue:         #60a5fa;
+    --blue-dim:     rgba(96,165,250,0.12);
+    --violet:       #a78bfa;
+    --text:         #e2e8f0;
+    --muted:        #64748b;
+    --muted-hi:     #94a3b8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE OVERLAY ─────────────────────────────────────────── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  /* grid lines */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(16,185,129,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(16,185,129,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── LAYOUT ─────────────────────────────────────────────────── */
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 28px 96px;
+  }
+
+  /* ─── HERO ───────────────────────────────────────────────────── */
+  .hero {
+    padding: 80px 0 64px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 64px;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--emerald);
+    margin-bottom: 28px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--emerald);
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5.4vw, 60px);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+  }
+
+  h1 .accent { color: var(--emerald); }
+  h1 .italic { font-style: italic; }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta span { display: flex; align-items: center; gap: 6px; }
+  .hero-meta .sep { color: var(--border-hi); }
+
+  .hero-lead {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--muted-hi);
+    line-height: 1.7;
+    max-width: 680px;
+    border-left: 3px solid var(--emerald);
+    padding-left: 20px;
+    margin-bottom: 40px;
+  }
+
+  /* ─── HERO IMAGE ─────────────────────────────────────────────── */
+  .hero-image {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+  }
+
+  .hero-image img { display: block; width: 100%; height: auto; }
+
+  /* ─── SECTION STRUCTURE ──────────────────────────────────────── */
+  section { margin-bottom: 72px; }
+
+  .section-kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--emerald);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-kicker::after {
+    content: '';
+    display: block;
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+
+  p { margin-bottom: 18px; color: var(--muted-hi); }
+  p:last-child { margin-bottom: 0; }
+
+  strong { color: var(--text); font-weight: 500; }
+
+  a.inline-link { color: var(--emerald); text-decoration: none; border-bottom: 1px solid rgba(16,185,129,0.35); }
+  a.inline-link:hover { border-bottom-color: var(--emerald); }
+
+  /* ─── PULL QUOTE ─────────────────────────────────────────────── */
+  .pull-quote {
+    background: var(--emerald-dim);
+    border: 1px solid rgba(16,185,129,0.25);
+    border-left: 4px solid var(--emerald);
+    border-radius: 0 8px 8px 0;
+    padding: 24px 28px;
+    margin: 32px 0;
+  }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .pull-quote cite {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--emerald);
+    text-transform: uppercase;
+  }
+
+  /* ─── SCREENSHOT GALLERY ─────────────────────────────────────── */
+  .screenshot-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 28px 0;
+  }
+
+  @media (max-width: 640px) { .screenshot-gallery { grid-template-columns: repeat(2, 1fr); } }
+
+  .screenshot-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .screenshot-item img { display: block; width: 100%; height: auto; }
+
+  .screenshot-caption {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    padding: 8px 10px;
+    border-top: 1px solid var(--border);
+    line-height: 1.5;
+  }
+
+  /* ─── PILLARS GRID ───────────────────────────────────────────── */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 32px 0;
+  }
+
+  @media (max-width: 600px) { .pillars-grid { grid-template-columns: 1fr; } }
+
+  .pillar {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .pillar:hover { border-color: var(--border-hi); }
+
+  .pillar-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .pillar-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .pillar h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .pillar p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .pillar-emerald { border-left: 3px solid var(--emerald); }
+  .pillar-amber   { border-left: 3px solid var(--amber); }
+  .pillar-blue    { border-left: 3px solid var(--blue); }
+  .pillar-violet  { border-left: 3px solid var(--violet); }
+
+  /* ─── CODE SNIPPET ───────────────────────────────────────────── */
+  .code-block {
+    background: #070a0f;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 28px 0;
+    font-size: 13px;
+  }
+
+  .code-header {
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .code-header span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  .code-header .lang {
+    color: var(--emerald);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .code-body {
+    padding: 20px 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    line-height: 1.7;
+    overflow-x: auto;
+    white-space: pre;
+    font-size: 12.5px;
+  }
+
+  .kw { color: #c792ea; }
+  .fn { color: #82aaff; }
+  .str { color: #c3e88d; }
+  .num { color: #f78c6c; }
+  .cm { color: #546e7a; font-style: italic; }
+  .ty { color: #ffcb6b; }
+  .prop { color: var(--emerald); }
+
+  /* ─── FLOW DIAGRAM ───────────────────────────────────────────── */
+  .flow-diagram {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px 28px;
+    margin: 32px 0;
+  }
+
+  .diagram-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  .flow-steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    margin-top: 8px;
+  }
+
+  .flow-step {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .flow-step:last-child { border-bottom: none; }
+
+  .flow-step-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .step-emerald { background: var(--emerald-dim); color: var(--emerald); border: 1px solid rgba(16,185,129,0.3); }
+  .step-amber   { background: var(--amber-dim);   color: var(--amber);   border: 1px solid rgba(245,158,11,0.3); }
+  .step-blue    { background: var(--blue-dim);     color: var(--blue);    border: 1px solid rgba(96,165,250,0.3); }
+  .step-red     { background: var(--red-dim);      color: var(--red);     border: 1px solid rgba(239,68,68,0.3); }
+  .step-violet  { background: rgba(167,139,250,0.12); color: var(--violet); border: 1px solid rgba(167,139,250,0.3); }
+
+  .flow-step-content strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .flow-step-content p {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.55;
+  }
+
+  /* ─── COMPARISON CARDS ────────────────────────────────────────── */
+  .compare-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 28px 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .compare-header {
+    display: grid;
+    grid-template-columns: 160px 1fr 1fr;
+    background: var(--panel);
+    border-bottom: 2px solid var(--border-hi);
+  }
+
+  .compare-header-cell {
+    padding: 12px 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .compare-header-cell:nth-child(1) { color: var(--muted); }
+  .compare-header-cell:nth-child(2) { color: var(--red); border-left: 1px solid var(--border); }
+  .compare-header-cell:nth-child(3) { color: var(--emerald); border-left: 1px solid var(--border); }
+
+  .compare-row {
+    display: grid;
+    grid-template-columns: 160px 1fr 1fr;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+
+  .compare-row:last-child { border-bottom: none; }
+  .compare-row:hover { background: rgba(255,255,255,0.018); }
+
+  .compare-cell {
+    padding: 14px 16px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .compare-cell:nth-child(2),
+  .compare-cell:nth-child(3) { border-left: 1px solid var(--border); }
+
+  .compare-cell.dim-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .compare-cell.bad  { color: #f87171; }
+  .compare-cell.good { color: #34d399; }
+  .compare-cell.mid  { color: var(--amber); }
+
+  @media (max-width: 580px) {
+    .compare-header { grid-template-columns: 1fr; }
+    .compare-header-cell:nth-child(1) { display: none; }
+    .compare-header-cell:nth-child(2),
+    .compare-header-cell:nth-child(3) { border-left: none; border-top: 1px solid var(--border); }
+    .compare-row { grid-template-columns: 1fr; }
+    .compare-cell.dim-label {
+      background: var(--panel);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 16px 4px;
+    }
+    .compare-cell:nth-child(2),
+    .compare-cell:nth-child(3) { border-left: none; padding-top: 6px; padding-bottom: 6px; }
+    .compare-cell:nth-child(3) { padding-bottom: 14px; }
+  }
+
+  /* ─── TECH STACK PILLS ───────────────────────────────────────── */
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+  }
+
+  .tech-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted-hi);
+    letter-spacing: 0.05em;
+  }
+
+  .tech-pill .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .dot-green  { background: var(--emerald); }
+  .dot-amber  { background: var(--amber); }
+  .dot-blue   { background: var(--blue); }
+  .dot-violet { background: var(--violet); }
+  .dot-red    { background: var(--red); }
+
+  /* ─── CALLOUT BOXES ──────────────────────────────────────────── */
+  .callout {
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 24px 0;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .callout-warn {
+    background: var(--amber-dim);
+    border: 1px solid rgba(245,158,11,0.25);
+  }
+
+  .callout-info {
+    background: var(--blue-dim);
+    border: 1px solid rgba(96,165,250,0.25);
+  }
+
+  .callout-good {
+    background: var(--emerald-dim);
+    border: 1px solid rgba(16,185,129,0.25);
+  }
+
+  .callout-bad {
+    background: var(--red-dim);
+    border: 1px solid rgba(239,68,68,0.25);
+  }
+
+  .callout-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
+  .callout-body p { font-size: 13.5px; margin: 0; line-height: 1.6; }
+  .callout-body strong { display: block; margin-bottom: 4px; font-size: 13px; }
+
+  /* ─── DOWNLOAD CARDS ─────────────────────────────────────────── */
+  .download-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 28px 0;
+  }
+
+  @media (max-width: 600px) { .download-cards { grid-template-columns: 1fr; } }
+
+  .download-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .download-card .file-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--text);
+    word-break: break-word;
+  }
+
+  .download-card p {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 4px;
+    background: var(--emerald-dim);
+    border: 1px solid rgba(16,185,129,0.3);
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--emerald);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: background 0.2s;
+  }
+
+  .download-btn:hover { background: rgba(16,185,129,0.22); }
+
+  /* ─── OPEN LETTER BOX ────────────────────────────────────────── */
+  .open-letter {
+    background: linear-gradient(180deg, rgba(167,139,250,0.09), rgba(167,139,250,0.02));
+    border: 1px solid rgba(167,139,250,0.3);
+    border-radius: 14px;
+    padding: 32px 28px;
+    margin: 32px 0;
+  }
+
+  .open-letter .diagram-title { color: var(--violet); }
+
+  .open-letter ol {
+    margin: 18px 0 0 20px;
+    color: var(--muted-hi);
+  }
+
+  .open-letter li { margin-bottom: 14px; font-size: 14.5px; line-height: 1.65; }
+  .open-letter li:last-child { margin-bottom: 0; }
+  .open-letter li strong { color: var(--text); }
+
+  /* ─── FOOTER ─────────────────────────────────────────────────── */
+  .article-footer {
+    border-top: 1px solid var(--border);
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-left p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    margin: 0 0 6px;
+  }
+
+  .footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--emerald-dim);
+    border: 1px solid rgba(16,185,129,0.3);
+    border-radius: 6px;
+    padding: 10px 18px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--emerald);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: background 0.2s;
+  }
+
+  .footer-link:hover { background: rgba(16,185,129,0.22); }
+
+  /* ─── ANIMATIONS ─────────────────────────────────────────────── */
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero { animation: fadeSlideUp 0.7s ease both; }
+  section { animation: fadeSlideUp 0.6s ease both; }
+  section:nth-child(2) { animation-delay: 0.1s; }
+  section:nth-child(3) { animation-delay: 0.15s; }
+  section:nth-child(4) { animation-delay: 0.2s; }
+  section:nth-child(5) { animation-delay: 0.25s; }
+  section:nth-child(6) { animation-delay: 0.3s; }
+
+  @media (max-width: 600px) {
+    .container { padding: 0 16px 64px; }
+    .hero { padding: 48px 0 40px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ═══ HERO ═══ -->
+  <header class="hero">
+    <div class="hero-eyebrow">Regulatory Technology · Nigerian E-Commerce · Odoo Engineering</div>
+
+    <h1>
+      The <span class="italic accent">Verification Gap</span>:<br>
+      I Built NAFDAC/SON Checks<br>
+      Into Checkout. NAFDAC's<br>
+      Own App Couldn't Verify<br>
+      a Real <span class="accent">Product</span>.
+    </h1>
+
+    <div class="hero-meta">
+      <span>📅 September 2026</span>
+      <span class="sep">·</span>
+      <span>🔗 github.com/niyid/nafdac-son-verification</span>
+      <span class="sep">·</span>
+      <span>🧩 Odoo 19 · Python</span>
+      <span class="sep">·</span>
+      <span>⏱ 9 min read</span>
+    </div>
+
+    <p class="hero-lead">
+      I spent the past few days building two Odoo modules that check a product's NAFDAC and SON
+      registration automatically, at the exact moment a Nigerian shopper adds it to their cart, and
+      block checkout if the check fails. Before writing a line of copy about it, I did the honest
+      thing: I picked up a real medicine box and tried to verify it myself, using NAFDAC's own
+      Scan2Verify app. It could not tell me whether the product was genuine. This article is about
+      what I built, what I found, and a question I'd genuinely like NAFDAC and SON to answer.
+    </p>
+
+    <div class="hero-image">
+      <img src="assets/header.jpg" alt="NAFDAC and SON validation integrated into Odoo checkout, showing a verified product badge on a mobile checkout screen" loading="lazy">
+    </div>
+  </header>
+
+  <!-- ═══ SECTION 1: THE MOMENT OF DOUBT ═══ -->
+  <section>
+    <div class="section-kicker">The Test</div>
+    <h2>I Scanned a Real Product. The Verdict: "Unable to Verified."</h2>
+
+    <p>
+      Before building anything, I wanted to understand the tool Nigerian consumers are actually
+      handed today. NAFDAC's <strong>Scan2Verify</strong> app — built on GS1 traceability
+      standards and positioned as the modern successor to the agency's older scratch-code
+      system — puts four options in front of you on opening: GLN Info, Decoding, Product Info,
+      and Verify. I picked a real product off my own shelf, a medicine box carrying a standard
+      GS1 barcode, and worked through all four.
+    </p>
+
+    <div class="screenshot-gallery">
+      <div class="screenshot-item">
+        <img src="assets/Scan2Verify1.jpg" alt="Scan2Verify home screen with GLN Info, Decoding, Product Info and Verify options" loading="lazy">
+        <div class="screenshot-caption">Home screen · 4 verification paths</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="assets/Scan2Verify2.jpg" alt="Scanning the GS1 barcode on a real medicine box" loading="lazy">
+        <div class="screenshot-caption">Scanning the pack's own GS1 barcode</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="assets/Scan2Verify3.jpg" alt="Verify screen showing Unable to Verified in red" loading="lazy">
+        <div class="screenshot-caption">Verify → "Unable to Verified"</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="assets/Scan2Verify4.jpg" alt="Product Information screen returning no data for the scanned barcode" loading="lazy">
+        <div class="screenshot-caption">Product Info → no data returned</div>
+      </div>
+    </div>
+
+    <p>
+      <strong>Verify</strong> returned a flat "Unable to Verified" with no further explanation —
+      not "not registered," not "check your connection," not "try again later." Just a red X.
+      <strong>Product Info</strong> accepted the same barcode and returned nothing at all: no
+      manufacturer, no registration status, no expiry date, no error message either. As a shopper
+      standing in front of a shelf, I had no more information after using the app than before I
+      opened it.
+    </p>
+
+    <div class="callout callout-warn">
+      <div class="callout-icon">🤔</div>
+      <div class="callout-body">
+        <strong>I'm genuinely not sure why it failed</strong>
+        <p>It could be a GLN/registration record missing from Scan2Verify's backend for this
+        product, a barcode format the decoder doesn't recognise, a connectivity issue on my end,
+        or a real authenticity flag with no consumer-facing detail. That ambiguity is itself the
+        problem — and it's exactly the kind of question I'd like NAFDAC to answer publicly.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SECTION 2: NOT JUST ME ═══ -->
+  <section>
+    <div class="section-kicker">It's Not Just Me</div>
+    <h2>Independent Testing Has Found the Same Thing, Repeatedly</h2>
+
+    <p>
+      I went looking for whether my experience was typical, and it is. The Foundation for
+      Investigative Journalism (FIJ) has run this exact test twice, roughly a year apart, across
+      NAFDAC's four public verification tools — MAS, Greenbook, NAPAMS, and Scan2Verify. In their
+      first pass, testing several real medicine packs, <a class="inline-link" href="https://fij.ng/article/reporters-diary-i-tested-4-nafdac-drug-verification-tools-two-were-useless/" target="_blank">none of the products scanned through
+      Scan2Verify returned any valid data</a>, and the tool's other lookup features fared no
+      better. Running the same test again in mid-2026, <a class="inline-link" href="https://fij.ng/article/nafdacs-drug-checkers-were-bad-1-year-ago-theyre-still-returning-wrong-expiry-dates/" target="_blank">Scan2Verify was again the
+      weakest of the four tools</a>, correctly verifying only one of seven products tested.
+    </p>
+
+    <p>
+      The older MAS scratch-code system doesn't fare much better under pressure: it depends on
+      relaying a code to one of five separate authentication providers by SMS, and FIJ's testers
+      recorded waits of several hours for a response that is supposed to arrive "at the point of
+      purchase." A verification system a shopper cannot use while standing at the till isn't
+      solving the problem it was built for. Public app-store reviews echo the same frustration —
+      one Scan2Verify reviewer on the App Store put it bluntly: they couldn't even complete
+      sign-up to try verifying a product at all.
+    </p>
+
+    <div class="pull-quote">
+      <p>A verification tool that takes hours to respond, or returns nothing at all, doesn't
+         protect the shopper standing in the aisle deciding whether to trust what's on the shelf.</p>
+      <cite>— The gap this project tries to close, at least for Odoo-run stores</cite>
+    </div>
+  </section>
+
+  <!-- ═══ SECTION 3: THE SCALE ═══ -->
+  <section>
+    <div class="section-kicker">Why It Matters</div>
+    <h2>The Counterfeit Problem Is Real, Documented, and Large</h2>
+
+    <p>
+      None of this is a minor gap. NAFDAC's own enforcement figures describe a market with a
+      serious counterfeiting problem: the agency has reported destroying <a class="inline-link" href="https://www.vanguardngr.com/2026/09/nafdac-destroys-n1-5trn-fake-products-secures-64-convictions/" target="_blank">more than ₦1.5
+      trillion worth of fake and substandard products</a> between June 2025 and June 2026 alone,
+      with 47,830 facilities currently under surveillance nationwide. Separate reporting found
+      that despite <a class="inline-link" href="https://businessday.ng/investigation/article/fake-drugs-nafdac-prosecutes-only-40-of-5210-cases-in-3-years/" target="_blank">5,210 investigations and over 45,000 surveillance operations
+      across three years</a>, only a small fraction were ever taken forward to prosecution.
+    </p>
+
+    <p>
+      That is a lot of enforcement muscle aimed at the supply side — raids, seizures, destroyed
+      truckloads — and comparatively little that puts a reliable, fast answer in a shopper's hand
+      at the moment they're deciding whether to buy. Enforcement after the fact doesn't help the
+      person already holding the product. A working point-of-purchase check does.
+    </p>
+
+    <div class="compare-cards">
+      <div class="compare-header">
+        <div class="compare-header-cell">Approach</div>
+        <div class="compare-header-cell">What it protects</div>
+        <div class="compare-header-cell">When it helps you</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell dim-label">🚔 Market raids</div>
+        <div class="compare-cell mid">The overall supply chain</div>
+        <div class="compare-cell mid">After the fact, not at your point of purchase</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell dim-label">📱 Scan2Verify / MAS</div>
+        <div class="compare-cell bad">A single scan or scratch code</div>
+        <div class="compare-cell bad">In theory, at purchase — in practice, often not at all</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell dim-label">🛒 Checkout-level check</div>
+        <div class="compare-cell good">Every regulated item in the cart</div>
+        <div class="compare-cell good">Automatically, before payment is even offered</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SECTION 4: THE SOLUTION ═══ -->
+  <section>
+    <div class="section-kicker">The Build</div>
+    <h2>Two Odoo Modules That Check Regulatory Status Before Checkout</h2>
+
+    <p>
+      Since I run Odoo deployments for clients selling regulated goods in Nigeria, I built the
+      check into the one place a shopper can't skip: checkout itself. <strong>nafdac_son_verification</strong>
+      adds NAFDAC and SON registration fields to Products and Lots/Serials, logs every check for
+      audit, and can block a warehouse transfer from being validated if a regulated item hasn't
+      passed. <strong>website_sale_nafdac_son_verification</strong> extends that into the storefront:
+      it re-checks stale statuses whenever a shopper opens the cart or moves through checkout, shows
+      a status badge on every regulated line item, and — if the store owner opts in — blocks payment
+      outright on a failed or unchecked product, with a plain-language explanation instead of a
+      silent failure.
+    </p>
+
+    <div class="tech-stack">
+      <span class="tech-pill"><span class="dot dot-green"></span>Odoo 19</span>
+      <span class="tech-pill"><span class="dot dot-blue"></span>Python</span>
+      <span class="tech-pill"><span class="dot dot-amber"></span>stock / product_expiry / mail</span>
+      <span class="tech-pill"><span class="dot dot-violet"></span>website_sale</span>
+      <span class="tech-pill"><span class="dot dot-red"></span>ir.cron scheduled re-checks</span>
+    </div>
+
+    <p>
+      Neither NAFDAC nor SON currently publishes a stable, public API for real-time product
+      lookups — which is itself part of the story this article is telling. So the module is built
+      around a pluggable provider pattern: swap the demo provider for a real one the moment either
+      agency (or a licensed data partner) makes that possible, and nothing else in the module has
+      to change.
+    </p>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span>services/base_provider.py — the swap point</span>
+        <span class="lang">Python</span>
+      </div>
+      <div class="code-body"><span class="kw">class</span> <span class="fn">VerificationProvider</span>:
+    <span class="cm">"""Abstract base class - subclass this for each regulatory body."""</span>
+
+    <span class="prop">code</span> = <span class="kw">None</span>
+    <span class="prop">display_name</span> = <span class="str">"Unnamed Provider"</span>
+
+    <span class="kw">def</span> <span class="fn">verify</span>(<span class="kw">self</span>, reference_number, product_name=<span class="kw">None</span>, extra_context=<span class="kw">None</span>):
+        <span class="cm">"""Look up reference_number against the regulatory database.
+
+        Must return a VerificationResult. Implementations must never
+        raise - network/parsing errors are caught and returned as
+        result_status='error' so the caller always has something
+        consistent to store.
+        """</span>
+        <span class="kw">raise</span> <span class="fn">NotImplementedError</span></div>
+    </div>
+
+    <p>
+      Today, <code>DemoNafdacProvider</code> and <code>DemoSonProvider</code> perform a structural
+      sanity check against each agency's known registration-number format — genuinely useful for
+      catching typos and obviously fabricated numbers, but explicitly not a live authenticity
+      lookup. The moment either agency issues an endpoint and API key, that swap is a few lines in
+      one file, not a rewrite of the module.
+    </p>
+
+    <div class="download-cards">
+      <div class="download-card">
+        <span class="file-name">nafdac_son_verification.zip</span>
+        <p>Core module — Inventory fields, provider architecture, audit log, transfer-blocking
+        policy, scheduled re-checks, wizard, certificate report.</p>
+        <a class="download-btn" href="nafdac_son_verification.zip" download>⬇ Download module</a>
+      </div>
+      <div class="download-card">
+        <span class="file-name">website_sale_nafdac_son_verification.zip</span>
+        <p>Checkout integration — live re-verification, cart/checkout badges, self-service check
+        endpoint, payment blocking. Auto-installs once both dependencies are present.</p>
+        <a class="download-btn" href="website_sale_nafdac_son_verification.zip" download>⬇ Download module</a>
+      </div>
+    </div>
+
+    <p>
+      Both are standard Odoo 19 addons — drop the unzipped folder into your addons path, run
+      <strong>Update Apps List</strong>, and install "NAFDAC / SON Product Verification" from the
+      Apps menu (remove the "Apps" filter; it's a normal module, not a featured app).
+    </p>
+  </section>
+
+  <!-- ═══ SECTION 5: HOW IT WORKS END TO END ═══ -->
+  <section>
+    <div class="section-kicker">End-to-End Flow</div>
+    <h2>From Add-to-Cart to a Blocked Payment, in Milliseconds</h2>
+
+    <div class="flow-diagram">
+      <div class="diagram-title">Checkout-level regulatory check</div>
+      <div class="flow-steps-list">
+        <div class="flow-step">
+          <div class="flow-step-num step-emerald">1</div>
+          <div class="flow-step-content">
+            <strong>Shopper opens /shop/cart</strong>
+            <p>A controller hook calls <code>_ensure_regulatory_verification_fresh()</code> on the
+            order, re-checking any regulated line item that isn't currently in a "verified" state.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num step-blue">2</div>
+          <div class="flow-step-content">
+            <strong>Provider runs, result is logged</strong>
+            <p>The right provider (NAFDAC or SON) is resolved from the registry, verification runs,
+            and every attempt — pass or fail — is written to a dedicated Verification Log for audit.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num step-amber">3</div>
+          <div class="flow-step-content">
+            <strong>A badge renders next to the product</strong>
+            <p>Verified / Failed / Pending / Not Yet Checked shows on the cart page and, separately,
+            on the checkout sidebar — two different Odoo templates I had to patch individually once
+            I noticed the badge appeared on one but not the other.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num step-red">4</div>
+          <div class="flow-step-content">
+            <strong>Payment is blocked, if the store owner opts in</strong>
+            <p>A failed or unchecked regulated item can stop checkout outright, reusing
+            website_sale's own payment-error banner with a plain-language explanation instead of a
+            generic failure.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num step-violet">5</div>
+          <div class="flow-step-content">
+            <strong>Same policy applies in the warehouse</strong>
+            <p>A delivery containing an unverified regulated lot can't be validated either — the
+            check follows the product from the stockroom to the storefront, not just one or the
+            other.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-good">
+      <div class="callout-icon">✅</div>
+      <div class="callout-body">
+        <strong>What I actually verified before writing this</strong>
+        <p>Both modules were installed on a real Odoo 19 runtime, not just written and assumed to
+        work: a full install/upgrade/test cycle caught and fixed seven real issues (a v19 field
+        rename, invalid search-view syntax, a missing <code>.sudo()</code> causing an ACL error for
+        anonymous shoppers, and the two-template badge gap above, among others). Adding a verified
+        product to cart shows the badge on both the cart page and the checkout sidebar; an
+        intentionally invalid registration number correctly blocks payment with the customer-facing
+        message. The test suite passes 5/5.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SECTION 6: HONEST LIMITS ═══ -->
+  <section>
+    <div class="section-kicker">Honest Assessment</div>
+    <h2>What This Doesn't Solve — Because It Can't, Yet</h2>
+
+    <p>
+      I'm not going to oversell this. The module enforces a policy and produces a clean audit
+      trail, but the demo providers only check that a registration number is <em>well-formed</em>,
+      not that it corresponds to a real, currently-valid registration. That gap can only be closed
+      with one of two things: genuine API access from NAFDAC or SON, or a data-sharing agreement
+      with a licensed reseller who already has it. The architecture is deliberately built so that
+      either option is a drop-in change, not a redesign — but it is still a real, current
+      limitation, not a solved problem.
+    </p>
+
+    <div class="callout callout-warn">
+      <div class="callout-icon">🔌</div>
+      <div class="callout-body">
+        <strong>This is exactly the gap Scan2Verify should be filling</strong>
+        <p>A public, real-time, GS1-standard verification API is precisely what would let a module
+        like this — or NAFDAC's own consumer app — actually confirm authenticity rather than just
+        format. Right now, neither Nigerian shoppers nor businesses trying to build compliance into
+        their own systems have that option.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SECTION 7: THE OPEN QUESTION ═══ -->
+  <section>
+    <div class="section-kicker">An Open Question</div>
+    <h2>An Invitation to NAFDAC and SON</h2>
+
+    <p>
+      I'm not writing this to score points off two agencies doing genuinely difficult work against
+      a large, well-documented counterfeiting problem. The enforcement numbers above show real
+      effort on the supply side. But the consumer-facing verification layer — the one moment where
+      an ordinary shopper could actually protect themselves — is the part that keeps failing in
+      independent testing and in my own. That's worth asking about directly.
+    </p>
+
+    <div class="open-letter">
+      <div class="diagram-title">Questions I'd genuinely like answered, publicly</div>
+      <ol>
+        <li><strong>What made Scan2Verify return "Unable to Verified" for a real product with a
+        standard GS1 barcode</strong> — a missing catalogue record, a decoding issue, or something
+        else? A generic error message gives a shopper nothing to act on.</li>
+        <li><strong>Is there a path to API or data-partner access</strong> for businesses — like
+        the one this module is built for — who want to check registration status automatically at
+        checkout, rather than relying on manual number entry?</li>
+        <li><strong>Why do five separate MAS providers exist for the same scratch-code flow</strong>,
+        with response times reportedly stretching to hours, when a single, fast, unified lookup
+        would serve the "point of purchase" promise NAFDAC itself uses to describe the service?</li>
+        <li><strong>Does SON have, or plan, a consumer-facing equivalent</strong> to a scan-and-verify
+        tool, given that SONCAP/MANCAP verification today is largely a pre-shipment and import-clearance
+        process rather than something a shopper can check on the spot?</li>
+      </ol>
+    </div>
+
+    <p>
+      I'd welcome a reply from either agency in the comments, by email, or through NAFDAC's own
+      published enquiry and complaints lines. If there's a technical reason my test failed that
+      I've missed, I'll gladly update this article to reflect it — that's the whole point of
+      publishing the source alongside the claim.
+    </p>
+  </section>
+
+  <!-- ═══ SECTION 8: CONCLUSION ═══ -->
+  <section>
+    <div class="section-kicker">Conclusion</div>
+    <h2>Compliance Shouldn't Be Optional, or Invisible</h2>
+
+    <p>
+      Whether or not NAFDAC and SON ever open a real-time API, businesses selling regulated
+      products in Nigeria don't have to wait to build honesty into their own checkout flow. Logging
+      every registration number, flagging what's unverified, and giving staff and customers a clear
+      status — verified, failed, pending — is something a store can do today, on infrastructure it
+      already runs. It won't replace a functioning national verification system. It's a start.
+    </p>
+
+    <p>
+      The full read, with the working modules and the architecture behind them, is published at
+      <a class="inline-link" href="https://niyid.github.io/nafdac-son-verification/linkedin-article.html" target="_blank">niyid.github.io/nafdac-son-verification/linkedin-article.html</a>.
+      Both modules are free to download above — LGPL-3, the same licence Odoo uses for its own
+      addons — for anyone running Odoo who wants to adopt, audit, or extend them.
+    </p>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="article-footer">
+    <div class="footer-left">
+      <p>DOWNLOAD THE MODULES</p>
+      <p style="margin-bottom: 12px; color: var(--muted-hi)">nafdac_son_verification.zip · website_sale_nafdac_son_verification.zip</p>
+      <p>LICENCE · LGPL-3 (Odoo modules)</p>
+    </div>
+    <a class="footer-link" href="nafdac_son_verification.zip" download>
+      ⬇ Get the modules
+    </a>
+  </footer>
+
+</div>
+</body>
+</html>
