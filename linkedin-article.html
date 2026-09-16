@@ -1054,6 +1054,70 @@
     </div>
   </section>
 
+  <!-- ═══ SECTION 4.5: WATCH IT RUN ═══ -->
+  <section>
+    <div class="section-kicker">Watch It Run</div>
+    <h2>From Receiving Into Inventory to a Verification Certificate — Recorded, Not Staged</h2>
+
+    <p>
+      Claiming a module "works" is cheap; here's what actually running it looks like. This clip is
+      a real screen recording of a terminal session against a freshly installed Odoo 19 +
+      PostgreSQL 16 database: a vendor and a NAFDAC-regulated product are created, a Purchase Order
+      is confirmed, the shipment is received into inventory with a lot number assigned, the
+      verification wizard runs against that lot, and the result is logged. Every line of output is
+      live ORM/database state — nothing here is hand-typed to look convincing.
+    </p>
+
+    <video controls preload="metadata" style="width:100%; border-radius:10px; border:1px solid var(--border); margin:24px 0;" poster="assets/demo/receipt-operations.png">
+      <source src="assets/demo/workflow-recording.mp4" type="video/mp4">
+      Your browser doesn't support inline video — download it directly:
+      <a href="assets/demo/workflow-recording.mp4">workflow-recording.mp4</a>.
+    </video>
+
+    <p>
+      The two real documents the module itself generates along the way — not mockups:
+    </p>
+
+    <div class="screenshot-gallery" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="screenshot-item">
+        <img src="assets/demo/receipt-operations.png" alt="Odoo receipt operations document for the inventory receipt, showing the vendor, product, quantity and lot barcode" loading="lazy">
+        <div class="screenshot-caption">Inventory receipt (WH/IN/00001), lot barcode included</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="assets/demo/verification-certificate.png" alt="NAFDAC/SON verification certificate showing the lot, product, registration number and Verified status" loading="lazy">
+        <div class="screenshot-caption">Verification certificate — status: Verified</div>
+      </div>
+    </div>
+
+    <div class="callout callout-info">
+      <div class="callout-icon">🎥</div>
+      <div class="callout-body">
+        <strong>Why a terminal, not a browser, in this clip</strong>
+        <p>This recording was made in an automated environment with no route to a real browser
+        install, so it captures the backend (ORM-level) walkthrough rather than clicking through
+        Odoo's web client. For anyone who wants to see the same flow through the actual UI on their
+        own instance, <code>demo/playwright_browser_capture.py</code> in the repo drives a real
+        Chromium session through login → Purchase Order → receipt → verification → certificate,
+        screenshotting and recording video at each step.</p>
+      </div>
+    </div>
+
+    <div class="download-cards">
+      <div class="download-card">
+        <span class="file-name">demo/workflow_demo.py</span>
+        <p>The exact script behind the recording above — runnable via <code>odoo-bin shell -d
+        &lt;db&gt; &lt;/ demo/workflow_demo.py</code> against your own Odoo 19 instance.</p>
+        <a class="download-btn" href="demo/workflow_demo.py" download>⬇ Download script</a>
+      </div>
+      <div class="download-card">
+        <span class="file-name">demo/playwright_browser_capture.py</span>
+        <p>Drives a real browser through the same workflow and captures screenshots + video —
+        run this on a machine with normal Chromium/network access.</p>
+        <a class="download-btn" href="demo/playwright_browser_capture.py" download>⬇ Download script</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ SECTION 5: HOW IT WORKS END TO END ═══ -->
   <section>
     <div class="section-kicker">End-to-End Flow</div>

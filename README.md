@@ -7,6 +7,13 @@ a regulated product fails or has never been checked.
 
 📖 **Full write-up:** [The Verification Gap](https://niyid.github.io/nafdac-son-verification/linkedin-article.html)
 
+🎥 **See it run:** a real screen recording of the full workflow (receiving into inventory →
+verification → certificate) against a live Odoo 19 install is in
+[`assets/demo/workflow-recording.mp4`](assets/demo/workflow-recording.mp4), alongside the
+generating script ([`demo/workflow_demo.py`](demo/workflow_demo.py)) and a Playwright script
+([`demo/playwright_browser_capture.py`](demo/playwright_browser_capture.py)) for capturing the
+same flow through Odoo's actual web UI.
+
 ## Download
 
 | Module | Download |
