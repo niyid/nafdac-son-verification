@@ -1077,7 +1077,7 @@
 
     <p>
       Real screenshots from that session, not mockups — login, the Purchase Orders queue, the bulk
-      result set, a verified lot, a failed one, and the certificate the module itself prints:
+      result set, a verified lot, and a failed one:
     </p>
 
     <div class="screenshot-gallery" style="grid-template-columns: repeat(2, 1fr);">
@@ -1101,10 +1101,17 @@
         <img src="assets/demo/09-print-menu.png" alt="Odoo's Print menu open on a lot form, showing the Verification Certificate option" loading="lazy">
         <div class="screenshot-caption">Print → Verification Certificate, straight from the lot</div>
       </div>
-      <div class="screenshot-item">
-        <img src="assets/demo/10-verification-certificate.png" alt="The rendered Verification Certificate PDF for the lot" loading="lazy">
-        <div class="screenshot-caption">The certificate itself — a real generated PDF</div>
-      </div>
+    </div>
+
+    <p>
+      That last step doesn't render a page — it triggers a real PDF download. Rather than embed a
+      live PDF viewer (inconsistent support in some in-app/mobile browsers), here's that actual
+      downloaded document, rendered as an image rather than the browser UI around it:
+    </p>
+
+    <div class="screenshot-item" style="max-width:480px; margin:16px 0 24px;">
+      <img src="assets/demo/10-verification-certificate.png" alt="The rendered Verification Certificate PDF, showing the lot, product, NAFDAC registration number and Verified status" loading="lazy">
+      <div class="screenshot-caption">demo/verification_certificate.pdf, rendered as an image — the module's real generated document, not a UI screenshot like the five above</div>
     </div>
 
     <div class="callout callout-good">
@@ -1146,6 +1153,12 @@
         <p>Drives a real browser through the same workflow via Selenium and captures a screenshot
         at every step — works against any Odoo instance with a normal Chrome/Chromium install.</p>
         <a class="download-btn" href="demo/selenium_capture.py" download>⬇ Download script</a>
+      </div>
+      <div class="download-card">
+        <span class="file-name">demo/verification_certificate.pdf</span>
+        <p>The exact certificate embedded above, as a file — the module's real output for a
+        verified lot, not a mockup.</p>
+        <a class="download-btn" href="demo/verification_certificate.pdf" download>⬇ Download PDF</a>
       </div>
     </div>
   </section>
