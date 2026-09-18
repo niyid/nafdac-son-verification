@@ -1057,63 +1057,95 @@
   <!-- ═══ SECTION 4.5: WATCH IT RUN ═══ -->
   <section>
     <div class="section-kicker">Watch It Run</div>
-    <h2>From Receiving Into Inventory to a Verification Certificate — Recorded, Not Staged</h2>
+    <h2>25 Products, 5 Purchase Orders, One Bulk Verification Run — Recorded, Not Staged</h2>
 
     <p>
-      Claiming a module "works" is cheap; here's what actually running it looks like. This clip is
-      a real screen recording of a terminal session against a freshly installed Odoo 19 +
-      PostgreSQL 16 database: a vendor and a NAFDAC-regulated product are created, a Purchase Order
-      is confirmed, the shipment is received into inventory with a lot number assigned, the
-      verification wizard runs against that lot, and the result is logged. Every line of output is
-      live ORM/database state — nothing here is hand-typed to look convincing.
+      Claiming a module "works" is cheap, and one hand-picked example proves little. So instead of
+      a single toy product, this run built a real-sized data set — 3 vendors, 25 regulated products
+      (13 NAFDAC, 12 SON) with a deliberate mix of well-formed and malformed registration numbers,
+      5 Purchase Orders confirmed and received into inventory as 25 separate lots — then fired one
+      bulk verification pass across all 25 lots at once, through Odoo's actual web client, driven by
+      a real Chromium browser under Selenium/WebDriver. Real result: <strong>11 verified, 14
+      failed</strong>.
     </p>
 
-    <video controls preload="metadata" style="width:100%; border-radius:10px; border:1px solid var(--border); margin:24px 0;" poster="assets/demo/receipt-operations.png">
-      <source src="assets/demo/workflow-recording.mp4" type="video/mp4">
+    <video controls preload="metadata" style="width:100%; border-radius:10px; border:1px solid var(--border); margin:24px 0;" poster="assets/demo/06-lots-list-bulk-results.png">
+      <source src="assets/demo/selenium-capture-video.mp4" type="video/mp4">
       Your browser doesn't support inline video — download it directly:
-      <a href="assets/demo/workflow-recording.mp4">workflow-recording.mp4</a>.
+      <a href="assets/demo/selenium-capture-video.mp4">selenium-capture-video.mp4</a>.
     </video>
 
     <p>
-      The two real documents the module itself generates along the way — not mockups:
+      Real screenshots from that session, not mockups — login, the Purchase Orders queue, the bulk
+      result set, a verified lot, a failed one, and the certificate the module itself prints:
     </p>
 
     <div class="screenshot-gallery" style="grid-template-columns: repeat(2, 1fr);">
       <div class="screenshot-item">
-        <img src="assets/demo/receipt-operations.png" alt="Odoo receipt operations document for the inventory receipt, showing the vendor, product, quantity and lot barcode" loading="lazy">
-        <div class="screenshot-caption">Inventory receipt (WH/IN/00001), lot barcode included</div>
+        <img src="assets/demo/03-purchase-orders-list.png" alt="Odoo Purchase Orders list showing five confirmed orders across three vendors with real totals" loading="lazy">
+        <div class="screenshot-caption">5 confirmed Purchase Orders across 3 vendors</div>
       </div>
       <div class="screenshot-item">
-        <img src="assets/demo/verification-certificate.png" alt="NAFDAC/SON verification certificate showing the lot, product, registration number and Verified status" loading="lazy">
-        <div class="screenshot-caption">Verification certificate — status: Verified</div>
+        <img src="assets/demo/06-lots-list-bulk-results.png" alt="Lots and Serial Numbers list showing 25 lots with a mix of green Verified and red Failed status badges" loading="lazy">
+        <div class="screenshot-caption">All 25 lots after one bulk verification run — 11 Verified, 14 Failed</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="assets/demo/08-verified-lot-detail.png" alt="A verified lot's detail page showing NAFDAC registration number and green Verified status" loading="lazy">
+        <div class="screenshot-caption">A verified lot — NAFDAC format check passed</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="assets/demo/11-failed-lot-detail.png" alt="A failed lot's detail page with the real failure message logged in the chatter" loading="lazy">
+        <div class="screenshot-caption">A failed lot — the real rejection reason, logged automatically</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="assets/demo/09-print-menu.png" alt="Odoo's Print menu open on a lot form, showing the Verification Certificate option" loading="lazy">
+        <div class="screenshot-caption">Print → Verification Certificate, straight from the lot</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="assets/demo/10-verification-certificate.png" alt="The rendered Verification Certificate PDF for the lot" loading="lazy">
+        <div class="screenshot-caption">The certificate itself — a real generated PDF</div>
+      </div>
+    </div>
+
+    <div class="callout callout-good">
+      <div class="callout-icon">🔎</div>
+      <div class="callout-body">
+        <strong>What testing at this scale actually caught</strong>
+        <p>Most of the SON test numbers used a hyphenated format
+        (<code>SON-MC-10234</code>) and every single one of them failed. The module's structural
+        check for SON numbers only accepts <code>A-Z</code>, <code>a-z</code> and <code>0-9</code> —
+        no hyphens. That pattern was invisible with one hand-picked test record; it only showed up
+        once there was enough data for it to repeat. It's now a regression test in the repo rather
+        than a silent surprise — and a real question worth settling before wiring up a live SON
+        provider: do certificate numbers in the field actually contain hyphens?</p>
       </div>
     </div>
 
     <div class="callout callout-info">
       <div class="callout-icon">🎥</div>
       <div class="callout-body">
-        <strong>Why a terminal, not a browser, in this clip</strong>
-        <p>This recording was made in an automated environment with no route to a real browser
-        install, so it captures the backend (ORM-level) walkthrough rather than clicking through
-        Odoo's web client. For anyone who wants to see the same flow through the actual UI on their
-        own instance, <code>demo/playwright_browser_capture.py</code> in the repo drives a real
-        Chromium session through login → Purchase Order → receipt → verification → certificate,
-        screenshotting and recording video at each step.</p>
+        <strong>How this was captured</strong>
+        <p>Every screenshot above came from a real Selenium WebDriver session against a real
+        Chromium browser — not a mock, not the DevTools protocol driven directly. The video is
+        assembled from that same set of real captured frames rather than a continuous screen
+        recording. <code>demo/selenium_capture.py</code> in the repo runs the identical session on
+        any machine with a normal Chrome/Chromium install.</p>
       </div>
     </div>
 
     <div class="download-cards">
       <div class="download-card">
-        <span class="file-name">demo/workflow_demo.py</span>
-        <p>The exact script behind the recording above — runnable via <code>odoo-bin shell -d
-        &lt;db&gt; &lt;/ demo/workflow_demo.py</code> against your own Odoo 19 instance.</p>
-        <a class="download-btn" href="demo/workflow_demo.py" download>⬇ Download script</a>
+        <span class="file-name">demo/bulk_e2e_workflow.py</span>
+        <p>Builds the full data set — vendors, 25 regulated products, 5 POs, 25 lots — and runs the
+        bulk verification pass. Runnable via <code>odoo-bin shell -d &lt;db&gt; &lt;
+        demo/bulk_e2e_workflow.py</code> against your own Odoo 19 instance.</p>
+        <a class="download-btn" href="demo/bulk_e2e_workflow.py" download>⬇ Download script</a>
       </div>
       <div class="download-card">
-        <span class="file-name">demo/playwright_browser_capture.py</span>
-        <p>Drives a real browser through the same workflow and captures screenshots + video —
-        run this on a machine with normal Chromium/network access.</p>
-        <a class="download-btn" href="demo/playwright_browser_capture.py" download>⬇ Download script</a>
+        <span class="file-name">demo/selenium_capture.py</span>
+        <p>Drives a real browser through the same workflow via Selenium and captures a screenshot
+        at every step — works against any Odoo instance with a normal Chrome/Chromium install.</p>
+        <a class="download-btn" href="demo/selenium_capture.py" download>⬇ Download script</a>
       </div>
     </div>
   </section>

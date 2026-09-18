@@ -1,0 +1,867 @@
+Running as user 'root' is a security risk.
+2026-09-18 08:57:55,508 1993 INFO ? odoo: Odoo version 19.0 
+2026-09-18 08:57:55,508 1993 INFO ? odoo: addons paths: _NamespacePath(['/home/claude/odoo19/odoo/addons', '/root/.local/share/Odoo/addons/19.0', '/home/claude/odoo19/addons', '/home/claude/custom-addons']) 
+2026-09-18 08:57:55,508 1993 INFO ? odoo: database: odoo@localhost:default 
+2026-09-18 08:57:55,787 1993 INFO ? odoo.service.server: HTTP service (werkzeug) running on localhost:8069 
+2026-09-18 08:57:55,813 1993 INFO odoo_test2 odoo.tests.common: Importing test framework 
+2026-09-18 08:57:55,845 1993 INFO odoo_test2 odoo.modules.loading: Initializing database odoo_test2 
+2026-09-18 08:57:56,776 1993 INFO odoo_test2 odoo.modules.loading: loading 1 modules... 
+2026-09-18 08:57:56,776 1993 INFO odoo_test2 odoo.modules.loading: Loading module base (1/1) 
+2026-09-18 08:57:56,803 1993 INFO odoo_test2 odoo.registry: module base: creating or updating database tables 
+2026-09-18 08:57:57,020 1993 INFO odoo_test2 odoo.models: Prepare computation of ir.module.module.menus_by_module 
+2026-09-18 08:57:57,020 1993 INFO odoo_test2 odoo.models: Prepare computation of ir.module.module.reports_by_module 
+2026-09-18 08:57:57,020 1993 INFO odoo_test2 odoo.models: Prepare computation of ir.module.module.views_by_module 
+2026-09-18 08:57:57,092 1993 INFO odoo_test2 odoo.models: Prepare computation of res.partner.user_id 
+2026-09-18 08:57:57,092 1993 INFO odoo_test2 odoo.models: Prepare computation of res.partner.commercial_partner_id 
+2026-09-18 08:57:57,092 1993 INFO odoo_test2 odoo.models: Prepare computation of res.partner.complete_name 
+2026-09-18 08:57:57,092 1993 INFO odoo_test2 odoo.models: Prepare computation of res.partner.lang 
+2026-09-18 08:57:57,092 1993 INFO odoo_test2 odoo.models: Prepare computation of res.partner.company_registry 
+2026-09-18 08:57:57,092 1993 INFO odoo_test2 odoo.models: Prepare computation of res.partner.commercial_company_name 
+2026-09-18 08:57:57,092 1993 INFO odoo_test2 odoo.models: Prepare computation of res.partner.properties 
+2026-09-18 08:57:57,092 1993 INFO odoo_test2 odoo.models: Prepare computation of res.partner.partner_share 
+2026-09-18 08:57:57,116 1993 INFO odoo_test2 odoo.models: Prepare computation of res.currency.decimal_places 
+2026-09-18 08:57:57,132 1993 INFO odoo_test2 odoo.models: Prepare computation of res.company.uses_default_logo 
+2026-09-18 08:57:57,132 1993 INFO odoo_test2 odoo.models: Prepare computation of res.company.logo_web 
+2026-09-18 08:57:57,133 1993 INFO odoo_test2 odoo.models: Computing parent_path for table res_company... 
+2026-09-18 08:57:57,153 1993 INFO odoo_test2 odoo.models: Prepare computation of res.users.signature 
+2026-09-18 08:57:57,153 1993 INFO odoo_test2 odoo.models: Prepare computation of res.users.share 
+2026-09-18 08:57:58,354 1993 INFO odoo_test2 odoo.modules.loading: loading base/data/res_bank.xml 
+2026-09-18 08:57:58,358 1993 INFO odoo_test2 odoo.modules.loading: loading base/data/res.lang.csv 
+2026-09-18 08:57:58,392 1993 INFO odoo_test2 odoo.modules.loading: loading base/data/res_lang_data.xml 
+2026-09-18 08:57:58,422 1993 INFO odoo_test2 odoo.modules.loading: loading base/data/res_partner_data.xml 
+2026-09-18 08:57:58,467 1993 INFO odoo_test2 odoo.modules.loading: loading base/data/res_currency_data.xml 
+2026-09-18 08:57:58,887 1993 INFO odoo_test2 odoo.modules.loading: loading base/data/res_company_data.xml 
+2026-09-18 08:57:58,894 1993 INFO odoo_test2 odoo.modules.loading: loading base/data/res_users_data.xml 
+2026-09-18 08:57:59,809 1993 INFO odoo_test2 odoo.modules.loading: loading base/data/report_paperformat_data.xml 
+2026-09-18 08:57:59,817 1993 INFO odoo_test2 odoo.modules.loading: loading base/data/res_country_data.xml 
+2026-09-18 08:58:00,370 1993 INFO odoo_test2 odoo.modules.loading: loading base/data/ir_demo_data.xml 
+2026-09-18 08:58:00,385 1993 INFO odoo_test2 odoo.modules.loading: loading base/security/base_groups.xml 
+2026-09-18 08:58:00,549 1993 INFO odoo_test2 odoo.modules.loading: loading base/security/base_security.xml 
+2026-09-18 08:58:00,681 1993 INFO odoo_test2 odoo.modules.loading: loading base/wizard/wizard_ir_model_menu_create_views.xml 
+2026-09-18 08:58:00,691 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/base_menus.xml 
+2026-09-18 08:58:00,742 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/decimal_precision_views.xml 
+2026-09-18 08:58:00,758 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/res_config_views.xml 
+2026-09-18 08:58:00,764 1993 INFO odoo_test2 odoo.modules.loading: loading base/data/res.country.state.csv 
+2026-09-18 08:58:01,067 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/ir_actions_views.xml 
+2026-09-18 08:58:01,211 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/ir_asset_views.xml 
+2026-09-18 08:58:01,228 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/ir_config_parameter_views.xml 
+2026-09-18 08:58:01,246 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/ir_cron_views.xml 
+2026-09-18 08:58:01,278 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/ir_cron_trigger_views.xml 
+2026-09-18 08:58:01,296 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/ir_filters_views.xml 
+2026-09-18 08:58:01,320 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/ir_mail_server_views.xml 
+2026-09-18 08:58:01,343 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/ir_model_views.xml 
+2026-09-18 08:58:01,484 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/ir_attachment_views.xml 
+2026-09-18 08:58:01,505 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/ir_rule_views.xml 
+2026-09-18 08:58:01,526 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/ir_sequence_views.xml 
+2026-09-18 08:58:01,549 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/ir_ui_menu_views.xml 
+2026-09-18 08:58:01,569 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/ir_ui_view_views.xml 
+2026-09-18 08:58:01,618 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/ir_default_views.xml 
+2026-09-18 08:58:01,637 1993 INFO odoo_test2 odoo.modules.loading: loading base/data/ir_config_parameter_data.xml 
+2026-09-18 08:58:01,640 1993 INFO odoo_test2 odoo.modules.loading: loading base/data/ir_cron_data.xml 
+2026-09-18 08:58:01,653 1993 INFO odoo_test2 odoo.modules.loading: loading base/report/ir_model_report.xml 
+2026-09-18 08:58:01,657 1993 INFO odoo_test2 odoo.modules.loading: loading base/report/ir_model_templates.xml 
+2026-09-18 08:58:01,665 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/ir_logging_views.xml 
+2026-09-18 08:58:01,684 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/ir_qweb_widget_templates.xml 
+2026-09-18 08:58:01,700 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/ir_module_views.xml 
+2026-09-18 08:58:01,752 1993 INFO odoo_test2 odoo.modules.loading: loading base/data/ir_module_category_data.xml 
+2026-09-18 08:58:01,789 1993 INFO odoo_test2 odoo.modules.loading: loading base/data/ir_module_module.xml 
+2026-09-18 08:58:01,863 1993 INFO odoo_test2 odoo.modules.loading: loading base/report/ir_module_reports.xml 
+2026-09-18 08:58:01,866 1993 INFO odoo_test2 odoo.modules.loading: loading base/report/ir_module_report_templates.xml 
+2026-09-18 08:58:01,873 1993 INFO odoo_test2 odoo.modules.loading: loading base/wizard/base_module_update_views.xml 
+2026-09-18 08:58:01,886 1993 INFO odoo_test2 odoo.modules.loading: loading base/wizard/base_language_install_views.xml 
+2026-09-18 08:58:01,903 1993 INFO odoo_test2 odoo.modules.loading: loading base/wizard/base_import_language_views.xml 
+2026-09-18 08:58:01,914 1993 INFO odoo_test2 odoo.modules.loading: loading base/wizard/base_module_upgrade_views.xml 
+2026-09-18 08:58:01,930 1993 INFO odoo_test2 odoo.modules.loading: loading base/wizard/base_module_uninstall_views.xml 
+2026-09-18 08:58:01,939 1993 INFO odoo_test2 odoo.modules.loading: loading base/wizard/base_export_language_views.xml 
+2026-09-18 08:58:01,951 1993 INFO odoo_test2 odoo.modules.loading: loading base/wizard/base_partner_merge_views.xml 
+2026-09-18 08:58:01,965 1993 INFO odoo_test2 odoo.modules.loading: loading base/data/ir_demo_failure_data.xml 
+2026-09-18 08:58:01,980 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/ir_profile_views.xml 
+2026-09-18 08:58:02,002 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/res_company_views.xml 
+2026-09-18 08:58:02,023 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/res_lang_views.xml 
+2026-09-18 08:58:02,042 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/res_partner_views.xml 
+2026-09-18 08:58:02,131 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/res_bank_views.xml 
+2026-09-18 08:58:02,163 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/res_country_views.xml 
+2026-09-18 08:58:02,206 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/res_currency_views.xml 
+2026-09-18 08:58:02,243 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/res_groups_views.xml 
+2026-09-18 08:58:02,286 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/res_users_views.xml 
+2026-09-18 08:58:02,376 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/res_users_apikeys_views.xml 
+2026-09-18 08:58:02,382 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/res_device_views.xml 
+2026-09-18 08:58:02,403 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/res_users_identitycheck_views.xml 
+2026-09-18 08:58:02,410 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/res_config_settings_views.xml 
+2026-09-18 08:58:02,418 1993 INFO odoo_test2 odoo.modules.loading: loading base/views/report_paperformat_views.xml 
+2026-09-18 08:58:02,441 1993 INFO odoo_test2 odoo.modules.loading: loading base/security/ir.model.access.csv 
+2026-09-18 08:58:02,874 1993 INFO odoo_test2 odoo.modules.loading: Module base loaded in 6.10s, 8454 queries (+8454 other) 
+2026-09-18 08:58:02,875 1993 INFO odoo_test2 odoo.modules.loading: 1 modules loaded in 6.10s, 8454 queries (+8454 extra) 
+2026-09-18 08:58:02,878 1993 INFO odoo_test2 odoo.modules.loading: updating modules list 
+2026-09-18 08:58:02,879 1993 INFO odoo_test2 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-18 08:58:03,587 1993 INFO odoo_test2 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['Purchase', 'NAFDAC / SON Product Verification'] to user __system__ #1 via n/a 
+2026-09-18 08:58:03,689 1993 INFO odoo_test2 odoo.modules.loading: loading 59 modules... 
+2026-09-18 08:58:03,689 1993 INFO odoo_test2 odoo.modules.loading: Loading module rpc (2/59) 
+2026-09-18 08:58:03,706 1993 INFO odoo_test2 odoo.modules.loading: Module rpc loaded in 0.02s, 9 queries (+9 other) 
+2026-09-18 08:58:03,706 1993 INFO odoo_test2 odoo.modules.loading: Loading module uom (3/59) 
+2026-09-18 08:58:03,709 1993 INFO odoo_test2 odoo.registry: module uom: creating or updating database tables 
+2026-09-18 08:58:03,745 1993 INFO odoo_test2 odoo.modules.loading: loading uom/data/uom_data.xml 
+2026-09-18 08:58:03,808 1993 INFO odoo_test2 odoo.modules.loading: loading uom/security/uom_security.xml 
+2026-09-18 08:58:03,812 1993 INFO odoo_test2 odoo.modules.loading: loading uom/security/ir.model.access.csv 
+2026-09-18 08:58:03,820 1993 INFO odoo_test2 odoo.modules.loading: loading uom/views/uom_uom_views.xml 
+2026-09-18 08:58:03,850 1993 INFO odoo_test2 odoo.modules.loading: Module uom loaded in 0.14s, 230 queries (+230 other) 
+2026-09-18 08:58:03,850 1993 INFO odoo_test2 odoo.modules.loading: Loading module web (4/59) 
+2026-09-18 08:58:03,881 1993 INFO odoo_test2 odoo.registry: module web: creating or updating database tables 
+2026-09-18 08:58:04,227 1993 INFO odoo_test2 odoo.modules.loading: loading web/security/ir.model.access.csv 
+2026-09-18 08:58:04,234 1993 INFO odoo_test2 odoo.modules.loading: loading web/security/web_security.xml 
+2026-09-18 08:58:04,245 1993 INFO odoo_test2 odoo.modules.loading: loading web/views/webclient_templates.xml 
+2026-09-18 08:58:04,298 1993 INFO odoo_test2 odoo.modules.loading: loading web/views/report_templates.xml 
+2026-09-18 08:58:04,387 1993 INFO odoo_test2 odoo.modules.loading: loading web/views/base_document_layout_views.xml 
+2026-09-18 08:58:04,402 1993 INFO odoo_test2 odoo.modules.loading: loading web/views/partner_view.xml 
+2026-09-18 08:58:04,409 1993 INFO odoo_test2 odoo.modules.loading: loading web/views/speedscope_template.xml 
+2026-09-18 08:58:04,413 1993 INFO odoo_test2 odoo.modules.loading: loading web/views/memory_template.xml 
+2026-09-18 08:58:04,418 1993 INFO odoo_test2 odoo.modules.loading: loading web/views/speedscope_config_wizard.xml 
+2026-09-18 08:58:04,425 1993 INFO odoo_test2 odoo.modules.loading: loading web/views/neutralize_views.xml 
+2026-09-18 08:58:04,432 1993 INFO odoo_test2 odoo.modules.loading: loading web/views/ir_ui_view_views.xml 
+2026-09-18 08:58:04,442 1993 INFO odoo_test2 odoo.modules.loading: loading web/data/ir_attachment.xml 
+2026-09-18 08:58:04,446 1993 INFO odoo_test2 odoo.modules.loading: loading web/data/report_layout.xml 
+2026-09-18 08:58:04,501 1993 INFO odoo_test2 odoo.modules.loading: Module web loaded in 0.65s, 1242 queries (+1242 other) 
+2026-09-18 08:58:04,501 1993 INFO odoo_test2 odoo.modules.loading: Loading module api_doc (5/59) 
+2026-09-18 08:58:04,506 1993 INFO odoo_test2 odoo.registry: module api_doc: creating or updating database tables 
+2026-09-18 08:58:04,521 1993 INFO odoo_test2 odoo.modules.loading: loading api_doc/security/res_groups.xml 
+2026-09-18 08:58:04,540 1993 INFO odoo_test2 odoo.modules.loading: loading api_doc/views/docclient.xml 
+2026-09-18 08:58:04,558 1993 INFO odoo_test2 odoo.modules.loading: Module api_doc loaded in 0.06s, 63 queries (+63 other) 
+2026-09-18 08:58:04,558 1993 INFO odoo_test2 odoo.modules.loading: Loading module auth_totp (6/59) 
+2026-09-18 08:58:04,570 1993 INFO odoo_test2 odoo.registry: module auth_totp: creating or updating database tables 
+2026-09-18 08:58:04,633 1993 INFO odoo_test2 odoo.modules.loading: loading auth_totp/security/security.xml 
+2026-09-18 08:58:04,653 1993 INFO odoo_test2 odoo.modules.loading: loading auth_totp/security/ir.model.access.csv 
+2026-09-18 08:58:04,659 1993 INFO odoo_test2 odoo.modules.loading: loading auth_totp/data/ir_action_data.xml 
+2026-09-18 08:58:04,665 1993 INFO odoo_test2 odoo.modules.loading: loading auth_totp/views/res_users_views.xml 
+2026-09-18 08:58:04,693 1993 INFO odoo_test2 odoo.modules.loading: loading auth_totp/views/templates.xml 
+2026-09-18 08:58:04,698 1993 INFO odoo_test2 odoo.modules.loading: loading auth_totp/wizard/auth_totp_wizard_views.xml 
+2026-09-18 08:58:04,720 1993 INFO odoo_test2 odoo.modules.loading: Module auth_totp loaded in 0.16s, 218 queries (+218 other) 
+2026-09-18 08:58:04,720 1993 INFO odoo_test2 odoo.modules.loading: Loading module barcodes (7/59) 
+2026-09-18 08:58:04,726 1993 INFO odoo_test2 odoo.registry: module barcodes: creating or updating database tables 
+2026-09-18 08:58:04,779 1993 INFO odoo_test2 odoo.modules.loading: loading barcodes/data/barcodes_data.xml 
+2026-09-18 08:58:04,786 1993 INFO odoo_test2 odoo.modules.loading: loading barcodes/views/barcodes_view.xml 
+2026-09-18 08:58:04,807 1993 INFO odoo_test2 odoo.modules.loading: loading barcodes/security/ir.model.access.csv 
+2026-09-18 08:58:04,824 1993 INFO odoo_test2 odoo.modules.loading: Module barcodes loaded in 0.10s, 150 queries (+150 other) 
+2026-09-18 08:58:04,824 1993 INFO odoo_test2 odoo.modules.loading: Loading module base_import (8/59) 
+2026-09-18 08:58:04,856 1993 INFO odoo_test2 odoo.registry: module base_import: creating or updating database tables 
+2026-09-18 08:58:05,218 1993 INFO odoo_test2 odoo.modules.loading: loading base_import/security/base_import_security.xml 
+2026-09-18 08:58:05,226 1993 INFO odoo_test2 odoo.modules.loading: loading base_import/security/ir.model.access.csv 
+2026-09-18 08:58:05,242 1993 INFO odoo_test2 odoo.modules.loading: Module base_import loaded in 0.42s, 987 queries (+987 other) 
+2026-09-18 08:58:05,242 1993 INFO odoo_test2 odoo.modules.loading: Loading module base_import_module (9/59) 
+2026-09-18 08:58:05,248 1993 INFO odoo_test2 odoo.registry: module base_import_module: creating or updating database tables 
+2026-09-18 08:58:05,304 1993 INFO odoo_test2 odoo.modules.loading: loading base_import_module/security/ir.model.access.csv 
+2026-09-18 08:58:05,310 1993 INFO odoo_test2 odoo.modules.loading: loading base_import_module/views/base_import_module_view.xml 
+2026-09-18 08:58:05,328 1993 INFO odoo_test2 odoo.modules.loading: loading base_import_module/views/ir_module_views.xml 
+2026-09-18 08:58:05,372 1993 INFO odoo_test2 odoo.modules.loading: Module base_import_module loaded in 0.13s, 172 queries (+172 other) 
+2026-09-18 08:58:05,372 1993 INFO odoo_test2 odoo.modules.loading: Loading module base_setup (10/59) 
+2026-09-18 08:58:05,380 1993 INFO odoo_test2 odoo.registry: module base_setup: creating or updating database tables 
+2026-09-18 08:58:05,416 1993 INFO odoo_test2 odoo.modules.loading: loading base_setup/data/base_setup_data.xml 
+2026-09-18 08:58:05,421 1993 INFO odoo_test2 odoo.modules.loading: loading base_setup/views/res_config_settings_views.xml 
+2026-09-18 08:58:05,448 1993 INFO odoo_test2 odoo.modules.loading: loading base_setup/views/res_partner_views.xml 
+2026-09-18 08:58:05,467 1993 INFO odoo_test2 odoo.modules.loading: Module base_setup loaded in 0.09s, 152 queries (+152 other) 
+2026-09-18 08:58:05,467 1993 INFO odoo_test2 odoo.modules.loading: Loading module bus (11/59) 
+2026-09-18 08:58:05,482 1993 INFO odoo_test2 odoo.registry: module bus: creating or updating database tables 
+2026-09-18 08:58:05,556 1993 INFO odoo_test2 odoo.modules.loading: loading bus/security/ir.model.access.csv 
+2026-09-18 08:58:05,570 1993 INFO odoo_test2 odoo.modules.loading: Module bus loaded in 0.10s, 159 queries (+159 other) 
+2026-09-18 08:58:05,570 1993 INFO odoo_test2 odoo.modules.loading: Loading module http_routing (12/59) 
+2026-09-18 08:58:05,573 1993 INFO odoo_test2 odoo.registry: module http_routing: creating or updating database tables 
+2026-09-18 08:58:05,589 1993 INFO odoo_test2 odoo.modules.loading: loading http_routing/views/http_routing_template.xml 
+2026-09-18 08:58:05,628 1993 INFO odoo_test2 odoo.modules.loading: loading http_routing/views/res_lang_views.xml 
+2026-09-18 08:58:05,652 1993 INFO odoo_test2 odoo.modules.loading: Module http_routing loaded in 0.08s, 114 queries (+114 other) 
+2026-09-18 08:58:05,652 1993 INFO odoo_test2 odoo.modules.loading: Loading module onboarding (13/59) 
+2026-09-18 08:58:05,657 1993 INFO odoo_test2 odoo.registry: module onboarding: creating or updating database tables 
+2026-09-18 08:58:05,752 1993 INFO odoo_test2 odoo.modules.loading: loading onboarding/views/onboarding_templates.xml 
+2026-09-18 08:58:05,766 1993 INFO odoo_test2 odoo.modules.loading: loading onboarding/views/onboarding_views.xml 
+2026-09-18 08:58:05,791 1993 INFO odoo_test2 odoo.modules.loading: loading onboarding/views/onboarding_menus.xml 
+2026-09-18 08:58:05,797 1993 INFO odoo_test2 odoo.modules.loading: loading onboarding/security/ir.model.access.csv 
+2026-09-18 08:58:05,890 1993 INFO odoo_test2 odoo.modules.loading: Module onboarding loaded in 0.24s, 246 queries (+246 other) 
+2026-09-18 08:58:05,890 1993 INFO odoo_test2 odoo.modules.loading: Loading module resource (14/59) 
+2026-09-18 08:58:05,903 1993 INFO odoo_test2 odoo.registry: module resource: creating or updating database tables 
+2026-09-18 08:58:06,063 1993 INFO odoo_test2 odoo.modules.loading: loading resource/data/resource_data.xml 
+2026-09-18 08:58:06,091 1993 INFO odoo_test2 odoo.modules.loading: loading resource/security/ir.model.access.csv 
+2026-09-18 08:58:06,108 1993 INFO odoo_test2 odoo.modules.loading: loading resource/security/resource_security.xml 
+2026-09-18 08:58:06,140 1993 INFO odoo_test2 odoo.modules.loading: loading resource/views/resource_resource_views.xml 
+2026-09-18 08:58:06,180 1993 INFO odoo_test2 odoo.modules.loading: loading resource/views/resource_calendar_leaves_views.xml 
+2026-09-18 08:58:06,231 1993 INFO odoo_test2 odoo.modules.loading: loading resource/views/resource_calendar_attendance_views.xml 
+2026-09-18 08:58:06,251 1993 INFO odoo_test2 odoo.modules.loading: loading resource/views/resource_calendar_views.xml 
+2026-09-18 08:58:06,288 1993 INFO odoo_test2 odoo.modules.loading: loading resource/views/menuitems.xml 
+2026-09-18 08:58:06,318 1993 INFO odoo_test2 odoo.modules.loading: Module resource loaded in 0.43s, 414 queries (+414 other) 
+2026-09-18 08:58:06,318 1993 INFO odoo_test2 odoo.modules.loading: Loading module web_tour (15/59) 
+2026-09-18 08:58:06,327 1993 INFO odoo_test2 odoo.registry: module web_tour: creating or updating database tables 
+2026-09-18 08:58:06,330 1993 INFO odoo_test2 odoo.models: Prepare computation of res.users.tour_enabled 
+2026-09-18 08:58:06,399 1993 INFO odoo_test2 odoo.modules.loading: loading web_tour/security/ir.model.access.csv 
+2026-09-18 08:58:06,405 1993 INFO odoo_test2 odoo.modules.loading: loading web_tour/views/tour_views.xml 
+2026-09-18 08:58:06,446 1993 INFO odoo_test2 odoo.modules.loading: Module web_tour loaded in 0.13s, 180 queries (+180 other) 
+2026-09-18 08:58:06,446 1993 INFO odoo_test2 odoo.modules.loading: Loading module auth_passkey (16/59) 
+2026-09-18 08:58:06,477 1993 INFO odoo_test2 odoo.registry: module auth_passkey: creating or updating database tables 
+2026-09-18 08:58:06,534 1993 INFO odoo_test2 odoo.modules.loading: loading auth_passkey/views/auth_passkey_key_views.xml 
+2026-09-18 08:58:06,555 1993 INFO odoo_test2 odoo.modules.loading: loading auth_passkey/views/auth_passkey_login_templates.xml 
+2026-09-18 08:58:06,567 1993 INFO odoo_test2 odoo.modules.loading: loading auth_passkey/views/res_users_identitycheck_views.xml 
+2026-09-18 08:58:06,577 1993 INFO odoo_test2 odoo.modules.loading: loading auth_passkey/views/res_users_views.xml 
+2026-09-18 08:58:06,595 1993 INFO odoo_test2 odoo.modules.loading: loading auth_passkey/security/ir.model.access.csv 
+2026-09-18 08:58:06,602 1993 INFO odoo_test2 odoo.modules.loading: loading auth_passkey/security/security.xml 
+2026-09-18 08:58:06,628 1993 INFO odoo_test2 odoo.modules.loading: Module auth_passkey loaded in 0.18s, 218 queries (+218 other) 
+2026-09-18 08:58:06,628 1993 INFO odoo_test2 odoo.modules.loading: Loading module barcodes_gs1_nomenclature (17/59) 
+2026-09-18 08:58:06,633 1993 INFO odoo_test2 odoo.registry: module barcodes_gs1_nomenclature: creating or updating database tables 
+2026-09-18 08:58:06,661 1993 INFO odoo_test2 odoo.modules.loading: loading barcodes_gs1_nomenclature/data/barcodes_gs1_rules.xml 
+2026-09-18 08:58:06,712 1993 INFO odoo_test2 odoo.modules.loading: loading barcodes_gs1_nomenclature/views/barcodes_view.xml 
+2026-09-18 08:58:06,747 1993 INFO odoo_test2 odoo.modules.loading: Module barcodes_gs1_nomenclature loaded in 0.12s, 197 queries (+197 other) 
+2026-09-18 08:58:06,747 1993 INFO odoo_test2 odoo.modules.loading: Loading module html_editor (18/59) 
+2026-09-18 08:58:06,814 1993 INFO odoo_test2 odoo.registry: module html_editor: creating or updating database tables 
+2026-09-18 08:58:07,210 1993 INFO odoo_test2 odoo.modules.loading: loading html_editor/security/ir.model.access.csv 
+2026-09-18 08:58:07,227 1993 INFO odoo_test2 odoo.modules.loading: Module html_editor loaded in 0.48s, 1124 queries (+1124 other) 
+2026-09-18 08:58:07,227 1993 INFO odoo_test2 odoo.modules.loading: Loading module iap (19/59) 
+2026-09-18 08:58:07,230 1993 INFO odoo_test2 odoo.registry: module iap: creating or updating database tables 
+2026-09-18 08:58:07,286 1993 INFO odoo_test2 odoo.modules.loading: loading iap/data/services.xml 
+2026-09-18 08:58:07,291 1993 INFO odoo_test2 odoo.modules.loading: loading iap/security/ir.model.access.csv 
+2026-09-18 08:58:07,298 1993 INFO odoo_test2 odoo.modules.loading: loading iap/security/ir_rule.xml 
+2026-09-18 08:58:07,305 1993 INFO odoo_test2 odoo.modules.loading: loading iap/views/iap_views.xml 
+2026-09-18 08:58:07,335 1993 INFO odoo_test2 odoo.modules.loading: loading iap/views/res_config_settings.xml 
+2026-09-18 08:58:07,361 1993 INFO odoo_test2 odoo.modules.loading: Module iap loaded in 0.13s, 182 queries (+182 other) 
+2026-09-18 08:58:07,361 1993 INFO odoo_test2 odoo.modules.loading: Loading module mail (20/59) 
+2026-09-18 08:58:07,434 1993 INFO odoo_test2 odoo.registry: module mail: creating or updating database tables 
+2026-09-18 08:58:07,607 1993 INFO odoo_test2 odoo.models: Prepare computation of ir.actions.server.partner_ids 
+2026-09-18 08:58:07,607 1993 INFO odoo_test2 odoo.models: Prepare computation of ir.actions.server.activity_user_id 
+2026-09-18 08:58:07,607 1993 INFO odoo_test2 odoo.models: Prepare computation of ir.actions.server.activity_type_id 
+2026-09-18 08:58:07,607 1993 INFO odoo_test2 odoo.models: Prepare computation of ir.actions.server.template_id 
+2026-09-18 08:58:07,607 1993 INFO odoo_test2 odoo.models: Prepare computation of ir.actions.server.activity_date_deadline_range 
+2026-09-18 08:58:07,607 1993 INFO odoo_test2 odoo.models: Prepare computation of ir.actions.server.activity_summary 
+2026-09-18 08:58:07,607 1993 INFO odoo_test2 odoo.models: Prepare computation of ir.actions.server.followers_type 
+2026-09-18 08:58:07,607 1993 INFO odoo_test2 odoo.models: Prepare computation of ir.actions.server.followers_partner_field_name 
+2026-09-18 08:58:07,608 1993 INFO odoo_test2 odoo.models: Prepare computation of ir.actions.server.mail_post_method 
+2026-09-18 08:58:07,608 1993 INFO odoo_test2 odoo.models: Prepare computation of ir.actions.server.activity_date_deadline_range_type 
+2026-09-18 08:58:07,608 1993 INFO odoo_test2 odoo.models: Prepare computation of ir.actions.server.activity_user_type 
+2026-09-18 08:58:07,608 1993 INFO odoo_test2 odoo.models: Prepare computation of ir.actions.server.activity_user_field_name 
+2026-09-18 08:58:07,608 1993 INFO odoo_test2 odoo.models: Prepare computation of ir.actions.server.activity_note 
+2026-09-18 08:58:07,608 1993 INFO odoo_test2 odoo.models: Prepare computation of ir.actions.server.mail_post_autofollow 
+2026-09-18 08:58:07,654 1993 INFO odoo_test2 odoo.models: Prepare computation of res.users.notification_type 
+2026-09-18 08:58:07,703 1993 INFO odoo_test2 odoo.models: Prepare computation of res.partner.email_normalized 
+2026-09-18 08:58:08,887 1993 INFO odoo_test2 odoo.modules.loading: loading mail/data/mail_groups.xml 
+2026-09-18 08:58:08,909 1993 INFO odoo_test2 odoo.modules.loading: loading mail/wizard/mail_activity_schedule_views.xml 
+2026-09-18 08:58:08,922 1993 INFO odoo_test2 odoo.modules.loading: loading mail/wizard/mail_blacklist_remove_views.xml 
+2026-09-18 08:58:08,927 1993 INFO odoo_test2 odoo.modules.loading: loading mail/wizard/mail_compose_message_views.xml 
+2026-09-18 08:58:08,945 1993 INFO odoo_test2 odoo.modules.loading: loading mail/wizard/mail_template_preview_views.xml 
+2026-09-18 08:58:08,954 1993 INFO odoo_test2 odoo.modules.loading: loading mail/wizard/mail_followers_edit_views.xml 
+2026-09-18 08:58:08,965 1993 INFO odoo_test2 odoo.modules.loading: loading mail/wizard/mail_template_reset_views.xml 
+2026-09-18 08:58:08,973 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/fetchmail_views.xml 
+2026-09-18 08:58:08,990 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/ir_cron_views.xml 
+2026-09-18 08:58:09,001 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/ir_filters_views.xml 
+2026-09-18 08:58:09,017 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/ir_mail_server_views.xml 
+2026-09-18 08:58:09,026 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_message_subtype_views.xml 
+2026-09-18 08:58:09,041 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_tracking_value_views.xml 
+2026-09-18 08:58:09,054 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_notification_views.xml 
+2026-09-18 08:58:09,065 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_message_views.xml 
+2026-09-18 08:58:09,093 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_message_schedule_views.xml 
+2026-09-18 08:58:09,108 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_mail_views.xml 
+2026-09-18 08:58:09,131 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_followers_views.xml 
+2026-09-18 08:58:09,142 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_ice_server_views.xml 
+2026-09-18 08:58:09,162 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/discuss_channel_member_views.xml 
+2026-09-18 08:58:09,174 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/discuss_channel_rtc_session_views.xml 
+2026-09-18 08:58:09,189 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_link_preview_views.xml 
+2026-09-18 08:58:09,207 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/discuss/discuss_gif_favorite_views.xml 
+2026-09-18 08:58:09,218 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/discuss_channel_views.xml 
+2026-09-18 08:58:09,250 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_canned_response_views.xml 
+2026-09-18 08:58:09,273 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/res_role_views.xml 
+2026-09-18 08:58:09,289 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_activity_views.xml 
+2026-09-18 08:58:09,384 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_activity_plan_views.xml 
+2026-09-18 08:58:09,423 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_activity_plan_template_views.xml 
+2026-09-18 08:58:09,433 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/res_config_settings_views.xml 
+2026-09-18 08:58:09,454 1993 INFO odoo_test2 odoo.modules.loading: loading mail/data/ir_config_parameter_data.xml 
+2026-09-18 08:58:09,460 1993 INFO odoo_test2 odoo.modules.loading: loading mail/data/res_partner_data.xml 
+2026-09-18 08:58:09,524 1993 INFO odoo_test2 odoo.modules.loading: loading mail/data/mail_message_subtype_data.xml 
+2026-09-18 08:58:09,532 1993 INFO odoo_test2 odoo.modules.loading: loading mail/data/mail_templates_chatter.xml 
+2026-09-18 08:58:09,550 1993 INFO odoo_test2 odoo.modules.loading: loading mail/data/mail_templates_email_layouts.xml 
+2026-09-18 08:58:09,568 1993 INFO odoo_test2 odoo.modules.loading: loading mail/data/mail_templates_mailgateway.xml 
+2026-09-18 08:58:09,584 1993 INFO odoo_test2 odoo.modules.loading: loading mail/data/discuss_channel_data.xml 
+2026-09-18 08:58:09,620 1993 INFO odoo_test2 odoo.modules.loading: loading mail/data/mail_activity_type_data.xml 
+2026-09-18 08:58:09,631 1993 INFO odoo_test2 odoo.modules.loading: loading mail/data/security_notifications_templates.xml 
+2026-09-18 08:58:09,637 1993 INFO odoo_test2 odoo.modules.loading: loading mail/data/ir_cron_data.xml 
+2026-09-18 08:58:09,758 1993 INFO odoo_test2 odoo.modules.loading: loading mail/data/ir_actions_client.xml 
+2026-09-18 08:58:09,763 1993 INFO odoo_test2 odoo.modules.loading: loading mail/security/mail_security.xml 
+2026-09-18 08:58:09,904 1993 INFO odoo_test2 odoo.modules.loading: loading mail/security/ir.model.access.csv 
+2026-09-18 08:58:09,944 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/discuss_public_templates.xml 
+2026-09-18 08:58:09,950 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_alias_domain_views.xml 
+2026-09-18 08:58:09,967 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_alias_views.xml 
+2026-09-18 08:58:09,986 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_gateway_allowed_views.xml 
+2026-09-18 08:58:09,998 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_guest_views.xml 
+2026-09-18 08:58:10,010 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_message_reaction_views.xml 
+2026-09-18 08:58:10,023 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_templates_public.xml 
+2026-09-18 08:58:10,031 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/res_users_views.xml 
+2026-09-18 08:58:10,058 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/res_users_settings_views.xml 
+2026-09-18 08:58:10,072 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_template_views.xml 
+2026-09-18 08:58:10,094 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/ir_actions_server_views.xml 
+2026-09-18 08:58:10,111 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/ir_model_views.xml 
+2026-09-18 08:58:10,143 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/res_partner_views.xml 
+2026-09-18 08:58:10,188 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_blacklist_views.xml 
+2026-09-18 08:58:10,205 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_menus.xml 
+2026-09-18 08:58:10,323 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/discuss/discuss_menus.xml 
+2026-09-18 08:58:10,327 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/discuss/discuss_call_history_views.xml 
+2026-09-18 08:58:10,343 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/res_company_views.xml 
+2026-09-18 08:58:10,354 1993 INFO odoo_test2 odoo.modules.loading: loading mail/views/mail_scheduled_message_views.xml 
+2026-09-18 08:58:10,361 1993 INFO odoo_test2 odoo.modules.loading: loading mail/data/mail_canned_response_data.xml 
+2026-09-18 08:58:10,369 1993 INFO odoo_test2 odoo.modules.loading: loading mail/data/mail_templates_invite.xml 
+2026-09-18 08:58:10,382 1993 INFO odoo_test2 odoo.modules.loading: loading mail/data/web_tour_tour.xml 
+2026-09-18 08:58:10,437 1993 INFO odoo_test2 odoo.modules.loading: Module mail loaded in 3.08s, 5068 queries (+5069 other) 
+2026-09-18 08:58:10,437 1993 INFO odoo_test2 odoo.modules.loading: Loading module web_unsplash (21/59) 
+2026-09-18 08:58:10,449 1993 INFO odoo_test2 odoo.registry: module web_unsplash: creating or updating database tables 
+2026-09-18 08:58:10,487 1993 INFO odoo_test2 odoo.modules.loading: loading web_unsplash/views/res_config_settings_view.xml 
+2026-09-18 08:58:10,521 1993 INFO odoo_test2 odoo.modules.loading: Module web_unsplash loaded in 0.08s, 103 queries (+103 other) 
+2026-09-18 08:58:10,521 1993 INFO odoo_test2 odoo.modules.loading: Loading module analytic (22/59) 
+2026-09-18 08:58:10,530 1993 INFO odoo_test2 odoo.registry: module analytic: creating or updating database tables 
+2026-09-18 08:58:10,673 1993 INFO odoo_test2 odoo.modules.loading: loading analytic/security/analytic_security.xml 
+2026-09-18 08:58:10,692 1993 INFO odoo_test2 odoo.modules.loading: loading analytic/security/ir.model.access.csv 
+2026-09-18 08:58:10,704 1993 INFO odoo_test2 odoo.modules.loading: loading analytic/views/analytic_line_views.xml 
+2026-09-18 08:58:10,743 1993 INFO odoo_test2 odoo.modules.loading: loading analytic/views/analytic_account_views.xml 
+2026-09-18 08:58:10,772 1993 INFO odoo_test2 odoo.modules.loading: loading analytic/views/analytic_plan_views.xml 
+2026-09-18 08:58:10,789 1993 INFO odoo_test2 odoo.modules.loading: loading analytic/views/analytic_distribution_model_views.xml 
+2026-09-18 08:58:10,802 1993 INFO odoo_test2 odoo.modules.loading: loading analytic/data/analytic_data.xml 
+2026-09-18 08:58:10,849 1993 INFO odoo_test2 odoo.modules.loading: Module analytic loaded in 0.33s, 425 queries (+425 other) 
+2026-09-18 08:58:10,849 1993 INFO odoo_test2 odoo.modules.loading: Loading module auth_signup (23/59) 
+2026-09-18 08:58:10,862 1993 INFO odoo_test2 odoo.registry: module auth_signup: creating or updating database tables 
+2026-09-18 08:58:10,918 1993 INFO odoo_test2 odoo.modules.loading: loading auth_signup/data/ir_config_parameter_data.xml 
+2026-09-18 08:58:10,922 1993 INFO odoo_test2 odoo.modules.loading: loading auth_signup/data/ir_cron_data.xml 
+2026-09-18 08:58:10,944 1993 INFO odoo_test2 odoo.modules.loading: loading auth_signup/data/mail_template_data.xml 
+2026-09-18 08:58:11,016 1993 INFO odoo_test2 odoo.modules.loading: loading auth_signup/views/res_config_settings_views.xml 
+2026-09-18 08:58:11,031 1993 INFO odoo_test2 odoo.modules.loading: loading auth_signup/views/res_users_views.xml 
+2026-09-18 08:58:11,057 1993 INFO odoo_test2 odoo.modules.loading: loading auth_signup/views/auth_signup_login_templates.xml 
+2026-09-18 08:58:11,077 1993 INFO odoo_test2 odoo.modules.loading: loading auth_signup/views/auth_signup_templates_email.xml 
+2026-09-18 08:58:11,083 1993 INFO odoo_test2 odoo.modules.loading: loading auth_signup/views/webclient_templates.xml 
+2026-09-18 08:58:11,110 1993 INFO odoo_test2 odoo.modules.loading: Module auth_signup loaded in 0.26s, 253 queries (+253 other) 
+2026-09-18 08:58:11,110 1993 INFO odoo_test2 odoo.modules.loading: Loading module auth_totp_mail (24/59) 
+2026-09-18 08:58:11,121 1993 INFO odoo_test2 odoo.registry: module auth_totp_mail: creating or updating database tables 
+2026-09-18 08:58:11,158 1993 INFO odoo_test2 odoo.modules.loading: loading auth_totp_mail/data/ir_action_data.xml 
+2026-09-18 08:58:11,209 1993 INFO odoo_test2 odoo.modules.loading: loading auth_totp_mail/data/mail_template_data.xml 
+2026-09-18 08:58:11,242 1993 INFO odoo_test2 odoo.modules.loading: loading auth_totp_mail/data/security_notifications_template.xml 
+2026-09-18 08:58:11,249 1993 INFO odoo_test2 odoo.modules.loading: loading auth_totp_mail/views/res_config_settings_views.xml 
+2026-09-18 08:58:11,266 1993 INFO odoo_test2 odoo.modules.loading: loading auth_totp_mail/views/res_users_views.xml 
+2026-09-18 08:58:11,285 1993 INFO odoo_test2 odoo.modules.loading: loading auth_totp_mail/views/templates.xml 
+2026-09-18 08:58:11,311 1993 INFO odoo_test2 odoo.modules.loading: Module auth_totp_mail loaded in 0.20s, 189 queries (+189 other) 
+2026-09-18 08:58:11,311 1993 INFO odoo_test2 odoo.modules.loading: Loading module base_install_request (25/59) 
+2026-09-18 08:58:11,317 1993 INFO odoo_test2 odoo.registry: module base_install_request: creating or updating database tables 
+2026-09-18 08:58:11,371 1993 INFO odoo_test2 odoo.modules.loading: loading base_install_request/security/ir.model.access.csv 
+2026-09-18 08:58:11,379 1993 INFO odoo_test2 odoo.modules.loading: loading base_install_request/wizard/base_module_install_request_views.xml 
+2026-09-18 08:58:11,397 1993 INFO odoo_test2 odoo.modules.loading: loading base_install_request/data/mail_template_data.xml 
+2026-09-18 08:58:11,403 1993 INFO odoo_test2 odoo.modules.loading: loading base_install_request/data/mail_templates_module_install.xml 
+2026-09-18 08:58:11,408 1993 INFO odoo_test2 odoo.modules.loading: loading base_install_request/views/ir_module_module_views.xml 
+2026-09-18 08:58:11,431 1993 INFO odoo_test2 odoo.modules.loading: Module base_install_request loaded in 0.12s, 154 queries (+154 other) 
+2026-09-18 08:58:11,431 1993 INFO odoo_test2 odoo.modules.loading: Loading module google_gmail (26/59) 
+2026-09-18 08:58:11,444 1993 INFO odoo_test2 odoo.registry: module google_gmail: creating or updating database tables 
+2026-09-18 08:58:11,495 1993 INFO odoo_test2 odoo.modules.loading: loading google_gmail/views/fetchmail_server_views.xml 
+2026-09-18 08:58:11,510 1993 INFO odoo_test2 odoo.modules.loading: loading google_gmail/views/ir_mail_server_views.xml 
+2026-09-18 08:58:11,521 1993 INFO odoo_test2 odoo.modules.loading: loading google_gmail/views/res_config_settings_views.xml 
+2026-09-18 08:58:11,540 1993 INFO odoo_test2 odoo.modules.loading: loading google_gmail/views/templates.xml 
+2026-09-18 08:58:11,552 1993 INFO odoo_test2 odoo.modules.loading: Module google_gmail loaded in 0.12s, 155 queries (+155 other) 
+2026-09-18 08:58:11,552 1993 INFO odoo_test2 odoo.modules.loading: Loading module iap_mail (27/59) 
+2026-09-18 08:58:11,558 1993 INFO odoo_test2 odoo.registry: module iap_mail: creating or updating database tables 
+2026-09-18 08:58:11,585 1993 INFO odoo_test2 odoo.modules.loading: loading iap_mail/data/mail_templates.xml 
+2026-09-18 08:58:11,598 1993 INFO odoo_test2 odoo.modules.loading: loading iap_mail/views/iap_views.xml 
+2026-09-18 08:58:11,616 1993 INFO odoo_test2 odoo.modules.loading: Module iap_mail loaded in 0.06s, 70 queries (+70 other) 
+2026-09-18 08:58:11,616 1993 INFO odoo_test2 odoo.modules.loading: Loading module mail_bot (28/59) 
+2026-09-18 08:58:11,627 1993 INFO odoo_test2 odoo.registry: module mail_bot: creating or updating database tables 
+2026-09-18 08:58:11,669 1993 INFO odoo_test2 odoo.modules.loading: loading mail_bot/views/res_users_views.xml 
+2026-09-18 08:58:11,687 1993 INFO odoo_test2 odoo.modules.loading: loading mail_bot/data/mailbot_data.xml 
+2026-09-18 08:58:11,698 1993 INFO odoo_test2 odoo.modules.loading: Module mail_bot loaded in 0.08s, 109 queries (+109 other) 
+2026-09-18 08:58:11,698 1993 INFO odoo_test2 odoo.modules.loading: Loading module microsoft_outlook (29/59) 
+2026-09-18 08:58:11,710 1993 INFO odoo_test2 odoo.registry: module microsoft_outlook: creating or updating database tables 
+2026-09-18 08:58:11,759 1993 INFO odoo_test2 odoo.modules.loading: loading microsoft_outlook/views/fetchmail_server_views.xml 
+2026-09-18 08:58:11,775 1993 INFO odoo_test2 odoo.modules.loading: loading microsoft_outlook/views/ir_mail_server_views.xml 
+2026-09-18 08:58:11,786 1993 INFO odoo_test2 odoo.modules.loading: loading microsoft_outlook/views/res_config_settings_views.xml 
+2026-09-18 08:58:11,805 1993 INFO odoo_test2 odoo.modules.loading: loading microsoft_outlook/views/templates.xml 
+2026-09-18 08:58:11,817 1993 INFO odoo_test2 odoo.modules.loading: Module microsoft_outlook loaded in 0.12s, 158 queries (+158 other) 
+2026-09-18 08:58:11,817 1993 INFO odoo_test2 odoo.modules.loading: Loading module phone_validation (30/59) 
+2026-09-18 08:58:11,886 1993 INFO odoo_test2 odoo.registry: module phone_validation: creating or updating database tables 
+2026-09-18 08:58:11,896 1993 INFO odoo_test2 odoo.models: Prepare computation of res.partner.phone_sanitized 
+2026-09-18 08:58:12,488 1993 INFO odoo_test2 odoo.modules.loading: loading phone_validation/security/ir.model.access.csv 
+2026-09-18 08:58:12,496 1993 INFO odoo_test2 odoo.modules.loading: loading phone_validation/views/phone_blacklist_views.xml 
+2026-09-18 08:58:12,524 1993 INFO odoo_test2 odoo.modules.loading: loading phone_validation/views/res_partner_views.xml 
+2026-09-18 08:58:12,535 1993 INFO odoo_test2 odoo.modules.loading: loading phone_validation/wizard/phone_blacklist_remove_view.xml 
+2026-09-18 08:58:12,553 1993 INFO odoo_test2 odoo.modules.loading: Module phone_validation loaded in 0.74s, 1757 queries (+1757 other) 
+2026-09-18 08:58:12,553 1993 INFO odoo_test2 odoo.modules.loading: Loading module privacy_lookup (31/59) 
+2026-09-18 08:58:12,567 1993 INFO odoo_test2 odoo.registry: module privacy_lookup: creating or updating database tables 
+2026-09-18 08:58:12,659 1993 INFO odoo_test2 odoo.modules.loading: loading privacy_lookup/wizard/privacy_lookup_wizard_views.xml 
+2026-09-18 08:58:12,709 1993 INFO odoo_test2 odoo.modules.loading: loading privacy_lookup/views/privacy_log_views.xml 
+2026-09-18 08:58:12,728 1993 INFO odoo_test2 odoo.modules.loading: loading privacy_lookup/security/ir.model.access.csv 
+2026-09-18 08:58:12,744 1993 INFO odoo_test2 odoo.modules.loading: loading privacy_lookup/data/ir_actions_server_data.xml 
+2026-09-18 08:58:12,784 1993 INFO odoo_test2 odoo.modules.loading: Module privacy_lookup loaded in 0.23s, 294 queries (+294 other) 
+2026-09-18 08:58:12,784 1993 INFO odoo_test2 odoo.modules.loading: Loading module product (32/59) 
+2026-09-18 08:58:12,824 1993 INFO odoo_test2 odoo.registry: module product: creating or updating database tables 
+2026-09-18 08:58:13,363 1993 INFO odoo_test2 odoo.modules.loading: loading product/data/product_data.xml 
+2026-09-18 08:58:13,392 1993 INFO odoo_test2 odoo.modules.loading: loading product/security/product_security.xml 
+2026-09-18 08:58:13,453 1993 INFO odoo_test2 odoo.modules.loading: loading product/security/ir.model.access.csv 
+2026-09-18 08:58:13,470 1993 INFO odoo_test2 odoo.modules.loading: loading product/wizard/product_label_layout_views.xml 
+2026-09-18 08:58:13,482 1993 INFO odoo_test2 odoo.modules.loading: loading product/wizard/update_product_attribute_value_views.xml 
+2026-09-18 08:58:13,488 1993 INFO odoo_test2 odoo.modules.loading: loading product/views/product_tag_views.xml 
+2026-09-18 08:58:13,501 1993 INFO odoo_test2 odoo.modules.loading: loading product/views/product_views.xml 
+2026-09-18 08:58:13,608 1993 INFO odoo_test2 odoo.modules.loading: loading product/views/res_config_settings_views.xml 
+2026-09-18 08:58:13,623 1993 INFO odoo_test2 odoo.modules.loading: loading product/views/product_attribute_views.xml 
+2026-09-18 08:58:13,662 1993 INFO odoo_test2 odoo.modules.loading: loading product/views/product_attribute_value_views.xml 
+2026-09-18 08:58:13,666 1993 INFO odoo_test2 odoo.modules.loading: loading product/views/product_category_views.xml 
+2026-09-18 08:58:13,682 1993 INFO odoo_test2 odoo.modules.loading: loading product/views/product_combo_views.xml 
+2026-09-18 08:58:13,696 1993 INFO odoo_test2 odoo.modules.loading: loading product/views/product_document_views.xml 
+2026-09-18 08:58:13,715 1993 INFO odoo_test2 odoo.modules.loading: loading product/views/product_pricelist_item_views.xml 
+2026-09-18 08:58:13,747 1993 INFO odoo_test2 odoo.modules.loading: loading product/views/product_pricelist_views.xml 
+2026-09-18 08:58:13,769 1993 INFO odoo_test2 odoo.modules.loading: loading product/views/product_supplierinfo_views.xml 
+2026-09-18 08:58:13,792 1993 INFO odoo_test2 odoo.modules.loading: loading product/views/product_template_attribute_line_views.xml 
+2026-09-18 08:58:13,797 1993 INFO odoo_test2 odoo.modules.loading: loading product/views/product_template_views.xml 
+2026-09-18 08:58:13,851 1993 INFO odoo_test2 odoo.modules.loading: loading product/views/res_country_group_views.xml 
+2026-09-18 08:58:13,860 1993 INFO odoo_test2 odoo.modules.loading: loading product/views/res_partner_views.xml 
+2026-09-18 08:58:13,872 1993 INFO odoo_test2 odoo.modules.loading: loading product/views/uom_views.xml 
+2026-09-18 08:58:13,886 1993 INFO odoo_test2 odoo.modules.loading: loading product/report/product_reports.xml 
+2026-09-18 08:58:13,907 1993 INFO odoo_test2 odoo.modules.loading: loading product/report/product_product_templates.xml 
+2026-09-18 08:58:13,935 1993 INFO odoo_test2 odoo.modules.loading: loading product/report/product_template_templates.xml 
+2026-09-18 08:58:13,952 1993 INFO odoo_test2 odoo.modules.loading: loading product/report/product_packaging.xml 
+2026-09-18 08:58:13,957 1993 INFO odoo_test2 odoo.modules.loading: loading product/report/product_pricelist_report_templates.xml 
+2026-09-18 08:58:14,005 1993 INFO odoo_test2 odoo.modules.loading: Module product loaded in 1.22s, 1635 queries (+1635 other) 
+2026-09-18 08:58:14,005 1993 INFO odoo_test2 odoo.modules.loading: Loading module resource_mail (33/59) 
+2026-09-18 08:58:14,013 1993 INFO odoo_test2 odoo.registry: module resource_mail: creating or updating database tables 
+2026-09-18 08:58:14,053 1993 INFO odoo_test2 odoo.modules.loading: Module resource_mail loaded in 0.05s, 36 queries (+36 other) 
+2026-09-18 08:58:14,053 1993 INFO odoo_test2 odoo.modules.loading: Loading module partner_autocomplete (34/59) 
+2026-09-18 08:58:14,074 1993 INFO odoo_test2 odoo.registry: module partner_autocomplete: creating or updating database tables 
+2026-09-18 08:58:14,138 1993 INFO odoo_test2 odoo.modules.loading: loading partner_autocomplete/views/res_company_views.xml 
+2026-09-18 08:58:14,155 1993 INFO odoo_test2 odoo.modules.loading: loading partner_autocomplete/views/res_config_settings_views.xml 
+2026-09-18 08:58:14,169 1993 INFO odoo_test2 odoo.modules.loading: loading partner_autocomplete/data/iap_service_data.xml 
+2026-09-18 08:58:14,181 1993 INFO odoo_test2 odoo.modules.loading: Module partner_autocomplete loaded in 0.13s, 142 queries (+142 other) 
+2026-09-18 08:58:14,181 1993 INFO odoo_test2 odoo.modules.loading: Loading module portal (35/59) 
+2026-09-18 08:58:14,216 1993 INFO odoo_test2 odoo.registry: module portal: creating or updating database tables 
+2026-09-18 08:58:14,401 1993 INFO odoo_test2 odoo.modules.loading: loading portal/security/ir.model.access.csv 
+2026-09-18 08:58:14,408 1993 INFO odoo_test2 odoo.modules.loading: loading portal/data/mail_templates.xml 
+2026-09-18 08:58:14,414 1993 INFO odoo_test2 odoo.modules.loading: loading portal/views/address_templates.xml 
+2026-09-18 08:58:14,442 1993 INFO odoo_test2 odoo.modules.loading: loading portal/views/mail_templates_public.xml 
+2026-09-18 08:58:14,449 1993 INFO odoo_test2 odoo.modules.loading: loading portal/views/portal_templates.xml 
+2026-09-18 08:58:14,553 1993 INFO odoo_test2 odoo.modules.loading: loading portal/views/res_config_settings_views.xml 
+2026-09-18 08:58:14,574 1993 INFO odoo_test2 odoo.modules.loading: loading portal/wizard/portal_share_views.xml 
+2026-09-18 08:58:14,584 1993 INFO odoo_test2 odoo.modules.loading: loading portal/wizard/portal_wizard_views.xml 
+2026-09-18 08:58:14,634 1993 INFO odoo_test2 odoo.modules.loading: Module portal loaded in 0.45s, 600 queries (+600 other) 
+2026-09-18 08:58:14,634 1993 INFO odoo_test2 odoo.modules.loading: Loading module sms (36/59) 
+2026-09-18 08:58:14,728 1993 INFO odoo_test2 odoo.registry: module sms: creating or updating database tables 
+2026-09-18 08:58:14,735 1993 INFO odoo_test2 odoo.models: Prepare computation of ir.actions.server.sms_template_id 
+2026-09-18 08:58:14,735 1993 INFO odoo_test2 odoo.models: Prepare computation of ir.actions.server.sms_method 
+2026-09-18 08:58:15,529 1993 INFO odoo_test2 odoo.modules.loading: loading sms/data/iap_service_data.xml 
+2026-09-18 08:58:15,534 1993 INFO odoo_test2 odoo.modules.loading: loading sms/data/ir_cron_data.xml 
+2026-09-18 08:58:15,557 1993 INFO odoo_test2 odoo.modules.loading: loading sms/wizard/sms_account_code_views.xml 
+2026-09-18 08:58:15,568 1993 INFO odoo_test2 odoo.modules.loading: loading sms/wizard/sms_account_phone_views.xml 
+2026-09-18 08:58:15,574 1993 INFO odoo_test2 odoo.modules.loading: loading sms/wizard/sms_account_sender_views.xml 
+2026-09-18 08:58:15,580 1993 INFO odoo_test2 odoo.modules.loading: loading sms/wizard/sms_composer_views.xml 
+2026-09-18 08:58:15,590 1993 INFO odoo_test2 odoo.modules.loading: loading sms/wizard/sms_template_preview_views.xml 
+2026-09-18 08:58:15,599 1993 INFO odoo_test2 odoo.modules.loading: loading sms/wizard/sms_template_reset_views.xml 
+2026-09-18 08:58:15,607 1993 INFO odoo_test2 odoo.modules.loading: loading sms/views/ir_actions_server_views.xml 
+2026-09-18 08:58:15,624 1993 INFO odoo_test2 odoo.modules.loading: loading sms/views/mail_notification_views.xml 
+2026-09-18 08:58:15,638 1993 INFO odoo_test2 odoo.modules.loading: loading sms/views/res_config_settings_views.xml 
+2026-09-18 08:58:15,653 1993 INFO odoo_test2 odoo.modules.loading: loading sms/views/res_partner_views.xml 
+2026-09-18 08:58:15,670 1993 INFO odoo_test2 odoo.modules.loading: loading sms/views/iap_account_views.xml 
+2026-09-18 08:58:15,682 1993 INFO odoo_test2 odoo.modules.loading: loading sms/views/sms_sms_views.xml 
+2026-09-18 08:58:15,709 1993 INFO odoo_test2 odoo.modules.loading: loading sms/views/sms_template_views.xml 
+2026-09-18 08:58:15,729 1993 INFO odoo_test2 odoo.modules.loading: loading sms/security/ir.model.access.csv 
+2026-09-18 08:58:15,752 1993 INFO odoo_test2 odoo.modules.loading: loading sms/security/sms_security.xml 
+2026-09-18 08:58:15,776 1993 INFO odoo_test2 odoo.modules.loading: Module sms loaded in 1.14s, 2368 queries (+2368 other) 
+2026-09-18 08:58:15,776 1993 INFO odoo_test2 odoo.modules.loading: Loading module snailmail (37/59) 
+2026-09-18 08:58:15,874 1993 INFO odoo_test2 odoo.registry: module snailmail: creating or updating database tables 
+2026-09-18 08:58:16,056 1993 INFO odoo_test2 odoo.modules.loading: loading snailmail/data/iap_service_data.xml 
+2026-09-18 08:58:16,060 1993 INFO odoo_test2 odoo.modules.loading: loading snailmail/data/snailmail_data.xml 
+2026-09-18 08:58:16,085 1993 INFO odoo_test2 odoo.modules.loading: loading snailmail/views/report_assets.xml 
+2026-09-18 08:58:16,098 1993 INFO odoo_test2 odoo.modules.loading: loading snailmail/views/snailmail_views.xml 
+2026-09-18 08:58:16,117 1993 INFO odoo_test2 odoo.modules.loading: loading snailmail/security/ir.model.access.csv 
+2026-09-18 08:58:16,142 1993 INFO odoo_test2 odoo.modules.loading: Module snailmail loaded in 0.37s, 466 queries (+466 other) 
+2026-09-18 08:58:16,142 1993 INFO odoo_test2 odoo.modules.loading: Loading module auth_passkey_portal (38/59) 
+2026-09-18 08:58:16,152 1993 INFO odoo_test2 odoo.modules.loading: loading auth_passkey_portal/views/templates.xml 
+2026-09-18 08:58:16,180 1993 INFO odoo_test2 odoo.modules.loading: Module auth_passkey_portal loaded in 0.04s, 22 queries (+22 other) 
+2026-09-18 08:58:16,180 1993 INFO odoo_test2 odoo.modules.loading: Loading module auth_totp_portal (39/59) 
+2026-09-18 08:58:16,189 1993 INFO odoo_test2 odoo.registry: module auth_totp_portal: creating or updating database tables 
+2026-09-18 08:58:16,212 1993 INFO odoo_test2 odoo.modules.loading: loading auth_totp_portal/security/security.xml 
+2026-09-18 08:58:16,224 1993 INFO odoo_test2 odoo.modules.loading: loading auth_totp_portal/views/templates.xml 
+2026-09-18 08:58:16,242 1993 INFO odoo_test2 odoo.modules.loading: Module auth_totp_portal loaded in 0.06s, 70 queries (+70 other) 
+2026-09-18 08:58:16,242 1993 INFO odoo_test2 odoo.modules.loading: Loading module digest (40/59) 
+2026-09-18 08:58:16,255 1993 INFO odoo_test2 odoo.registry: module digest: creating or updating database tables 
+2026-09-18 08:58:16,338 1993 INFO odoo_test2 odoo.modules.loading: loading digest/security/ir.model.access.csv 
+2026-09-18 08:58:16,349 1993 INFO odoo_test2 odoo.modules.loading: loading digest/data/digest_data.xml 
+2026-09-18 08:58:16,368 1993 INFO odoo_test2 odoo.modules.loading: loading digest/data/digest_tips_data.xml 
+2026-09-18 08:58:16,384 1993 INFO odoo_test2 odoo.modules.loading: loading digest/data/ir_cron_data.xml 
+2026-09-18 08:58:16,405 1993 INFO odoo_test2 odoo.modules.loading: loading digest/data/res_config_settings_data.xml 
+2026-09-18 08:58:16,411 1993 INFO odoo_test2 odoo.modules.loading: loading digest/views/digest_views.xml 
+2026-09-18 08:58:16,455 1993 INFO odoo_test2 odoo.modules.loading: loading digest/views/digest_templates.xml 
+2026-09-18 08:58:16,460 1993 INFO odoo_test2 odoo.modules.loading: loading digest/views/res_config_settings_views.xml 
+2026-09-18 08:58:16,498 1993 INFO odoo_test2 odoo.modules.loading: Module digest loaded in 0.26s, 326 queries (+326 other) 
+2026-09-18 08:58:16,498 1993 INFO odoo_test2 odoo.modules.loading: Loading module payment (41/59) 
+2026-09-18 08:58:16,526 1993 INFO odoo_test2 odoo.registry: module payment: creating or updating database tables 
+2026-09-18 08:58:16,780 1993 INFO odoo_test2 odoo.modules.loading: loading payment/data/ir_actions_server_data.xml 
+2026-09-18 08:58:16,800 1993 INFO odoo_test2 odoo.modules.loading: loading payment/data/payment_method_data.xml 
+2026-09-18 08:58:18,329 1993 INFO odoo_test2 odoo.modules.loading: loading payment/data/payment_provider_data.xml 
+2026-09-18 08:58:18,499 1993 INFO odoo_test2 odoo.modules.loading: loading payment/data/payment_cron.xml 
+2026-09-18 08:58:18,515 1993 INFO odoo_test2 odoo.modules.loading: loading payment/views/express_checkout_templates.xml 
+2026-09-18 08:58:18,521 1993 INFO odoo_test2 odoo.modules.loading: loading payment/views/payment_form_templates.xml 
+2026-09-18 08:58:18,560 1993 INFO odoo_test2 odoo.modules.loading: loading payment/views/portal_templates.xml 
+2026-09-18 08:58:18,598 1993 INFO odoo_test2 odoo.modules.loading: loading payment/views/payment_provider_views.xml 
+2026-09-18 08:58:18,629 1993 INFO odoo_test2 odoo.modules.loading: loading payment/views/payment_method_views.xml 
+2026-09-18 08:58:18,650 1993 INFO odoo_test2 odoo.modules.loading: loading payment/views/payment_transaction_views.xml 
+2026-09-18 08:58:18,683 1993 INFO odoo_test2 odoo.modules.loading: loading payment/views/payment_token_views.xml 
+2026-09-18 08:58:18,700 1993 INFO odoo_test2 odoo.modules.loading: loading payment/views/res_partner_views.xml 
+2026-09-18 08:58:18,714 1993 INFO odoo_test2 odoo.modules.loading: loading payment/security/ir.model.access.csv 
+2026-09-18 08:58:19,319 1993 INFO odoo_test2 odoo.modules.loading: loading payment/security/payment_security.xml 
+2026-09-18 08:58:19,342 1993 INFO odoo_test2 odoo.modules.loading: loading payment/wizards/payment_capture_wizard_views.xml 
+2026-09-18 08:58:19,350 1993 INFO odoo_test2 odoo.modules.loading: loading payment/wizards/payment_link_wizard_views.xml 
+2026-09-18 08:58:19,396 1993 INFO odoo_test2 odoo.modules.loading: Module payment loaded in 2.90s, 2515 queries (+2515 other) 
+2026-09-18 08:58:19,396 1993 INFO odoo_test2 odoo.modules.loading: Loading module spreadsheet (42/59) 
+2026-09-18 08:58:19,407 1993 INFO odoo_test2 odoo.registry: module spreadsheet: creating or updating database tables 
+2026-09-18 08:58:19,452 1993 INFO odoo_test2 odoo.modules.loading: loading spreadsheet/views/public_readonly_spreadsheet_templates.xml 
+2026-09-18 08:58:19,473 1993 INFO odoo_test2 odoo.modules.loading: Module spreadsheet loaded in 0.08s, 93 queries (+93 other) 
+2026-09-18 08:58:19,473 1993 INFO odoo_test2 odoo.modules.loading: Loading module account (43/59) 
+2026-09-18 08:58:19,593 1993 INFO odoo_test2 odoo.registry: module account: creating or updating database tables 
+2026-09-18 08:58:19,705 1993 INFO odoo_test2 odoo.models: Prepare computation of res.company.domestic_fiscal_position_id 
+2026-09-18 08:58:19,706 1993 INFO odoo_test2 odoo.models: Prepare computation of res.company.account_fiscal_country_id 
+2026-09-18 08:58:19,706 1993 INFO odoo_test2 odoo.models: Prepare computation of res.company.invoice_terms_html 
+2026-09-18 08:58:19,706 1993 INFO odoo_test2 odoo.models: Prepare computation of res.company.account_storno 
+2026-09-18 08:58:21,320 1993 INFO odoo_test2 odoo.modules.loading: loading account/security/account_security.xml 
+2026-09-18 08:58:21,506 1993 INFO odoo_test2 odoo.modules.loading: loading account/security/ir.model.access.csv 
+2026-09-18 08:58:21,550 1993 INFO odoo_test2 odoo.modules.loading: loading account/data/account_data.xml 
+2026-09-18 08:58:21,626 1993 INFO odoo_test2 odoo.modules.loading: loading account/data/digest_data.xml 
+2026-09-18 08:58:21,633 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_report.xml 
+2026-09-18 08:58:21,651 1993 INFO odoo_test2 odoo.modules.loading: loading account/data/mail_template_data.xml 
+2026-09-18 08:58:21,691 1993 INFO odoo_test2 odoo.modules.loading: loading account/data/onboarding_data.xml 
+2026-09-18 08:58:21,715 1993 INFO odoo_test2 odoo.modules.loading: loading account/data/account_tour.xml 
+2026-09-18 08:58:21,720 1993 INFO odoo_test2 odoo.modules.loading: loading account/data/ir_sequence.xml 
+2026-09-18 08:58:21,724 1993 INFO odoo_test2 odoo.modules.loading: loading account/data/res_country_group.xml 
+2026-09-18 08:58:21,736 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_payment_view.xml 
+2026-09-18 08:58:21,804 1993 INFO odoo_test2 odoo.modules.loading: loading account/wizard/account_automatic_entry_wizard_views.xml 
+2026-09-18 08:58:21,815 1993 INFO odoo_test2 odoo.modules.loading: loading account/wizard/account_autopost_bills_wizard.xml 
+2026-09-18 08:58:21,823 1993 INFO odoo_test2 odoo.modules.loading: loading account/wizard/account_unreconcile_view.xml 
+2026-09-18 08:58:21,833 1993 INFO odoo_test2 odoo.modules.loading: loading account/wizard/account_move_reversal_view.xml 
+2026-09-18 08:58:21,843 1993 INFO odoo_test2 odoo.modules.loading: loading account/wizard/account_resequence_views.xml 
+2026-09-18 08:58:21,854 1993 INFO odoo_test2 odoo.modules.loading: loading account/wizard/account_payment_register_views.xml 
+2026-09-18 08:58:21,865 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_move_views.xml 
+2026-09-18 08:58:22,418 1993 INFO odoo_test2 odoo.modules.loading: loading account/wizard/setup_wizards_view.xml 
+2026-09-18 08:58:22,441 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_account_views.xml 
+2026-09-18 08:58:22,475 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_group_views.xml 
+2026-09-18 08:58:22,489 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_journal_views.xml 
+2026-09-18 08:58:22,535 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_account_tag_views.xml 
+2026-09-18 08:58:22,550 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_bank_statement_views.xml 
+2026-09-18 08:58:22,578 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_reconcile_model_views.xml 
+2026-09-18 08:58:22,601 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_tax_views.xml 
+2026-09-18 08:58:22,665 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_full_reconcile_views.xml 
+2026-09-18 08:58:22,673 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_payment_term_views.xml 
+2026-09-18 08:58:22,697 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_payment_method.xml 
+2026-09-18 08:58:22,706 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/res_partner_bank_views.xml 
+2026-09-18 08:58:22,728 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/report_statement.xml 
+2026-09-18 08:58:22,741 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/terms_template.xml 
+2026-09-18 08:58:22,754 1993 INFO odoo_test2 odoo.modules.loading: loading account/wizard/account_validate_move_view.xml 
+2026-09-18 08:58:22,772 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/res_company_views.xml 
+2026-09-18 08:58:22,797 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/product_view.xml 
+2026-09-18 08:58:22,851 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_analytic_plan_views.xml 
+2026-09-18 08:58:22,863 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_analytic_account_views.xml 
+2026-09-18 08:58:22,884 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_analytic_distribution_model_views.xml 
+2026-09-18 08:58:22,901 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_analytic_line_views.xml 
+2026-09-18 08:58:22,937 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/report_invoice.xml 
+2026-09-18 08:58:22,978 1993 INFO odoo_test2 odoo.modules.loading: loading account/report/account_invoice_report_view.xml 
+2026-09-18 08:58:23,018 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_cash_rounding_view.xml 
+2026-09-18 08:58:23,034 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/ir_actions_views.xml 
+2026-09-18 08:58:23,043 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/ir_module_views.xml 
+2026-09-18 08:58:23,052 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/base_document_layout_views.xml 
+2026-09-18 08:58:23,063 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/res_config_settings_views.xml 
+2026-09-18 08:58:23,110 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/partner_view.xml 
+2026-09-18 08:58:23,183 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_journal_dashboard_view.xml 
+2026-09-18 08:58:23,202 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_portal_templates.xml 
+2026-09-18 08:58:23,250 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/report_payment_receipt_templates.xml 
+2026-09-18 08:58:23,260 1993 INFO odoo_test2 odoo.modules.loading: loading account/data/service_cron.xml 
+2026-09-18 08:58:23,287 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_incoterms_view.xml 
+2026-09-18 08:58:23,304 1993 INFO odoo_test2 odoo.modules.loading: loading account/data/account_incoterms_data.xml 
+2026-09-18 08:58:23,321 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/digest_views.xml 
+2026-09-18 08:58:23,333 1993 INFO odoo_test2 odoo.modules.loading: loading account/wizard/account_move_send_wizard.xml 
+2026-09-18 08:58:23,342 1993 INFO odoo_test2 odoo.modules.loading: loading account/wizard/account_move_send_batch_wizard.xml 
+2026-09-18 08:58:23,349 1993 INFO odoo_test2 odoo.modules.loading: loading account/report/account_hash_integrity_templates.xml 
+2026-09-18 08:58:23,355 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/res_currency.xml 
+2026-09-18 08:58:23,368 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/res_country_group_view.xml 
+2026-09-18 08:58:23,378 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_menuitem.xml 
+2026-09-18 08:58:23,523 1993 INFO odoo_test2 odoo.modules.loading: loading account/wizard/account_secure_entries_wizard.xml 
+2026-09-18 08:58:23,537 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/mail_message_views.xml 
+2026-09-18 08:58:23,555 1993 INFO odoo_test2 odoo.modules.loading: loading account/wizard/accrued_orders.xml 
+2026-09-18 08:58:23,563 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/bill_preview_template.xml 
+2026-09-18 08:58:23,572 1993 INFO odoo_test2 odoo.modules.loading: loading account/data/account_reports_data.xml 
+2026-09-18 08:58:23,610 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/uom_uom_views.xml 
+2026-09-18 08:58:23,621 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/product_views.xml 
+2026-09-18 08:58:23,636 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/tests_shared_js_python.xml 
+2026-09-18 08:58:23,641 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/account_lock_exception_views.xml 
+2026-09-18 08:58:23,649 1993 INFO odoo_test2 odoo.modules.loading: loading account/views/report_templates.xml 
+2026-09-18 08:58:23,671 1993 INFO odoo_test2 odoo.modules.loading: loading account/wizard/account_merge_wizard_views.xml 
+2026-09-18 08:58:23,685 1993 INFO odoo_test2 odoo.modules.loading: loading account/data/ir_config_parameter_data.xml 
+2026-09-18 08:58:24,181 1993 INFO odoo_test2 odoo.modules.loading: Module account loaded in 4.71s, 5804 queries (+5804 other) 
+2026-09-18 08:58:24,181 1993 INFO odoo_test2 odoo.modules.loading: Loading module spreadsheet_dashboard (44/59) 
+2026-09-18 08:58:24,193 1993 INFO odoo_test2 odoo.registry: module spreadsheet_dashboard: creating or updating database tables 
+2026-09-18 08:58:24,300 1993 INFO odoo_test2 odoo.modules.loading: loading spreadsheet_dashboard/security/security.xml 
+2026-09-18 08:58:24,346 1993 INFO odoo_test2 odoo.modules.loading: loading spreadsheet_dashboard/security/ir.model.access.csv 
+2026-09-18 08:58:24,354 1993 INFO odoo_test2 odoo.modules.loading: loading spreadsheet_dashboard/views/spreadsheet_dashboard_views.xml 
+2026-09-18 08:58:24,377 1993 INFO odoo_test2 odoo.modules.loading: loading spreadsheet_dashboard/views/menu_views.xml 
+2026-09-18 08:58:24,400 1993 INFO odoo_test2 odoo.modules.loading: loading spreadsheet_dashboard/data/dashboard.xml 
+2026-09-18 08:58:24,430 1993 INFO odoo_test2 odoo.modules.loading: Module spreadsheet_dashboard loaded in 0.25s, 313 queries (+313 other) 
+2026-09-18 08:58:24,430 1993 INFO odoo_test2 odoo.modules.loading: Loading module stock (45/59) 
+2026-09-18 08:58:24,522 1993 INFO odoo_test2 odoo.registry: module stock: creating or updating database tables 
+2026-09-18 08:58:25,944 1993 INFO odoo_test2 odoo.modules.loading: loading stock/security/stock_security.xml 
+2026-09-18 08:58:26,058 1993 INFO odoo_test2 odoo.modules.loading: loading stock/security/ir.model.access.csv 
+2026-09-18 08:58:26,091 1993 INFO odoo_test2 odoo.modules.loading: loading stock/data/digest_data.xml 
+2026-09-18 08:58:26,097 1993 INFO odoo_test2 odoo.modules.loading: loading stock/data/mail_templates.xml 
+2026-09-18 08:58:26,106 1993 INFO odoo_test2 odoo.modules.loading: loading stock/data/default_barcode_patterns.xml 
+2026-09-18 08:58:26,114 1993 INFO odoo_test2 odoo.modules.loading: loading stock/data/stock_data.xml 
+2026-09-18 08:58:26,282 1993 INFO odoo_test2 odoo.modules.loading: loading stock/data/stock_sequence_data.xml 
+2026-09-18 08:58:26,312 1993 INFO odoo_test2 odoo.modules.loading: loading stock/data/stock_traceability_report_data.xml 
+2026-09-18 08:58:26,316 1993 INFO odoo_test2 odoo.modules.loading: loading stock/report/report_stock_quantity.xml 
+2026-09-18 08:58:26,323 1993 INFO odoo_test2 odoo.modules.loading: loading stock/report/report_stock_reception.xml 
+2026-09-18 08:58:26,341 1993 INFO odoo_test2 odoo.modules.loading: loading stock/report/stock_report_views.xml 
+2026-09-18 08:58:26,380 1993 INFO odoo_test2 odoo.modules.loading: loading stock/report/report_package_barcode.xml 
+2026-09-18 08:58:26,405 1993 INFO odoo_test2 odoo.modules.loading: loading stock/report/report_lot_barcode.xml 
+2026-09-18 08:58:26,411 1993 INFO odoo_test2 odoo.modules.loading: loading stock/report/report_location_barcode.xml 
+2026-09-18 08:58:26,419 1993 INFO odoo_test2 odoo.modules.loading: loading stock/report/report_stockpicking_operations.xml 
+2026-09-18 08:58:26,433 1993 INFO odoo_test2 odoo.modules.loading: loading stock/report/report_deliveryslip.xml 
+2026-09-18 08:58:26,460 1993 INFO odoo_test2 odoo.modules.loading: loading stock/report/report_stockinventory.xml 
+2026-09-18 08:58:26,465 1993 INFO odoo_test2 odoo.modules.loading: loading stock/report/report_stock_rule.xml 
+2026-09-18 08:58:26,488 1993 INFO odoo_test2 odoo.modules.loading: loading stock/report/package_templates.xml 
+2026-09-18 08:58:26,496 1993 INFO odoo_test2 odoo.modules.loading: loading stock/report/packaging_barcode.xml 
+2026-09-18 08:58:26,500 1993 INFO odoo_test2 odoo.modules.loading: loading stock/report/picking_templates.xml 
+2026-09-18 08:58:26,513 1993 INFO odoo_test2 odoo.modules.loading: loading stock/report/product_templates.xml 
+2026-09-18 08:58:26,535 1993 INFO odoo_test2 odoo.modules.loading: loading stock/report/report_return_slip.xml 
+2026-09-18 08:58:26,545 1993 INFO odoo_test2 odoo.modules.loading: loading stock/data/mail_template_data.xml 
+2026-09-18 08:58:26,553 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/stock_menu_views.xml 
+2026-09-18 08:58:26,598 1993 INFO odoo_test2 odoo.modules.loading: loading stock/wizard/stock_picking_return_views.xml 
+2026-09-18 08:58:26,611 1993 INFO odoo_test2 odoo.modules.loading: loading stock/wizard/stock_inventory_conflict.xml 
+2026-09-18 08:58:26,622 1993 INFO odoo_test2 odoo.modules.loading: loading stock/wizard/stock_backorder_confirmation_views.xml 
+2026-09-18 08:58:26,631 1993 INFO odoo_test2 odoo.modules.loading: loading stock/wizard/stock_quantity_history.xml 
+2026-09-18 08:58:26,638 1993 INFO odoo_test2 odoo.modules.loading: loading stock/wizard/stock_request_count.xml 
+2026-09-18 08:58:26,648 1993 INFO odoo_test2 odoo.modules.loading: loading stock/wizard/stock_replenishment_info.xml 
+2026-09-18 08:58:26,670 1993 INFO odoo_test2 odoo.modules.loading: loading stock/wizard/stock_rules_report_views.xml 
+2026-09-18 08:58:26,679 1993 INFO odoo_test2 odoo.modules.loading: loading stock/wizard/stock_warn_insufficient_qty_views.xml 
+2026-09-18 08:58:26,695 1993 INFO odoo_test2 odoo.modules.loading: loading stock/wizard/product_replenish_views.xml 
+2026-09-18 08:58:26,705 1993 INFO odoo_test2 odoo.modules.loading: loading stock/wizard/product_label_layout_views.xml 
+2026-09-18 08:58:26,723 1993 INFO odoo_test2 odoo.modules.loading: loading stock/wizard/stock_orderpoint_snooze_views.xml 
+2026-09-18 08:58:26,735 1993 INFO odoo_test2 odoo.modules.loading: loading stock/wizard/stock_package_destination_views.xml 
+2026-09-18 08:58:26,744 1993 INFO odoo_test2 odoo.modules.loading: loading stock/wizard/stock_inventory_adjustment_name.xml 
+2026-09-18 08:58:26,753 1993 INFO odoo_test2 odoo.modules.loading: loading stock/wizard/stock_inventory_warning.xml 
+2026-09-18 08:58:26,763 1993 INFO odoo_test2 odoo.modules.loading: loading stock/wizard/stock_label_type.xml 
+2026-09-18 08:58:26,769 1993 INFO odoo_test2 odoo.modules.loading: loading stock/wizard/stock_lot_label_layout.xml 
+2026-09-18 08:58:26,775 1993 INFO odoo_test2 odoo.modules.loading: loading stock/wizard/stock_quant_relocate.xml 
+2026-09-18 08:58:26,782 1993 INFO odoo_test2 odoo.modules.loading: loading stock/wizard/stock_put_in_pack_views.xml 
+2026-09-18 08:58:26,790 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/res_partner_views.xml 
+2026-09-18 08:58:26,816 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/product_strategy_views.xml 
+2026-09-18 08:58:26,844 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/stock_lot_views.xml 
+2026-09-18 08:58:26,880 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/stock_scrap_views.xml 
+2026-09-18 08:58:26,915 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/stock_quant_views.xml 
+2026-09-18 08:58:27,178 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/stock_warehouse_views.xml 
+2026-09-18 08:58:27,201 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/stock_move_line_views.xml 
+2026-09-18 08:58:27,257 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/stock_move_views.xml 
+2026-09-18 08:58:27,337 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/stock_picking_views.xml 
+2026-09-18 08:58:27,523 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/stock_picking_type_views.xml 
+2026-09-18 08:58:27,568 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/product_views.xml 
+2026-09-18 08:58:27,763 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/stock_location_views.xml 
+2026-09-18 08:58:27,831 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/stock_orderpoint_views.xml 
+2026-09-18 08:58:27,893 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/stock_storage_category_views.xml 
+2026-09-18 08:58:27,921 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/res_config_settings_views.xml 
+2026-09-18 08:58:27,955 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/report_stock_traceability.xml 
+2026-09-18 08:58:27,965 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/stock_template.xml 
+2026-09-18 08:58:27,973 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/stock_rule_views.xml 
+2026-09-18 08:58:28,003 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/stock_package_history_views.xml 
+2026-09-18 08:58:28,015 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/stock_package_type_view.xml 
+2026-09-18 08:58:28,037 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/stock_package_views.xml 
+2026-09-18 08:58:28,072 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/stock_forecasted.xml 
+2026-09-18 08:58:28,077 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/stock_reference_views.xml 
+2026-09-18 08:58:28,098 1993 INFO odoo_test2 odoo.modules.loading: loading stock/views/uom_uom_views.xml 
+2026-09-18 08:58:28,228 1993 INFO odoo_test2 odoo.modules.loading: Module stock loaded in 3.80s, 5074 queries (+5074 other) 
+2026-09-18 08:58:28,229 1993 INFO odoo_test2 odoo.modules.loading: Loading module account_add_gln (46/59) 
+2026-09-18 08:58:28,251 1993 INFO odoo_test2 odoo.registry: module account_add_gln: creating or updating database tables 
+2026-09-18 08:58:28,330 1993 INFO odoo_test2 odoo.modules.loading: loading account_add_gln/views/res_partner_views.xml 
+2026-09-18 08:58:28,367 1993 INFO odoo_test2 odoo.modules.loading: Module account_add_gln loaded in 0.14s, 103 queries (+103 other) 
+2026-09-18 08:58:28,367 1993 INFO odoo_test2 odoo.modules.loading: Loading module account_edi_ubl_cii (47/59) 
+2026-09-18 08:58:28,410 1993 INFO odoo_test2 odoo.registry: module account_edi_ubl_cii: creating or updating database tables 
+2026-09-18 08:58:28,434 1993 INFO odoo_test2 odoo.models: Prepare computation of res.partner.peppol_endpoint 
+2026-09-18 08:58:28,434 1993 INFO odoo_test2 odoo.models: Prepare computation of res.partner.peppol_eas 
+2026-09-18 08:58:28,564 1993 INFO odoo_test2 odoo.modules.loading: loading account_edi_ubl_cii/data/cii_22_templates.xml 
+2026-09-18 08:58:28,590 1993 INFO odoo_test2 odoo.modules.loading: loading account_edi_ubl_cii/data/ir_config_parameter_data.xml 
+2026-09-18 08:58:28,593 1993 INFO odoo_test2 odoo.modules.loading: loading account_edi_ubl_cii/views/account_tax_views.xml 
+2026-09-18 08:58:28,612 1993 INFO odoo_test2 odoo.modules.loading: loading account_edi_ubl_cii/views/account_move_views.xml 
+2026-09-18 08:58:28,630 1993 INFO odoo_test2 odoo.modules.loading: loading account_edi_ubl_cii/views/res_partner_views.xml 
+2026-09-18 08:58:28,648 1993 INFO odoo_test2 odoo.modules.loading: loading account_edi_ubl_cii/report/account_edi_ubl_cii_report_templates.xml 
+2026-09-18 08:58:28,752 1993 INFO odoo_test2 odoo.modules.loading: Module account_edi_ubl_cii loaded in 0.38s, 386 queries (+386 other) 
+2026-09-18 08:58:28,752 1993 INFO odoo_test2 odoo.modules.loading: Loading module account_payment (48/59) 
+2026-09-18 08:58:28,783 1993 INFO odoo_test2 odoo.registry: module account_payment: creating or updating database tables 
+2026-09-18 08:58:28,947 1993 INFO odoo_test2 odoo.modules.loading: loading account_payment/data/ir_config_parameter.xml 
+2026-09-18 08:58:28,952 1993 INFO odoo_test2 odoo.modules.loading: loading account_payment/security/ir.model.access.csv 
+2026-09-18 08:58:28,959 1993 INFO odoo_test2 odoo.modules.loading: loading account_payment/security/ir_rules.xml 
+2026-09-18 08:58:28,966 1993 INFO odoo_test2 odoo.modules.loading: loading account_payment/views/account_payment_menus.xml 
+2026-09-18 08:58:28,983 1993 INFO odoo_test2 odoo.modules.loading: loading account_payment/views/account_portal_templates.xml 
+2026-09-18 08:58:29,046 1993 INFO odoo_test2 odoo.modules.loading: loading account_payment/views/account_move_views.xml 
+2026-09-18 08:58:29,074 1993 INFO odoo_test2 odoo.modules.loading: loading account_payment/views/account_journal_views.xml 
+2026-09-18 08:58:29,088 1993 INFO odoo_test2 odoo.modules.loading: loading account_payment/views/account_payment_views.xml 
+2026-09-18 08:58:29,100 1993 INFO odoo_test2 odoo.modules.loading: loading account_payment/views/payment_form_templates.xml 
+2026-09-18 08:58:29,107 1993 INFO odoo_test2 odoo.modules.loading: loading account_payment/views/payment_provider_views.xml 
+2026-09-18 08:58:29,116 1993 INFO odoo_test2 odoo.modules.loading: loading account_payment/views/payment_transaction_views.xml 
+2026-09-18 08:58:29,126 1993 INFO odoo_test2 odoo.modules.loading: loading account_payment/wizards/account_payment_register_views.xml 
+2026-09-18 08:58:29,135 1993 INFO odoo_test2 odoo.modules.loading: loading account_payment/wizards/payment_link_wizard_views.xml 
+2026-09-18 08:58:29,148 1993 INFO odoo_test2 odoo.modules.loading: loading account_payment/wizards/payment_refund_wizard_views.xml 
+2026-09-18 08:58:29,155 1993 INFO odoo_test2 odoo.modules.loading: loading account_payment/wizards/res_config_settings_views.xml 
+2026-09-18 08:58:29,208 1993 INFO odoo_test2 odoo.modules.loading: Module account_payment loaded in 0.46s, 571 queries (+571 other) 
+2026-09-18 08:58:29,208 1993 INFO odoo_test2 odoo.modules.loading: Loading module product_expiry (49/59) 
+2026-09-18 08:58:29,236 1993 INFO odoo_test2 odoo.registry: module product_expiry: creating or updating database tables 
+2026-09-18 08:58:29,379 1993 INFO odoo_test2 odoo.modules.loading: loading product_expiry/security/ir.model.access.csv 
+2026-09-18 08:58:29,385 1993 INFO odoo_test2 odoo.modules.loading: loading product_expiry/security/stock_security.xml 
+2026-09-18 08:58:29,389 1993 INFO odoo_test2 odoo.modules.loading: loading product_expiry/views/production_lot_views.xml 
+2026-09-18 08:58:29,426 1993 INFO odoo_test2 odoo.modules.loading: loading product_expiry/views/product_template_views.xml 
+2026-09-18 08:58:29,450 1993 INFO odoo_test2 odoo.modules.loading: loading product_expiry/views/res_config_settings_views.xml 
+2026-09-18 08:58:29,470 1993 INFO odoo_test2 odoo.modules.loading: loading product_expiry/views/stock_move_views.xml 
+2026-09-18 08:58:29,498 1993 INFO odoo_test2 odoo.modules.loading: loading product_expiry/views/stock_quant_views.xml 
+2026-09-18 08:58:29,744 1993 INFO odoo_test2 odoo.modules.loading: loading product_expiry/wizard/confirm_expiry_view.xml 
+2026-09-18 08:58:29,750 1993 INFO odoo_test2 odoo.modules.loading: loading product_expiry/report/report_deliveryslip.xml 
+2026-09-18 08:58:29,764 1993 INFO odoo_test2 odoo.modules.loading: loading product_expiry/report/report_lot_barcode.xml 
+2026-09-18 08:58:29,779 1993 INFO odoo_test2 odoo.modules.loading: loading product_expiry/data/product_expiry_data.xml 
+2026-09-18 08:58:29,818 1993 INFO odoo_test2 odoo.modules.loading: Module product_expiry loaded in 0.61s, 446 queries (+446 other) 
+2026-09-18 08:58:29,818 1993 INFO odoo_test2 odoo.modules.loading: Loading module purchase (50/59) 
+2026-09-18 08:58:29,876 1993 INFO odoo_test2 odoo.registry: module purchase: creating or updating database tables 
+2026-09-18 08:58:30,228 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/security/purchase_security.xml 
+2026-09-18 08:58:30,329 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/security/ir.model.access.csv 
+2026-09-18 08:58:30,348 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/data/digest_data.xml 
+2026-09-18 08:58:30,354 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/views/account_move_views.xml 
+2026-09-18 08:58:30,388 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/data/purchase_data.xml 
+2026-09-18 08:58:30,431 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/data/ir_cron_data.xml 
+2026-09-18 08:58:30,454 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/report/purchase_reports.xml 
+2026-09-18 08:58:30,461 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/views/purchase_views.xml 
+2026-09-18 08:58:30,700 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/views/purchase_bill_line_match_views.xml 
+2026-09-18 08:58:30,710 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/views/res_config_settings_views.xml 
+2026-09-18 08:58:30,738 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/views/product_views.xml 
+2026-09-18 08:58:30,843 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/views/res_partner_views.xml 
+2026-09-18 08:58:30,879 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/report/purchase_bill_views.xml 
+2026-09-18 08:58:30,890 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/report/purchase_report_views.xml 
+2026-09-18 08:58:30,920 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/data/mail_templates.xml 
+2026-09-18 08:58:30,929 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/data/mail_template_data.xml 
+2026-09-18 08:58:30,944 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/views/portal_templates.xml 
+2026-09-18 08:58:30,995 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/report/purchase_order_templates.xml 
+2026-09-18 08:58:31,012 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/report/purchase_quotation_templates.xml 
+2026-09-18 08:58:31,021 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/views/analytic_account_views.xml 
+2026-09-18 08:58:31,033 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/wizard/bill_to_po_wizard_views.xml 
+2026-09-18 08:58:31,040 1993 INFO odoo_test2 odoo.modules.loading: loading purchase/data/purchase_tour.xml 
+2026-09-18 08:58:31,110 1993 INFO odoo_test2 odoo.modules.loading: Module purchase loaded in 1.29s, 1505 queries (+1505 other) 
+2026-09-18 08:58:31,110 1993 INFO odoo_test2 odoo.modules.loading: Loading module snailmail_account (51/59) 
+2026-09-18 08:58:31,149 1993 INFO odoo_test2 odoo.registry: module snailmail_account: creating or updating database tables 
+2026-09-18 08:58:31,267 1993 INFO odoo_test2 odoo.modules.loading: loading snailmail_account/views/res_config_settings_views.xml 
+2026-09-18 08:58:31,314 1993 INFO odoo_test2 odoo.modules.loading: Module snailmail_account loaded in 0.20s, 196 queries (+196 other) 
+2026-09-18 08:58:31,314 1993 INFO odoo_test2 odoo.modules.loading: Loading module spreadsheet_account (52/59) 
+2026-09-18 08:58:31,333 1993 INFO odoo_test2 odoo.registry: module spreadsheet_account: creating or updating database tables 
+2026-09-18 08:58:31,409 1993 INFO odoo_test2 odoo.modules.loading: Module spreadsheet_account loaded in 0.10s, 58 queries (+58 other) 
+2026-09-18 08:58:31,410 1993 INFO odoo_test2 odoo.modules.loading: Loading module spreadsheet_dashboard_account (53/59) 
+2026-09-18 08:58:31,430 1993 INFO odoo_test2 odoo.modules.loading: loading spreadsheet_dashboard_account/data/dashboards.xml 
+2026-09-18 08:58:31,477 1993 INFO odoo_test2 odoo.modules.loading: Module spreadsheet_dashboard_account loaded in 0.07s, 38 queries (+38 other) 
+2026-09-18 08:58:31,477 1993 INFO odoo_test2 odoo.modules.loading: Loading module stock_account (54/59) 
+2026-09-18 08:58:31,528 1993 INFO odoo_test2 odoo.registry: module stock_account: creating or updating database tables 
+2026-09-18 08:58:31,826 1993 INFO odoo_test2 odoo.modules.loading: loading stock_account/security/stock_account_security.xml 
+2026-09-18 08:58:31,840 1993 INFO odoo_test2 odoo.modules.loading: loading stock_account/security/ir.model.access.csv 
+2026-09-18 08:58:31,850 1993 INFO odoo_test2 odoo.modules.loading: loading stock_account/data/stock_account_data.xml 
+2026-09-18 08:58:31,880 1993 INFO odoo_test2 odoo.modules.loading: loading stock_account/views/account_account_views.xml 
+2026-09-18 08:58:31,900 1993 INFO odoo_test2 odoo.modules.loading: loading stock_account/views/stock_account_views.xml 
+2026-09-18 08:58:31,912 1993 INFO odoo_test2 odoo.modules.loading: loading stock_account/views/res_config_settings_views.xml 
+2026-09-18 08:58:31,934 1993 INFO odoo_test2 odoo.modules.loading: loading stock_account/views/report_invoice.xml 
+2026-09-18 08:58:31,949 1993 INFO odoo_test2 odoo.modules.loading: loading stock_account/views/stock_quant_views.xml 
+2026-09-18 08:58:32,174 1993 INFO odoo_test2 odoo.modules.loading: loading stock_account/views/product_views.xml 
+2026-09-18 08:58:32,248 1993 INFO odoo_test2 odoo.modules.loading: loading stock_account/views/product_value_views.xml 
+2026-09-18 08:58:32,257 1993 INFO odoo_test2 odoo.modules.loading: loading stock_account/views/stock_location_views.xml 
+2026-09-18 08:58:32,268 1993 INFO odoo_test2 odoo.modules.loading: loading stock_account/views/stock_lot_views.xml 
+2026-09-18 08:58:32,279 1993 INFO odoo_test2 odoo.modules.loading: loading stock_account/views/stock_picking_views.xml 
+2026-09-18 08:58:32,292 1993 INFO odoo_test2 odoo.modules.loading: loading stock_account/views/stock_move_views.xml 
+2026-09-18 08:58:32,323 1993 INFO odoo_test2 odoo.modules.loading: loading stock_account/wizard/stock_inventory_adjustment_name_views.xml 
+2026-09-18 08:58:32,333 1993 INFO odoo_test2 odoo.modules.loading: loading stock_account/report/account_invoice_report_view.xml 
+2026-09-18 08:58:32,336 1993 INFO odoo_test2 odoo.modules.loading: loading stock_account/report/stock_avco_audit_report_views.xml 
+2026-09-18 08:58:32,345 1993 INFO odoo_test2 odoo.modules.loading: loading stock_account/report/stock_valuation_report.xml 
+2026-09-18 08:58:32,572 1993 INFO odoo_test2 odoo.modules.loading: Module stock_account loaded in 1.09s, 931 queries (+931 other) 
+2026-09-18 08:58:32,572 1993 INFO odoo_test2 odoo.modules.loading: Loading module stock_sms (55/59) 
+2026-09-18 08:58:32,596 1993 INFO odoo_test2 odoo.registry: module stock_sms: creating or updating database tables 
+2026-09-18 08:58:32,694 1993 INFO odoo_test2 odoo.modules.loading: loading stock_sms/data/sms_data.xml 
+2026-09-18 08:58:32,699 1993 INFO odoo_test2 odoo.modules.loading: loading stock_sms/views/res_config_settings_views.xml 
+2026-09-18 08:58:32,730 1993 INFO odoo_test2 odoo.modules.loading: loading stock_sms/wizard/confirm_stock_sms_views.xml 
+2026-09-18 08:58:32,736 1993 INFO odoo_test2 odoo.modules.loading: loading stock_sms/security/ir.model.access.csv 
+2026-09-18 08:58:32,744 1993 INFO odoo_test2 odoo.modules.loading: loading stock_sms/security/sms_security.xml 
+2026-09-18 08:58:32,788 1993 INFO odoo_test2 odoo.modules.loading: Module stock_sms loaded in 0.22s, 201 queries (+201 other) 
+2026-09-18 08:58:32,788 1993 INFO odoo_test2 odoo.modules.loading: Loading module nafdac_son_verification (56/59) 
+2026-09-18 08:58:32,836 1993 INFO odoo_test2 odoo.registry: module nafdac_son_verification: creating or updating database tables 
+2026-09-18 08:58:33,053 1993 INFO odoo_test2 odoo.modules.loading: loading nafdac_son_verification/security/regulatory_security.xml 
+2026-09-18 08:58:33,067 1993 INFO odoo_test2 odoo.modules.loading: loading nafdac_son_verification/security/ir.model.access.csv 
+2026-09-18 08:58:33,074 1993 INFO odoo_test2 odoo.modules.loading: loading nafdac_son_verification/data/ir_cron_data.xml 
+2026-09-18 08:58:33,108 1993 INFO odoo_test2 odoo.modules.loading: loading nafdac_son_verification/data/mail_template_data.xml 
+2026-09-18 08:58:33,113 1993 INFO odoo_test2 odoo.modules.loading: loading nafdac_son_verification/views/product_template_views.xml 
+2026-09-18 08:58:33,179 1993 INFO odoo_test2 odoo.modules.loading: loading nafdac_son_verification/views/stock_lot_views.xml 
+2026-09-18 08:58:33,199 1993 INFO odoo_test2 odoo.modules.loading: loading nafdac_son_verification/views/stock_move_line_views.xml 
+2026-09-18 08:58:33,210 1993 INFO odoo_test2 odoo.modules.loading: loading nafdac_son_verification/views/stock_picking_views.xml 
+2026-09-18 08:58:33,215 1993 WARNING odoo_test2 odoo.addons.base.models.ir_ui_view: Error-prone use of @class in view stock.picking.form.regulatory (): use the hasclass(*classes) function to filter elements by their classes 
+2026-09-18 08:58:33,224 1993 INFO odoo_test2 odoo.modules.loading: loading nafdac_son_verification/views/verification_log_views.xml 
+2026-09-18 08:58:33,241 1993 INFO odoo_test2 odoo.modules.loading: loading nafdac_son_verification/views/res_config_settings_views.xml 
+2026-09-18 08:58:33,265 1993 INFO odoo_test2 odoo.modules.loading: loading nafdac_son_verification/views/menu_views.xml 
+2026-09-18 08:58:33,270 1993 INFO odoo_test2 odoo.modules.loading: loading nafdac_son_verification/wizard/regulatory_verification_wizard_views.xml 
+2026-09-18 08:58:33,292 1993 INFO odoo_test2 odoo.modules.loading: loading nafdac_son_verification/report/verification_certificate_report.xml 
+2026-09-18 08:58:33,296 1993 INFO odoo_test2 odoo.modules.loading: loading nafdac_son_verification/report/verification_certificate_templates.xml 
+2026-09-18 08:58:33,338 1993 INFO odoo_test2 odoo.modules.loading: Module nafdac_son_verification loaded in 0.55s, 592 queries (+592 other) 
+2026-09-18 08:58:33,338 1993 INFO odoo_test2 odoo.modules.loading: Loading module purchase_edi_ubl_bis3 (57/59) 
+2026-09-18 08:58:33,362 1993 INFO odoo_test2 odoo.registry: module purchase_edi_ubl_bis3: creating or updating database tables 
+2026-09-18 08:58:33,461 1993 INFO odoo_test2 odoo.modules.loading: Module purchase_edi_ubl_bis3 loaded in 0.12s, 126 queries (+126 other) 
+2026-09-18 08:58:33,461 1993 INFO odoo_test2 odoo.modules.loading: Loading module purchase_stock (58/59) 
+2026-09-18 08:58:33,525 1993 INFO odoo_test2 odoo.registry: module purchase_stock: creating or updating database tables 
+2026-09-18 08:58:33,826 1993 INFO odoo_test2 odoo.modules.loading: loading purchase_stock/security/ir.model.access.csv 
+2026-09-18 08:58:33,840 1993 INFO odoo_test2 odoo.modules.loading: loading purchase_stock/data/purchase_stock_data.xml 
+2026-09-18 08:58:33,899 1993 INFO odoo_test2 odoo.modules.loading: loading purchase_stock/data/mail_templates.xml 
+2026-09-18 08:58:33,904 1993 INFO odoo_test2 odoo.modules.loading: loading purchase_stock/report/vendor_delay_report.xml 
+2026-09-18 08:58:33,916 1993 INFO odoo_test2 odoo.modules.loading: loading purchase_stock/views/purchase_views.xml 
+2026-09-18 08:58:33,952 1993 INFO odoo_test2 odoo.modules.loading: loading purchase_stock/views/stock_views.xml 
+2026-09-18 08:58:33,989 1993 INFO odoo_test2 odoo.modules.loading: loading purchase_stock/views/stock_picking_views.xml 
+2026-09-18 08:58:34,009 1993 INFO odoo_test2 odoo.modules.loading: loading purchase_stock/views/stock_rule_views.xml 
+2026-09-18 08:58:34,022 1993 INFO odoo_test2 odoo.modules.loading: loading purchase_stock/views/res_config_settings_views.xml 
+2026-09-18 08:58:34,070 1993 INFO odoo_test2 odoo.modules.loading: loading purchase_stock/views/res_partner_views.xml 
+2026-09-18 08:58:34,088 1993 INFO odoo_test2 odoo.modules.loading: loading purchase_stock/views/stock_lot_views.xml 
+2026-09-18 08:58:34,099 1993 INFO odoo_test2 odoo.modules.loading: loading purchase_stock/views/stock_orderpoint_views.xml 
+2026-09-18 08:58:34,107 1993 INFO odoo_test2 odoo.modules.loading: loading purchase_stock/views/stock_reference_views.xml 
+2026-09-18 08:58:34,115 1993 INFO odoo_test2 odoo.modules.loading: loading purchase_stock/views/product_views.xml 
+2026-09-18 08:58:34,133 1993 INFO odoo_test2 odoo.modules.loading: loading purchase_stock/report/purchase_report_views.xml 
+2026-09-18 08:58:34,142 1993 INFO odoo_test2 odoo.modules.loading: loading purchase_stock/report/purchase_report_templates.xml 
+2026-09-18 08:58:34,157 1993 INFO odoo_test2 odoo.modules.loading: loading purchase_stock/report/report_stock_rule.xml 
+2026-09-18 08:58:34,165 1993 INFO odoo_test2 odoo.modules.loading: loading purchase_stock/wizard/stock_replenishment_info.xml 
+2026-09-18 08:58:34,183 1993 INFO odoo_test2 odoo.modules.loading: loading purchase_stock/wizard/product_replenish_views.xml 
+2026-09-18 08:58:34,281 1993 INFO odoo_test2 odoo.modules.loading: Module purchase_stock loaded in 0.82s, 986 queries (+986 other) 
+2026-09-18 08:58:34,281 1993 INFO odoo_test2 odoo.modules.loading: Loading module spreadsheet_dashboard_stock_account (59/59) 
+2026-09-18 08:58:34,299 1993 INFO odoo_test2 odoo.modules.loading: loading spreadsheet_dashboard_stock_account/data/dashboards.xml 
+2026-09-18 08:58:34,349 1993 INFO odoo_test2 odoo.modules.loading: Module spreadsheet_dashboard_stock_account loaded in 0.07s, 31 queries (+31 other) 
+2026-09-18 08:58:34,349 1993 INFO odoo_test2 odoo.modules.loading: 59 modules loaded in 30.66s, 40426 queries (+40427 extra) 
+2026-09-18 08:58:35,017 1993 INFO odoo_test2 odoo.modules.loading: Modules loaded. 
+2026-09-18 08:58:35,908 1993 INFO odoo_test2 odoo.registry: Registry changed, signaling through the database 
+2026-09-18 08:58:35,909 1993 INFO odoo_test2 odoo.registry: Registry loaded in 40.121s 
+2026-09-18 08:58:35,909 1993 INFO odoo_test2 odoo.service.server: Starting post tests 
+2026-09-18 08:58:35,958 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_bulk_verification: Starting TestBulkVerificationWorkflow.test_bulk_receipt_and_verification_across_25_lots ... 
+2026-09-18 08:58:37,788 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_bulk_verification: Starting TestBulkVerificationWorkflow.test_bulk_verification_wizard_result_summary_counts_match ... 
+2026-09-18 08:58:38,662 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_bulk_verification: Starting TestBulkVerificationWorkflow.test_verification_status_survives_reread_after_bulk_run ... 
+2026-09-18 08:58:39,421 1993 INFO odoo_test2 odoo.addons.base.models.ir_attachment: filestore gc 435 checked, 0 removed 
+2026-09-18 08:58:39,423 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestResolvePathAndParseParams.test_parse_extra_params_empty_text ... 
+2026-09-18 08:58:39,424 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestResolvePathAndParseParams.test_parse_extra_params_ignores_blank_and_malformed_lines ... 
+2026-09-18 08:58:39,424 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestResolvePathAndParseParams.test_resolve_path_blank_path_returns_none ... 
+2026-09-18 08:58:39,425 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestResolvePathAndParseParams.test_resolve_path_list_index ... 
+2026-09-18 08:58:39,425 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestResolvePathAndParseParams.test_resolve_path_missing_key_returns_none ... 
+2026-09-18 08:58:39,426 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestResolvePathAndParseParams.test_resolve_path_nested_dict ... 
+2026-09-18 08:58:39,426 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestResolvePathAndParseParams.test_resolve_path_out_of_range_index_returns_none ... 
+2026-09-18 08:58:39,430 1993 INFO odoo_test2 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-18 08:58:39,432 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestNafdacProviderDemoMode.test_demo_empty_reference_is_error ... 
+2026-09-18 08:58:39,432 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestNafdacProviderDemoMode.test_demo_invalid_format_is_failed ... 
+2026-09-18 08:58:39,433 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestNafdacProviderDemoMode.test_demo_valid_format_is_verified ... 
+2026-09-18 08:58:39,433 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestNafdacProviderDemoMode.test_http_mode_without_endpoint_falls_back_to_demo ... 
+2026-09-18 08:58:39,434 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.services.nafdac_provider: NAFDAC set to Live HTTP API mode but no endpoint is configured; falling back to structural check for A4-1234 
+2026-09-18 08:58:39,437 1993 INFO odoo_test2 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-18 08:58:39,439 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestNafdacProviderLiveMode.test_connection_failure_becomes_error_not_exception ... 
+2026-09-18 08:58:39,440 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestNafdacProviderLiveMode.test_failed_result ... 
+2026-09-18 08:58:39,442 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestNafdacProviderLiveMode.test_http_error_status_becomes_error_not_exception ... 
+2026-09-18 08:58:39,443 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestNafdacProviderLiveMode.test_timeout_becomes_error_not_exception ... 
+2026-09-18 08:58:39,444 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestNafdacProviderLiveMode.test_verified_result_and_default_field_mapping ... 
+2026-09-18 08:58:39,449 1993 INFO odoo_test2 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-18 08:58:39,450 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestSonProviderLiveModeCustomMapping.test_basic_auth_sends_expected_credentials ... 
+2026-09-18 08:58:39,452 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestSonProviderLiveModeCustomMapping.test_nested_json_path_with_success_value_and_custom_header_auth ... 
+2026-09-18 08:58:39,454 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestSonProviderLiveModeCustomMapping.test_post_method_sends_reference_and_extra_params_as_json_body ... 
+2026-09-18 08:58:39,459 1993 INFO odoo_test2 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-18 08:58:39,461 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestRegulatoryVerificationSettingsIntegration.test_settings_save_flows_through_to_company_and_provider_config ... 
+2026-09-18 08:58:39,846 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_http_provider: Starting TestRegulatoryVerificationSettingsIntegration.test_switching_back_to_demo_mode_stops_calling_requests ... 
+2026-09-18 08:58:39,897 1993 INFO odoo_test2 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-18 08:58:39,962 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_verification: Starting TestNafdacSonVerification.test_aggregate_status_worst_wins ... 
+2026-09-18 08:58:39,963 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_verification: Starting TestNafdacSonVerification.test_picking_blocked_on_failed_verification ... 
+2026-09-18 08:58:40,039 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_verification: Starting TestNafdacSonVerification.test_product_not_flagged_raises_on_verify ... 
+2026-09-18 08:58:40,078 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_verification: Starting TestNafdacSonVerification.test_verify_now_fails_for_invalid_number ... 
+2026-09-18 08:58:40,103 1993 INFO odoo_test2 odoo.addons.nafdac_son_verification.tests.test_verification: Starting TestNafdacSonVerification.test_verify_now_passes_for_valid_number ... 
+2026-09-18 08:58:40,117 1993 INFO odoo_test2 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-18 08:58:40,118 1993 INFO odoo_test2 odoo.service.server: 29 post-tests in 4.21s, 4307 queries 
+2026-09-18 08:58:40,118 1993 INFO odoo_test2 odoo.tests.stats: nafdac_son_verification: 43 tests 4.16s 4307 queries 
+2026-09-18 08:58:40,118 1993 INFO odoo_test2 odoo.tests.result: 0 failed, 0 error(s) of 29 tests when loading database 'odoo_test2' 
+2026-09-18 08:58:40,119 1993 INFO odoo_test2 odoo.service.server: Initiating shutdown 
+2026-09-18 08:58:40,119 1993 INFO odoo_test2 odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-18 08:58:40,407 1993 INFO odoo_test2 odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
