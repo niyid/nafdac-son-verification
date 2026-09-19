@@ -964,7 +964,9 @@
 
     <p>
       Since I run Odoo deployments for clients selling regulated goods in Nigeria, I built the
-      check into the one place a shopper can't skip: checkout itself. <strong>nafdac_son_verification</strong>
+      check into the one place a shopper can't skip: checkout itself. Odoo itself is free and
+      open-source software — no licence fee to run it, self-hosted, whether you're a single
+      pharmacy or a multi-branch distributor. <strong>nafdac_son_verification</strong>
       adds NAFDAC and SON registration fields to Products and Lots/Serials, logs every check for
       audit, and can block a warehouse transfer from being validated if a regulated item hasn't
       passed. <strong>website_sale_nafdac_son_verification</strong> extends that into the storefront:
@@ -1020,6 +1022,18 @@
       one file, not a rewrite of the module.
     </p>
 
+    <div class="callout callout-good">
+      <div class="callout-icon">🆓</div>
+      <div class="callout-body">
+        <strong>Odoo is open-source and completely free — and so are these modules</strong>
+        <p>Odoo Community Edition costs nothing to download, install, or run — there's no per-user
+        or per-store licence fee for the self-hosted version this article uses. Both
+        <strong>nafdac_son_verification</strong> and <strong>website_sale_nafdac_son_verification</strong>
+        are released under LGPL-3, the same licence Odoo uses for its own addons, so they're free
+        to download, install, audit, and modify below.</p>
+      </div>
+    </div>
+
     <div class="download-cards">
       <div class="download-card">
         <span class="file-name">nafdac_son_verification.zip</span>
@@ -1041,18 +1055,83 @@
       Apps menu (remove the "Apps" filter; it's a normal module, not a featured app).
     </p>
 
+    <h3>What It Takes to Run Odoo Locally</h3>
+
+    <p>
+      Odoo isn't a heavy platform. A single-store deployment runs comfortably on modest,
+      inexpensive hardware — either an on-premise machine in the shop's back office or a small
+      cloud VPS:
+    </p>
+
+    <div class="pillars-grid">
+      <div class="pillar pillar-emerald">
+        <span class="pillar-icon">🖥️</span>
+        <div class="pillar-name">CPU</div>
+        <p>2 vCPUs / cores minimum for a single-store instance; 4+ recommended once several staff
+        use POS, inventory, and the website simultaneously.</p>
+      </div>
+      <div class="pillar pillar-blue">
+        <span class="pillar-icon">💾</span>
+        <div class="pillar-name">RAM</div>
+        <p>4 GB minimum, 8 GB recommended. Odoo and PostgreSQL both benefit from headroom once
+        several regulated-product catalogues and scheduled re-checks are running.</p>
+      </div>
+      <div class="pillar pillar-amber">
+        <span class="pillar-icon">💿</span>
+        <div class="pillar-name">Storage</div>
+        <p>20 GB+ SSD to start. Grows with product images, certificate PDFs, and the audit log
+        these modules write on every verification check.</p>
+      </div>
+      <div class="pillar pillar-violet">
+        <span class="pillar-icon">🐧</span>
+        <div class="pillar-name">OS &amp; stack</div>
+        <p>Ubuntu/Debian Linux (or any OS Odoo 19 supports), Python 3.10+, and PostgreSQL —
+        all free and open-source themselves.</p>
+      </div>
+    </div>
+
+    <p>
+      That's enough to run a full Odoo 19 instance — sales, inventory, accounting, website, POS —
+      plus both of these modules, for one store. Multi-branch or high-traffic deployments should
+      size up, but there's no proprietary licensing cost driving that decision, only your own
+      transaction volume.
+    </p>
+
+    <div class="callout callout-warn">
+      <div class="callout-icon">💰</div>
+      <div class="callout-body">
+        <strong>The real cost isn't the software — it's owning the PC it runs on</strong>
+        <p>"Free and open-source" describes Odoo the software, not the machine it needs. That
+        machine is a genuine, one-time capital cost — not a subscription, but not zero either.
+        As a real-world anchor: refurbished business desktops from Nigerian IT resellers that
+        comfortably clear Odoo's minimum spec — Core i5, 8&nbsp;GB RAM, SSD storage — currently
+        list in roughly the ₦340,000–₦490,000 range, with brand-new small-business desktops
+        running higher. A single store doesn't need anything close to a high-end build; the
+        modest specs above are the target, not 16&nbsp;GB-plus workstation configs. Budget for
+        that purchase once, and — because Odoo is self-hosted rather than cloud-hosted here —
+        also budget for reliable power: a UPS or inverter sized to keep the machine (and your
+        checkout) up through outages, which is its own real cost in most parts of Nigeria. Beyond
+        the one-time hardware and a power backup, there's no recurring platform fee: no monthly
+        Odoo licence, no per-user charge, no subscription tied to using either module.</p>
+      </div>
+    </div>
+
     <div class="callout callout-info">
       <div class="callout-icon">🛠️</div>
       <div class="callout-body">
-        <strong>Retailers and wholesalers: if you'd rather not do the install yourself, I can help</strong>
-        <p>If you run a pharmacy, supermarket, distribution warehouse, or any other outlet selling
-        regulated products and want this set up and configured on your own Odoo instance —
-        onsite or remote — send me a direct message. That covers installation, mapping your
-        existing product catalogue to NAFDAC/SON fields, and setting your blocking policy so it
-        fits how your store actually operates.</p>
+        <strong>Any competent Odoo administrator can set this up — or I can, at minimal cost</strong>
+        <p>Installing these modules is standard Odoo administration: nothing proprietary or
+        undocumented. If you already work with an Odoo admin or implementation partner, they can
+        install, upgrade, and configure both modules using the steps above. If you'd rather not do
+        it yourself and don't have someone on hand, I run Odoo deployments for clients in Nigeria
+        and can set this up on your own instance — onsite or remote — for a minimal fee. That
+        covers installation, mapping your existing product catalogue to NAFDAC/SON fields, and
+        setting your blocking policy so it fits how your store actually operates. Send me a direct
+        message if that's useful.</p>
       </div>
     </div>
   </section>
+
 
   <!-- ═══ SECTION 4.5: WATCH IT RUN ═══ -->
   <section>
