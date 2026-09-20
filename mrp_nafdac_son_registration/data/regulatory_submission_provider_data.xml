@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="ir_sequence_mrp_production_evidence" model="ir.sequence">
+        <field name="name">Manufacturing NAFDAC/SON Evidence</field>
+        <field name="code">mrp.production.evidence</field>
+        <field name="prefix">MFG-EVID-</field>
+        <field name="padding">5</field>
+    </record>
+
+    <record id="regulatory_provider_nafdac" model="regulatory.submission.provider">
+        <field name="name">NAFDAC (not yet available)</field>
+        <field name="code">nafdac</field>
+        <field name="state">disabled</field>
+        <field name="notes">No public manufacturer-submission API is known to exist yet.
+Update endpoint_url, auth, and field mapping here — and flip State to
+Active — once NAFDAC publishes one. Nothing else in this module needs
+to change.</field>
+    </record>
+
+    <record id="regulatory_provider_son" model="regulatory.submission.provider">
+        <field name="name">SON (not yet available)</field>
+        <field name="code">son</field>
+        <field name="state">disabled</field>
+        <field name="notes">No public manufacturer-submission API is known to exist yet.
+Update endpoint_url, auth, and field mapping here — and flip State to
+Active — once SON publishes one. Nothing else in this module needs
+to change.</field>
+    </record>
+
+</odoo>

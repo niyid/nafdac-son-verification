@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_regulatory_field_mapping_list" model="ir.ui.view">
+        <field name="name">regulatory.field.mapping.list</field>
+        <field name="model">regulatory.field.mapping</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="provider_id"/>
+                <field name="internal_source"/>
+                <field name="internal_field_name"/>
+                <field name="external_field_name"/>
+                <field name="required"/>
+            </list>
+        </field>
+    </record>
+
+</odoo>

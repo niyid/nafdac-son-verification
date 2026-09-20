@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_regulatory_submission_queue_list" model="ir.ui.view">
+        <field name="name">regulatory.submission.queue.list</field>
+        <field name="model">regulatory.submission.queue</field>
+        <field name="arch" type="xml">
+            <list decoration-muted="state == 'pending_no_provider'"
+                  decoration-success="state in ('sent', 'acknowledged')"
+                  decoration-danger="state in ('failed', 'skipped_missing_field')">
+                <field name="evidence_id"/>
+                <field name="provider_id"/>
+                <field name="state"/>
+                <field name="attempt_count"/>
+                <field name="last_attempt_at"/>
+                <field name="error_message"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_regulatory_submission_queue_form" model="ir.ui.view">
+        <field name="name">regulatory.submission.queue.form</field>
+        <field name="model">regulatory.submission.queue</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="pending_no_provider,pending,sent,acknowledged"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="evidence_id"/>
+                        <field name="provider_id"/>
+                        <field name="attempt_count"/>
+                        <field name="last_attempt_at"/>
+                        <field name="next_attempt_at"/>
+                    </group>
+                    <group string="Error" invisible="not error_message">
+                        <field name="error_message" nolabel="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Payload">
+                            <field name="payload_json" widget="text" readonly="1"/>
+                        </page>
+                        <page string="Response">
+                            <field name="response_json" widget="text" readonly="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_regulatory_submission_queue" model="ir.actions.act_window">
+        <field name="name">Regulatory Submissions</field>
+        <field name="res_model">regulatory.submission.queue</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

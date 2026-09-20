@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_regulatory_submission_provider_list" model="ir.ui.view">
+        <field name="name">regulatory.submission.provider.list</field>
+        <field name="model">regulatory.submission.provider</field>
+        <field name="arch" type="xml">
+            <list decoration-muted="state == 'disabled'" decoration-success="state == 'active'">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="state"/>
+                <field name="endpoint_url"/>
+                <field name="pending_submission_count"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_regulatory_submission_provider_form" model="ir.ui.view">
+        <field name="name">regulatory.submission.provider.form</field>
+        <field name="model">regulatory.submission.provider</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="disabled,configured,active"/>
+                    <button name="action_send_test_submission" type="object"
+                            string="Send Test Submission" class="btn-secondary"
+                            invisible="state == 'disabled'"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_submissions" type="object"
+                                class="oe_stat_button" icon="fa-list">
+                            <field name="submission_count" widget="statinfo" string="Submissions"/>
+                        </button>
+                    </div>
+                    <div class="alert alert-info" role="alert"
+                         invisible="state != 'disabled'">
+                        Disabled means nothing about this record is contacted. Evidence
+                        still queues for this provider — it will simply wait here until
+                        you configure and activate it.
+                    </div>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="active"/>
+                    </group>
+                    <notebook>
+                        <page string="Connection">
+                            <group>
+                                <field name="endpoint_url" placeholder="https://..."/>
+                                <field name="auth_type"/>
+                                <field name="api_key_header" invisible="auth_type != 'api_key'"/>
+                                <field name="api_key" invisible="auth_type != 'api_key'" password="True"/>
+                                <field name="oauth_token_url" invisible="auth_type != 'oauth2_client_credentials'"/>
+                                <field name="oauth_client_id" invisible="auth_type != 'oauth2_client_credentials'"/>
+                                <field name="oauth_client_secret" invisible="auth_type != 'oauth2_client_credentials'" password="True"/>
+                            </group>
+                        </page>
+                        <page string="Field Mapping">
+                            <field name="field_mapping_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="internal_source"/>
+                                    <field name="internal_field_name"/>
+                                    <field name="static_value" invisible="internal_source != 'static_value'"/>
+                                    <field name="external_field_name"/>
+                                    <field name="required"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes" placeholder="API docs link, onboarding contact, status..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_regulatory_submission_provider" model="ir.actions.act_window">
+        <field name="name">Regulatory Submission Providers</field>
+        <field name="res_model">regulatory.submission.provider</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smart_help">
+                Create a provider for NAFDAC or SON once they publish a submission API,
+                or use the two seeded records (currently disabled) and fill them in.
+            </p>
+        </field>
+    </record>
+
+</odoo>

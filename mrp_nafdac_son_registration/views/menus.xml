@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_nafdac_son_registration_root"
+              name="NAFDAC/SON Registration"
+              parent="mrp.menu_mrp_manufacturing"
+              sequence="90"/>
+
+    <menuitem id="menu_mrp_production_evidence"
+              name="Evidence Captures"
+              parent="menu_nafdac_son_registration_root"
+              action="action_mrp_production_evidence"
+              sequence="10"/>
+
+    <menuitem id="menu_regulatory_submission_queue"
+              name="Submission Queue"
+              parent="menu_nafdac_son_registration_root"
+              action="action_regulatory_submission_queue"
+              sequence="20"/>
+
+    <menuitem id="menu_regulatory_submission_provider"
+              name="Submission Providers"
+              parent="menu_nafdac_son_registration_root"
+              action="action_regulatory_submission_provider"
+              sequence="30"
+              groups="mrp.group_mrp_manager"/>
+
+</odoo>

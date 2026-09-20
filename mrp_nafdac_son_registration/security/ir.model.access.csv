@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_regulatory_submission_provider_user,regulatory.submission.provider.user,model_regulatory_submission_provider,mrp.group_mrp_user,1,0,0,0
+access_regulatory_submission_provider_manager,regulatory.submission.provider.manager,model_regulatory_submission_provider,mrp.group_mrp_manager,1,1,1,1
+access_regulatory_field_mapping_manager,regulatory.field.mapping.manager,model_regulatory_field_mapping,mrp.group_mrp_manager,1,1,1,1
+access_mrp_production_evidence_user,mrp.production.evidence.user,model_mrp_production_evidence,mrp.group_mrp_user,1,1,1,0
+access_mrp_production_evidence_manager,mrp.production.evidence.manager,model_mrp_production_evidence,mrp.group_mrp_manager,1,1,1,1
+access_mrp_production_evidence_media_user,mrp.production.evidence.media.user,model_mrp_production_evidence_media,mrp.group_mrp_user,1,1,1,0
+access_mrp_production_evidence_media_manager,mrp.production.evidence.media.manager,model_mrp_production_evidence_media,mrp.group_mrp_manager,1,1,1,1
+access_regulatory_submission_queue_user,regulatory.submission.queue.user,model_regulatory_submission_queue,mrp.group_mrp_user,1,0,0,0
+access_regulatory_submission_queue_manager,regulatory.submission.queue.manager,model_regulatory_submission_queue,mrp.group_mrp_manager,1,1,1,0
+access_mrp_production_evidence_capture_wizard,mrp.production.evidence.capture.wizard,model_mrp_production_evidence_capture_wizard,mrp.group_mrp_user,1,1,1,1
+access_mrp_production_evidence_capture_wizard_line,mrp.production.evidence.capture.wizard.line,model_mrp_production_evidence_capture_wizard_line,mrp.group_mrp_user,1,1,1,1

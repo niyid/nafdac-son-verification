@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_mrp_production_evidence_capture_wizard_form" model="ir.ui.view">
+        <field name="name">mrp.production.evidence.capture.wizard.form</field>
+        <field name="model">mrp.production.evidence.capture.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Capture NAFDAC/SON Evidence">
+                <group>
+                    <group>
+                        <field name="production_id" readonly="1"/>
+                        <field name="product_id" readonly="1"/>
+                        <field name="lot_id"/>
+                        <field name="lot_number"/>
+                        <field name="product_identification_code"/>
+                    </group>
+                </group>
+                <field name="line_ids">
+                    <list editable="bottom">
+                        <field name="media_type"/>
+                        <field name="media_file" filename="media_filename"/>
+                        <field name="media_filename" column_invisible="1"/>
+                        <field name="caption"/>
+                    </list>
+                </field>
+                <group>
+                    <field name="notes" placeholder="Anything about this batch worth recording..."/>
+                </group>
+                <footer>
+                    <button name="action_confirm" type="object" string="Save Evidence"
+                            class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_mrp_production_evidence_list" model="ir.ui.view">
+        <field name="name">mrp.production.evidence.list</field>
+        <field name="model">mrp.production.evidence</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="production_id"/>
+                <field name="product_id"/>
+                <field name="lot_number"/>
+                <field name="capture_datetime"/>
+                <field name="operator_id"/>
+                <field name="photo_count"/>
+                <field name="video_count"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mrp_production_evidence_form" model="ir.ui.view">
+        <field name="name">mrp.production.evidence.form</field>
+        <field name="model">mrp.production.evidence</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,captured,queued"/>
+                    <button name="action_mark_captured" type="object" string="Mark Captured &amp; Queue"
+                            class="btn-primary" invisible="state != 'draft'"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(mrp_nafdac_son_registration.action_regulatory_submission_queue)d"
+                                type="action" class="oe_stat_button" icon="fa-paper-plane"
+                                context="{'search_default_evidence_id': id}">
+                            <field name="submission_count" widget="statinfo" string="Submissions"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="production_id"/>
+                            <field name="product_id" readonly="1"/>
+                            <field name="lot_id"/>
+                            <field name="lot_number"/>
+                            <field name="product_identification_code"/>
+                        </group>
+                        <group>
+                            <field name="capture_datetime"/>
+                            <field name="operator_id"/>
+                            <field name="workcenter_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Photos &amp; Video">
+                            <field name="media_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="media_type"/>
+                                    <field name="attachment_id"/>
+                                    <field name="caption"/>
+                                    <field name="captured_at"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Product Record Snapshot">
+                            <field name="product_snapshot_json" widget="text" readonly="1"/>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mrp_production_evidence" model="ir.actions.act_window">
+        <field name="name">Manufacturing Evidence Captures</field>
+        <field name="res_model">mrp.production.evidence</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

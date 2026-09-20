@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_mrp_production_form_nafdac_son_inherit" model="ir.ui.view">
+        <field name="name">mrp.production.form.nafdac.son.inherit</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_nafdac_son_evidence" type="object"
+                        class="oe_stat_button" icon="fa-camera">
+                    <field name="nafdac_son_evidence_count" widget="statinfo"
+                           string="NAFDAC/SON Evidence"/>
+                </button>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <button name="action_open_nafdac_son_capture_wizard" type="object"
+                        string="Capture NAFDAC/SON Evidence" class="btn-secondary"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
