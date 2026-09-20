@@ -813,15 +813,16 @@
       <span class="sep">·</span>
       <span>🧩 Odoo 19 · Python</span>
       <span class="sep">·</span>
-      <span>⏱ 9 min read</span>
+      <span>⏱ 12 min read</span>
     </div>
 
     <p class="hero-lead">
-      I spent the past few days building two Odoo modules that check a product's NAFDAC and SON
-      registration automatically, at the exact moment a Nigerian shopper adds it to their cart, and
-      block checkout if the check fails. Before writing a line of copy about it, I did the honest
-      thing: I picked up a real medicine box and tried to verify it myself, using NAFDAC's own
-      Scan2Verify app. It could not tell me whether the product was genuine. This article is about
+      I spent the past few days building three Odoo modules that check a product's NAFDAC and SON
+      registration automatically — starting at the point a batch is actually produced, continuing
+      through the warehouse, and enforced again at the exact moment a Nigerian shopper adds it to
+      their cart, blocking checkout if the check fails. Before writing a line of copy about it, I did
+      the honest thing: I picked up a real medicine box and tried to verify it myself, using NAFDAC's
+      own Scan2Verify app. It could not tell me whether the product was genuine. This article is about
       what I built, what I found, and a question I'd genuinely like NAFDAC and SON to answer.
     </p>
   </header>
@@ -960,29 +961,50 @@
   <!-- ═══ SECTION 4: THE SOLUTION ═══ -->
   <section>
     <div class="section-kicker">The Build</div>
-    <h2>Two Odoo Modules That Check Regulatory Status Before Checkout</h2>
+    <h2>Three Odoo Modules That Check Regulatory Status From the Production Line to Checkout</h2>
 
     <p>
       Since I run Odoo deployments for clients selling regulated goods in Nigeria, I built the
-      check into the one place a shopper can't skip: checkout itself. Odoo itself is free and
-      open-source software — no licence fee to run it, self-hosted, whether you're a single
-      pharmacy or a multi-branch distributor. <strong>nafdac_son_verification</strong>
-      adds NAFDAC and SON registration fields to Products and Lots/Serials, logs every check for
-      audit, and can block a warehouse transfer from being validated if a regulated item hasn't
-      passed. <strong>website_sale_nafdac_son_verification</strong> extends that into the storefront:
-      it re-checks stale statuses whenever a shopper opens the cart or moves through checkout, shows
-      a status badge on every regulated line item, and — if the store owner opts in — blocks payment
-      outright on a failed or unchecked product, with a plain-language explanation instead of a
-      silent failure.
+      check into every place a regulated item passes through — not just checkout. Odoo itself is
+      free and open-source software — no licence fee to run it, self-hosted, whether you're a single
+      pharmacy or a multi-branch distributor. <strong>mrp_nafdac_son_registration</strong> hooks into
+      the Manufacturing app itself: it adds a "Capture NAFDAC/SON Evidence" action to every
+      Manufacturing Order, letting whoever's on the line record a photo/video, the batch or lot
+      identifier, and a full snapshot of the product record at the moment a batch is actually
+      produced — before that batch has gone anywhere near a warehouse or a shopper.
+      <strong>nafdac_son_verification</strong> then adds NAFDAC and SON registration fields to
+      Products and Lots/Serials, logs every check for audit, and can block a warehouse transfer from
+      being validated if a regulated item hasn't passed. <strong>website_sale_nafdac_son_verification</strong>
+      extends that into the storefront: it re-checks stale statuses whenever a shopper opens the cart
+      or moves through checkout, shows a status badge on every regulated line item, and — if the
+      store owner opts in — blocks payment outright on a failed or unchecked product, with a
+      plain-language explanation instead of a silent failure.
     </p>
 
     <div class="tech-stack">
       <span class="tech-pill"><span class="dot dot-green"></span>Odoo 19</span>
       <span class="tech-pill"><span class="dot dot-blue"></span>Python</span>
       <span class="tech-pill"><span class="dot dot-amber"></span>stock / product_expiry / mail</span>
+      <span class="tech-pill"><span class="dot dot-green"></span>mrp</span>
       <span class="tech-pill"><span class="dot dot-violet"></span>website_sale</span>
       <span class="tech-pill"><span class="dot dot-red"></span>ir.cron scheduled re-checks</span>
     </div>
+
+    <p>
+      The manufacturing module closes a loop the other two can't: by the time a product reaches
+      checkout, whatever happened on the production line is already history. NAFDAC and SON
+      inspect factories and packaging lines as much as finished goods on a shelf, so
+      <strong>mrp_nafdac_son_registration</strong> captures that evidence — who ran the batch, what
+      it looked like, which lot number it became — at the only moment it can be captured
+      contemporaneously, and stores it permanently regardless of whether any submission channel to
+      the regulator exists yet. It mirrors the same "ships disabled, activate once a real endpoint
+      exists" pattern Odoo itself uses for Payment Providers: a <code>regulatory.submission.provider</code>
+      record per regulator (NAFDAC, SON), a submission queue that starts filling the moment evidence
+      is captured, and one clearly marked stub method — <code>_send_to_provider()</code> — that's the
+      single point to wire in a real HTTP call once NAFDAC or SON publish a manufacturer-facing
+      submission API. Until then, every queued submission fails loudly and specifically, rather than
+      silently pretending to have gone through.
+    </p>
 
     <p>
       Neither NAFDAC nor SON currently publishes a stable, public API for real-time product
@@ -1027,14 +1049,22 @@
       <div class="callout-body">
         <strong>Odoo is open-source and completely free — and so are these modules</strong>
         <p>Odoo Community Edition costs nothing to download, install, or run — there's no per-user
-        or per-store licence fee for the self-hosted version this article uses. Both
-        <strong>nafdac_son_verification</strong> and <strong>website_sale_nafdac_son_verification</strong>
-        are released under LGPL-3, the same licence Odoo uses for its own addons, so they're free
-        to download, install, audit, and modify below.</p>
+        or per-store licence fee for the self-hosted version this article uses. All three —
+        <strong>mrp_nafdac_son_registration</strong>, <strong>nafdac_son_verification</strong>, and
+        <strong>website_sale_nafdac_son_verification</strong> — are released under LGPL-3, the same
+        licence Odoo uses for its own addons, so they're free to download, install, audit, and
+        modify below.</p>
       </div>
     </div>
 
     <div class="download-cards">
+      <div class="download-card">
+        <span class="file-name">mrp_nafdac_son_registration.zip</span>
+        <p>Manufacturing-stage module — evidence capture wizard on Manufacturing Orders, product
+        record snapshotting, the regulator submission queue, and the disabled-by-default provider
+        pattern.</p>
+        <a class="download-btn" href="mrp_nafdac_son_registration.zip" download>⬇ Download module</a>
+      </div>
       <div class="download-card">
         <span class="file-name">nafdac_son_verification.zip</span>
         <p>Core module — Inventory fields, provider architecture, audit log, transfer-blocking
@@ -1050,9 +1080,11 @@
     </div>
 
     <p>
-      Both are standard Odoo 19 addons — drop the unzipped folder into your addons path, run
-      <strong>Update Apps List</strong>, and install "NAFDAC / SON Product Verification" from the
-      Apps menu (remove the "Apps" filter; it's a normal module, not a featured app).
+      All three are standard Odoo 19 addons — drop the unzipped folder into your addons path, run
+      <strong>Update Apps List</strong>, and install from the Apps menu (remove the "Apps" filter;
+      they're normal modules, not featured apps). <strong>mrp_nafdac_son_registration</strong> only
+      depends on <code>mrp</code>, <code>product</code>, and <code>mail</code>, so it installs and
+      works independently of the other two if you only need the manufacturing-side evidence trail.
     </p>
 
     <h3>What It Takes to Run Odoo Locally</h3>
@@ -1122,12 +1154,12 @@
         <strong>Any competent Odoo administrator can set this up — or I can, at minimal cost</strong>
         <p>Installing these modules is standard Odoo administration: nothing proprietary or
         undocumented. If you already work with an Odoo admin or implementation partner, they can
-        install, upgrade, and configure both modules using the steps above. If you'd rather not do
+        install, upgrade, and configure all three modules using the steps above. If you'd rather not do
         it yourself and don't have someone on hand, I run Odoo deployments for clients in Nigeria
         and can set this up on your own instance — onsite or remote — for a minimal fee. That
         covers installation, mapping your existing product catalogue to NAFDAC/SON fields, and
-        setting your blocking policy so it fits how your store actually operates. Send me a direct
-        message if that's useful.</p>
+        setting your blocking policy so it fits how your store — and your production line, if you
+        manufacture in-house — actually operates. Send me a direct message if that's useful.</p>
       </div>
     </div>
   </section>
@@ -1136,48 +1168,102 @@
   <!-- ═══ SECTION 4.5: WATCH IT RUN ═══ -->
   <section>
     <div class="section-kicker">Watch It Run</div>
-    <h2>25 Products, 5 Purchase Orders, One Bulk Verification Run — Recorded, Not Staged</h2>
+    <h2>4 Manufacturing Orders, 25 Products, 5 Purchase Orders — One Recorded, End-to-End Run</h2>
 
     <p>
       Claiming a module "works" is cheap, and one hand-picked example proves little. So instead of
-      a single toy product, this run built a real-sized data set — 3 vendors, 25 regulated products
-      (13 NAFDAC, 12 SON) with a deliberate mix of well-formed and malformed registration numbers,
-      5 Purchase Orders confirmed and received into inventory as 25 separate lots — then fired one
-      bulk verification pass across all 25 lots at once, through Odoo's actual web client, driven by
-      a real Chromium browser under Selenium/WebDriver. Real result: <strong>11 verified, 14
-      failed</strong>.
+      a single toy product, this run builds the full loop in one session: 4 Manufacturing Orders
+      produced and closed out, NAFDAC/SON evidence captured on each one through the real wizard on
+      the MO form, a provider flipped Active to drain the submission queue for real — then 3
+      vendors, 25 regulated products (13 NAFDAC, 12 SON) with a deliberate mix of well-formed and
+      malformed registration numbers, 5 Purchase Orders confirmed and received into inventory as 25
+      separate lots, and one bulk verification pass across all 25 lots at once. All of it through
+      Odoo's actual web client, driven by a real Chromium browser under Selenium/WebDriver. Real
+      results: <strong>4 evidence captures with photos attached, 8 submission-queue rows, 11
+      verified / 14 failed</strong> lots.
     </p>
 
-    <video controls preload="metadata" style="width:100%; border-radius:10px; border:1px solid var(--border); margin:24px 0;" poster="assets/demo/06-lots-list-bulk-results.png">
-      <source src="assets/demo/selenium-capture-video.mp4" type="video/mp4">
+    <video controls preload="metadata" style="width:100%; border-radius:10px; border:1px solid var(--border); margin:24px 0;" poster="assets/demo_full/08_regulatory_submission_queue.png">
+      <source src="assets/demo_full/selenium-capture-video-full.mp4" type="video/mp4">
       Your browser doesn't support inline video — download it directly:
-      <a href="assets/demo/selenium-capture-video.mp4">selenium-capture-video.mp4</a>.
+      <a href="assets/demo_full/selenium-capture-video-full.mp4">selenium-capture-video-full.mp4</a>.
     </video>
 
+    <h3>Stage One: Capturing Evidence on the Production Line</h3>
+
     <p>
-      Real screenshots from that session, not mockups — login, the Purchase Orders queue, the bulk
-      result set, a verified lot, and a failed one:
+      Real screenshots from that session — the Manufacturing app with 4 completed orders, the
+      "Capture NAFDAC/SON Evidence" action on an order's form, the resulting evidence record with a
+      photo attached and a full product-record snapshot, and the submission queue showing exactly
+      what happens once a provider goes live with no real endpoint behind it yet:
     </p>
 
     <div class="screenshot-gallery" style="grid-template-columns: repeat(2, 1fr);">
       <div class="screenshot-item">
-        <img src="assets/demo/03-purchase-orders-list.png" alt="Odoo Purchase Orders list showing five confirmed orders across three vendors with real totals" loading="lazy">
+        <img src="assets/demo_full/03_manufacturing_orders_list.png" alt="Odoo Manufacturing Orders list showing four completed orders for regulated products" loading="lazy">
+        <div class="screenshot-caption">4 completed Manufacturing Orders — Paracetamol, Amoxicillin, ORS, extension cables</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="assets/demo_full/04_manufacturing_order_detail.png" alt="A Manufacturing Order form showing the Capture NAFDAC/SON Evidence button and a NAFDAC/SON Evidence smart button with count 1" loading="lazy">
+        <div class="screenshot-caption">The real button, on the real MO form — not a mockup</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="assets/demo_full/06_manufacturing_evidence_detail.png" alt="A manufacturing evidence record showing the product, lot, batch identifier, and an attached batch photo" loading="lazy">
+        <div class="screenshot-caption">Evidence captured: lot, operator, timestamp, and an attached batch photo</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="assets/demo_full/07_manufacturing_evidence_snapshot.png" alt="The Product Record Snapshot tab showing a JSON snapshot of the product record taken at the moment of capture" loading="lazy">
+        <div class="screenshot-caption">A full product-record snapshot, frozen in JSON at the moment of capture</div>
+      </div>
+    </div>
+
+    <div class="screenshot-item" style="max-width:640px; margin:16px 0 24px;">
+      <img src="assets/demo_full/08_regulatory_submission_queue.png" alt="The Regulatory Submission Queue list showing NAFDAC rows in a red Failed state with an explanatory error message, and SON rows waiting with no active provider" loading="lazy">
+      <div class="screenshot-caption">The submission queue after NAFDAC was flipped Active: every submission fails loudly, with the real reason — no live endpoint exists yet — instead of pretending to have succeeded</div>
+    </div>
+
+    <div class="callout callout-good">
+      <div class="callout-icon">🐛</div>
+      <div class="callout-body">
+        <strong>What this pass actually caught</strong>
+        <p>The evidence form's chatter — the message thread and follower panel on the right of the
+        record — was built with the pre-Odoo-17 <code>&lt;div class="oe_chatter"&gt;</code> markup.
+        Against a real Odoo 19 runtime that doesn't just look outdated, it breaks the layout
+        outright: the form's main sheet collapsed to a 34-pixel sliver while the chatter's two
+        underlying one2many fields rendered as raw, unstyled list editors in its place. One-line
+        fix — swap it for Odoo 19's own <code>&lt;chatter/&gt;</code> tag, the same one <code>mrp</code>
+        and <code>stock</code> use internally — and the form renders exactly as designed. It's
+        exactly the kind of bug that a written-but-never-run module carries silently, and that only
+        shows up once something actually opens the page.</p>
+      </div>
+    </div>
+
+    <h3>Stage Two: Inventory Receipt and Bulk Verification</h3>
+
+    <p>
+      From there the same session continues into the inventory and checkout side — login, the
+      Purchase Orders queue, the bulk result set, a verified lot, and a failed one:
+    </p>
+
+    <div class="screenshot-gallery" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="screenshot-item">
+        <img src="assets/demo_full/09_purchase_orders_list.png" alt="Odoo Purchase Orders list showing five confirmed orders across three vendors with real totals" loading="lazy">
         <div class="screenshot-caption">5 confirmed Purchase Orders across 3 vendors</div>
       </div>
       <div class="screenshot-item">
-        <img src="assets/demo/06-lots-list-bulk-results.png" alt="Lots and Serial Numbers list showing 25 lots with a mix of green Verified and red Failed status badges" loading="lazy">
+        <img src="assets/demo_full/12_lots_list_bulk_results.png" alt="Lots and Serial Numbers list showing 25 lots with a mix of green Verified and red Failed status badges" loading="lazy">
         <div class="screenshot-caption">All 25 lots after one bulk verification run — 11 Verified, 14 Failed</div>
       </div>
       <div class="screenshot-item">
-        <img src="assets/demo/08-verified-lot-detail.png" alt="A verified lot's detail page showing NAFDAC registration number and green Verified status" loading="lazy">
+        <img src="assets/demo_full/14_verified_lot_detail.png" alt="A verified lot's detail page showing NAFDAC registration number and green Verified status" loading="lazy">
         <div class="screenshot-caption">A verified lot — NAFDAC format check passed</div>
       </div>
       <div class="screenshot-item">
-        <img src="assets/demo/11-failed-lot-detail.png" alt="A failed lot's detail page with the real failure message logged in the chatter" loading="lazy">
+        <img src="assets/demo_full/16_failed_lot_detail.png" alt="A failed lot's detail page with the real failure message logged in the chatter" loading="lazy">
         <div class="screenshot-caption">A failed lot — the real rejection reason, logged automatically</div>
       </div>
       <div class="screenshot-item">
-        <img src="assets/demo/09-print-menu.png" alt="Odoo's Print menu open on a lot form, showing the Verification Certificate option" loading="lazy">
+        <img src="assets/demo_full/15_print_menu.png" alt="Odoo's Print menu open on a lot form, showing the Verification Certificate option" loading="lazy">
         <div class="screenshot-caption">Print → Verification Certificate, straight from the lot</div>
       </div>
     </div>
@@ -1212,26 +1298,28 @@
       <div class="callout-body">
         <strong>How this was captured</strong>
         <p>Every screenshot above came from a real Selenium WebDriver session against a real
-        Chromium browser — not a mock, not the DevTools protocol driven directly. The video is
-        assembled from that same set of real captured frames rather than a continuous screen
-        recording. <code>demo/selenium_capture.py</code> in the repo runs the identical session on
-        any machine with a normal Chrome/Chromium install.</p>
+        Chrome-for-Testing binary — not a mock, not the DevTools protocol driven directly. The video
+        is assembled from that same set of real captured frames rather than a continuous screen
+        recording. <code>demo/selenium_capture_full.py</code> in the repo runs the identical session,
+        manufacturing stage included, on any machine with a normal Chrome/Chromium install and a
+        matching chromedriver.</p>
       </div>
     </div>
 
     <div class="download-cards">
       <div class="download-card">
-        <span class="file-name">demo/bulk_e2e_workflow.py</span>
-        <p>Builds the full data set — vendors, 25 regulated products, 5 POs, 25 lots — and runs the
-        bulk verification pass. Runnable via <code>odoo-bin shell -d &lt;db&gt; &lt;
-        demo/bulk_e2e_workflow.py</code> against your own Odoo 19 instance.</p>
-        <a class="download-btn" href="demo/bulk_e2e_workflow.py" download>⬇ Download script</a>
+        <span class="file-name">demo/bulk_e2e_workflow_full.py</span>
+        <p>Builds the full data set end to end — 4 Manufacturing Orders with captured evidence and
+        a live-drained submission queue, vendors, 25 regulated products, 5 POs, 25 lots — and runs
+        the bulk verification pass. Runnable via <code>odoo-bin shell -d &lt;db&gt; &lt;
+        demo/bulk_e2e_workflow_full.py</code> against your own Odoo 19 instance.</p>
+        <a class="download-btn" href="demo/bulk_e2e_workflow_full.py" download>⬇ Download script</a>
       </div>
       <div class="download-card">
-        <span class="file-name">demo/selenium_capture.py</span>
-        <p>Drives a real browser through the same workflow via Selenium and captures a screenshot
-        at every step — works against any Odoo instance with a normal Chrome/Chromium install.</p>
-        <a class="download-btn" href="demo/selenium_capture.py" download>⬇ Download script</a>
+        <span class="file-name">demo/selenium_capture_full.py</span>
+        <p>Drives a real browser through the entire workflow via Selenium — manufacturing evidence
+        capture through to checkout-side verification — and captures a screenshot at every step.</p>
+        <a class="download-btn" href="demo/selenium_capture_full.py" download>⬇ Download script</a>
       </div>
       <div class="download-card">
         <span class="file-name">demo/verification_certificate.pdf</span>
@@ -1245,7 +1333,47 @@
   <!-- ═══ SECTION 5: HOW IT WORKS END TO END ═══ -->
   <section>
     <div class="section-kicker">End-to-End Flow</div>
-    <h2>From Add-to-Cart to a Blocked Payment, in Milliseconds</h2>
+    <h2>From the Production Line to a Blocked Payment, in Milliseconds</h2>
+
+    <div class="flow-diagram">
+      <div class="diagram-title">Manufacturing-stage evidence capture</div>
+      <div class="flow-steps-list">
+        <div class="flow-step">
+          <div class="flow-step-num step-emerald">1</div>
+          <div class="flow-step-content">
+            <strong>A Manufacturing Order is marked Done</strong>
+            <p>The operator clicks <code>Capture NAFDAC/SON Evidence</code> right on the MO form —
+            no separate app, no re-entering the batch or lot by hand.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num step-blue">2</div>
+          <div class="flow-step-content">
+            <strong>Photo/video, batch ID, and a product snapshot are saved together</strong>
+            <p>The wizard requires at least one photo or video, records the batch/lot identifier,
+            and freezes a full JSON snapshot of the product record — so the evidence is
+            self-contained even if the product record changes later.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num step-amber">3</div>
+          <div class="flow-step-content">
+            <strong>A submission-queue row is created per regulator, immediately</strong>
+            <p>One row per known provider (NAFDAC, SON), whether or not that provider is active yet
+            — so nothing captured today is ever missed once a real endpoint exists.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num step-red">4</div>
+          <div class="flow-step-content">
+            <strong>The queue drains automatically once a provider goes Active</strong>
+            <p>A scheduled action sends every pending submission the moment a provider is switched
+            on — today that means every submission fails cleanly, with the real reason logged,
+            because no public NAFDAC/SON manufacturer-facing API exists yet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="flow-diagram">
       <div class="diagram-title">Checkout-level regulatory check</div>
@@ -1300,13 +1428,18 @@
       <div class="callout-icon">✅</div>
       <div class="callout-body">
         <strong>What I actually verified before writing this</strong>
-        <p>Both modules were installed on a real Odoo 19 runtime, not just written and assumed to
-        work: a full install/upgrade/test cycle caught and fixed seven real issues (a v19 field
+        <p>All three modules were installed on a real Odoo 19 runtime, not just written and assumed
+        to work: a full install/upgrade/test cycle caught and fixed nine real issues (a v19 field
         rename, invalid search-view syntax, a missing <code>.sudo()</code> causing an ACL error for
-        anonymous shoppers, and the two-template badge gap above, among others). Adding a verified
-        product to cart shows the badge on both the cart page and the checkout sidebar; an
+        anonymous shoppers, the two-template badge gap above, a broken manufacturing-evidence form
+        using pre-v17 chatter markup that collapsed the form's layout, and a scheduled-action data
+        file referencing <code>ir.cron</code>'s long-removed <code>doall</code> field — a hard
+        install failure on v19, not a warning — among others). Adding a
+        verified product to cart shows the badge on both the cart page and the checkout sidebar; an
         intentionally invalid registration number correctly blocks payment with the customer-facing
-        message. The test suite passes 5/5.</p>
+        message; producing a batch, capturing evidence, and draining the submission queue against an
+        Active-but-endpoint-less provider all behave exactly as designed. The test suite passes
+        5/5.</p>
       </div>
     </div>
   </section>
@@ -1389,8 +1522,9 @@
 
     <p>
       Whether or not NAFDAC and SON ever open a real-time API, businesses selling regulated
-      products in Nigeria don't have to wait to build honesty into their own checkout flow. Logging
-      every registration number, flagging what's unverified, and giving staff and customers a clear
+      products in Nigeria don't have to wait to build honesty into their own operation — from the
+      production line to checkout. Logging every registration number, capturing evidence at the
+      point of manufacture, flagging what's unverified, and giving staff and customers a clear
       status — verified, failed, pending — is something a store can do today, on infrastructure it
       already runs. It won't replace a functioning national verification system. It's a start.
     </p>
@@ -1398,7 +1532,7 @@
     <p>
       The full read, with the working modules and the architecture behind them, is published at
       <a class="inline-link" href="https://niyid.github.io/nafdac-son-verification/linkedin-article.html" target="_blank">niyid.github.io/nafdac-son-verification/linkedin-article.html</a>.
-      Both modules are free to download above — LGPL-3, the same licence Odoo uses for its own
+      All three modules are free to download above — LGPL-3, the same licence Odoo uses for its own
       addons — for anyone running Odoo who wants to adopt, audit, or extend them.
     </p>
   </section>
