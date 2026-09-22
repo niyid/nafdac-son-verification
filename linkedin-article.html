@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Verification Gap: I Built NAFDAC/SON Checks Into Odoo Checkout, Then Tried NAFDAC's Own App — It Couldn't Verify a Real Product</title>
+<title>The Verification Gap: I Built NAFDAC/SON Checks Into Odoo — From the Production Line to Checkout — Then Tried NAFDAC's Own App, Which Couldn't Verify a Real Product</title>
 
 <!-- SEO -->
-<meta name="description" content="A working Odoo integration checks NAFDAC and SON registration at the moment of checkout. NAFDAC's own consumer app couldn't confirm a real product at the point of purchase. An open invitation to NAFDAC and SON to explain the gap.">
+<meta name="description" content="A working Odoo integration checks NAFDAC and SON registration from the point a batch is manufactured through to checkout — blocking payment and warehouse transfers on a failed check. NAFDAC's own consumer app couldn't confirm a real product at the point of purchase. An open invitation to NAFDAC and SON to explain the gap.">
 <meta name="author" content="niyid">
-<meta name="keywords" content="NAFDAC, SON, Odoo, counterfeit products, Nigeria, product verification, Scan2Verify, SONCAP, e-commerce, open source, retail, wholesale, pharmacy compliance, distribution, Odoo implementation, Odoo installation support">
+<meta name="keywords" content="NAFDAC, SON, Odoo, counterfeit products, Nigeria, product verification, Scan2Verify, SONCAP, MANCAP, manufacturing evidence, batch traceability, e-commerce, open source, retail, wholesale, pharmacy compliance, distribution, Odoo implementation, Odoo installation support">
 
 <!-- Open Graph (Substack, Facebook, LinkedIn link previews) -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="The Verification Gap: I Built NAFDAC/SON Checks Into Odoo Checkout, Then Tried NAFDAC's Own App">
-<meta property="og:description" content="An Odoo module blocks checkout on a failed NAFDAC/SON check in milliseconds. NAFDAC's own Scan2Verify app couldn't confirm a real medicine box at all. Here's the build — and an open question for the regulators.">
+<meta property="og:title" content="The Verification Gap: I Built NAFDAC/SON Checks Into Odoo — From the Production Line to Checkout">
+<meta property="og:description" content="Three Odoo modules capture manufacturing evidence, check registration status in the warehouse, and block checkout on a failed NAFDAC/SON check — all in milliseconds. NAFDAC's own Scan2Verify app couldn't confirm a real medicine box at all. Here's the build — and an open question for the regulators.">
 <meta property="og:image" content="https://niyid.github.io/nafdac-son-verification/assets/header.jpg">
 <meta property="og:url" content="https://niyid.github.io/nafdac-son-verification/linkedin-article.html">
 <meta property="og:site_name" content="NAFDAC/SON Verification for Odoo">
@@ -21,8 +21,8 @@
 
 <!-- Twitter/X Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The Verification Gap: Checkout-Level NAFDAC/SON Checks, and an Open Question for the Regulators">
-<meta name="twitter:description" content="A drop-in Odoo module blocks checkout on failed regulatory checks. NAFDAC's own app couldn't verify a real product. An invitation to NAFDAC and SON to explain why.">
+<meta name="twitter:title" content="The Verification Gap: NAFDAC/SON Checks From the Production Line to Checkout, and an Open Question for the Regulators">
+<meta name="twitter:description" content="Three drop-in Odoo modules capture manufacturing evidence and block checkout on failed regulatory checks. NAFDAC's own app couldn't verify a real product. An invitation to NAFDAC and SON to explain why.">
 <meta name="twitter:image" content="https://niyid.github.io/nafdac-son-verification/assets/header.jpg">
 
 <!-- Canonical -->
@@ -951,6 +951,11 @@
         <div class="compare-cell bad">In theory, at purchase — in practice, often not at all</div>
       </div>
       <div class="compare-row">
+        <div class="compare-cell dim-label">🏭 Manufacturing-stage evidence</div>
+        <div class="compare-cell good">The batch itself, at the moment it's made</div>
+        <div class="compare-cell good">Before it's left the production line — evidence exists even if a shopper never checks anything</div>
+      </div>
+      <div class="compare-row">
         <div class="compare-cell dim-label">🛒 Checkout-level check</div>
         <div class="compare-cell good">Every regulated item in the cart</div>
         <div class="compare-cell good">Automatically, before payment is even offered</div>
@@ -1057,7 +1062,7 @@
       </div>
     </div>
 
-    <div class="download-cards">
+    <div class="download-cards" id="downloads">
       <div class="download-card">
         <span class="file-name">mrp_nafdac_son_registration.zip</span>
         <p>Manufacturing-stage module — evidence capture wizard on Manufacturing Orders, product
@@ -1459,6 +1464,18 @@
       limitation, not a solved problem.
     </p>
 
+    <p>
+      The manufacturing side has its own honest limit, and it's a different kind: evidence capture
+      is a workflow, not a control. Nothing in <strong>mrp_nafdac_son_registration</strong> stops
+      an operator from photographing the wrong batch, backdating a capture, or simply skipping the
+      "Capture NAFDAC/SON Evidence" button altogether — a Manufacturing Order can still be marked
+      Done without it. What it does guarantee is that when evidence <em>is</em> captured, it's
+      timestamped, attributed to a specific user, and immutable — a real record a regulator or
+      auditor can trust once submitted, not proof that every batch has one. Closing that gap is a
+      process and training question for whoever runs the line, not something software alone can
+      enforce.
+    </p>
+
     <div class="callout callout-bad">
       <div class="callout-icon">⚠️</div>
       <div class="callout-body">
@@ -1504,6 +1521,10 @@
         <li><strong>Does SON have, or plan, a consumer-facing equivalent</strong> to a scan-and-verify
         tool, given that SONCAP/MANCAP verification today is largely a pre-shipment and import-clearance
         process rather than something a shopper can check on the spot?</li>
+        <li><strong>Is there, or will there be, a manufacturer-facing submission API</strong> —
+        the counterpart to consumer verification — so a registered manufacturer could submit batch
+        evidence (photos, lot numbers, production records) at the point of manufacture, rather than
+        relying solely on periodic facility inspections after the fact?</li>
       </ol>
     </div>
 
@@ -1568,10 +1589,10 @@
   <footer class="article-footer">
     <div class="footer-left">
       <p>DOWNLOAD THE MODULES</p>
-      <p style="margin-bottom: 12px; color: var(--muted-hi)">nafdac_son_verification.zip · website_sale_nafdac_son_verification.zip</p>
+      <p style="margin-bottom: 12px; color: var(--muted-hi)">mrp_nafdac_son_registration.zip · nafdac_son_verification.zip · website_sale_nafdac_son_verification.zip</p>
       <p>LICENCE · LGPL-3 (Odoo modules)</p>
     </div>
-    <a class="footer-link" href="nafdac_son_verification.zip" download>
+    <a class="footer-link" href="#downloads">
       ⬇ Get the modules
     </a>
   </footer>
